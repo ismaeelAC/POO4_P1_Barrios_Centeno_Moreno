@@ -8,7 +8,7 @@ package poo4_p1_barrios_centeno_moreno;
  *
  * @author LNV
  */
-public class POO4_P1_Barrios_Centeno_Moreno {
+public class main {
 
     /**
      * @param args the command line arguments
