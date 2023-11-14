@@ -19,7 +19,7 @@ public class Servicio {
     private String hasta;
     private String fecha;
     private String hora;
-    //private formaPago fp;
+    private FormaDePago fp;
     
     
     public int generarID(){

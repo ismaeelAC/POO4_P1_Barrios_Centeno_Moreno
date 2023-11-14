@@ -10,6 +10,6 @@ package poo4_p1_barrios_centeno_moreno;
  */
 public class Encomienda extends Servicio {
     private double peso;
-    //private TipoEncomienda tipoE;
+    private TipoEncomienda tipoE;
     private int numProductos;
 }
