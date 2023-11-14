@@ -12,7 +12,7 @@ public class Pago {
     private String idpago;
     private String fecha;
     private Servicio servicio;
-    private FormaPago formaDePago;
+    private FormaDePago formaDePago;
     private Cliente cliente;
     private Double subtotal;
     private Double valorPagar;
