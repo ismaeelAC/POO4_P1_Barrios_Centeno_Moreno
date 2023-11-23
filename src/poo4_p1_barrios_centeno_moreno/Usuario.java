@@ -8,7 +8,7 @@ package poo4_p1_barrios_centeno_moreno;
  *
  * @author grils
  */
-public class Usuario {
+public abstract class Usuario {
     private String cedula;
     private String nombre;
     private String apellido;
@@ -16,8 +16,20 @@ public class Usuario {
     private String user;
     private String contrasenia;
     private String celular;
-    private TipoUsuario tipoUsuario;
+    
 
+    public Usuario(String cedula,String nombre,String apellido,int edad,String user,String contrasenia,String celular,TipoUsuario tipoUsuario){
+        this.cedula=cedula;
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.edad=edad;
+        this.user=user;
+        this.contrasenia=contrasenia;
+        this.celular=celular;
+        this.tipoUsuario=tipoUsuario;
+    }
+    
+    //getters
     public String getCedula() {
         return cedula;
     }
@@ -50,8 +62,44 @@ public class Usuario {
         return tipoUsuario;
     }
     
+    //setters
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
     
     
+  
+    public abstract void consultarServicios();
+  
     
 }
 
