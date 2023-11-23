@@ -9,8 +9,8 @@ package poo4_p1_barrios_centeno_moreno;
  * @author grils
  */
 public class Conductor extends Usuario{
-    private String licencia;
-    private Estado estado;
+    private String licencia;  
+    private Estado estado; //Actualizacion prueba
     private Vehiculo vehiculo;
     
 }
