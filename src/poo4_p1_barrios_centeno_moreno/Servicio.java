@@ -11,20 +11,105 @@ package poo4_p1_barrios_centeno_moreno;
 
 import java.util.Random;
 public class Servicio {
-    private int numeroServicio;
-    private Servicio servicio;
-    private String cedulaCliente;
+    protected int numeroServicio;
     private String nombreConductor;
-    private String desde;
-    private String hasta;
+    private String origen;
+    private String destino;
     private String fecha;
     private String hora;
-    private FormaDePago fp;
-    
-    
+    private double valorapagar;
+    private FormaDePago fp; 
+
+    /**
+     * El método generarID permite generar una identificación única cada vez que se solicita un servicio, ya sea de tipo taxi o encomienda.
+     * @return 
+     */
     public int generarID(){
     Random rd=new Random();
     int valal=rd.nextInt(1000000000);
     return valal;
     }
+    
+    //Metodos getter
+    public int getNumeroServicio() {
+        return numeroServicio;
+    }
+
+    public String getNombreConductor() {
+        return nombreConductor;
+    }
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public double getValorapagar() {
+        return valorapagar;
+    }
+
+    public FormaDePago getFp() {
+        return fp;
+    }
+     
+    //Metodos setter
+    public void setNumeroServicio(int numeroServicio) {
+        this.numeroServicio = numeroServicio;
+    }
+
+    public void setNombreConductor(String nombreConductor) {
+        this.nombreConductor = nombreConductor;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public void setValorapagar(double valorapagar) {
+        this.valorapagar = valorapagar;
+    }
+
+    public void setFp(FormaDePago fp) {
+        this.fp = fp;
+    }
+    
+    /**
+     * calcularvalorapagar es un método que se escribe en la clase Servicio y se sobrecarga para que pueda ser utilizado en la clase hija.
+     * 
+     * @return Retorna un double que será el valor del subtotal
+     */
+    public double calcularvalorapagar (){
+    return 0.0;
+    }
+    public double calcularvalorpagar(FormaDePago fp1, double st){
+    return 0.0;
+    }
+    
+    //metodo calcular valor pagar
+    //Crear metodo guardar datos servicios que me permite escriibr en un archivo los datos obtenido 
+    
+    
 }

@@ -12,4 +12,7 @@ public class Encomienda extends Servicio {
     private double peso;
     private TipoEncomienda tipoE;
     private int numProductos;
+    
+    //metood calcular valor a pagar
+    //metodo guardar datosencomienda
 }

@@ -9,5 +9,5 @@ package poo4_p1_barrios_centeno_moreno;
  * @author rb122
  */
 public enum FormaDePago {
-    EFECTIVO , TARJETADECREDITO
+    E , TC
 }
