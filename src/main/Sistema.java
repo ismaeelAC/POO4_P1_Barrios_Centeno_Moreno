@@ -68,7 +68,7 @@ public class Sistema {
       * @param linea; Es el String que queremos escribir en el archivo
       */
      
-public  void EscribirArchivo(String nombreArchivo, String linea) {
+public static void EscribirArchivo(String nombreArchivo, String linea) {
 
         FileWriter fichero = null;
         BufferedWriter bw = null;

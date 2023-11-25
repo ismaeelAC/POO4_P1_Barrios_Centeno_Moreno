@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Random;
-
+import main.Sistema;
 
 
 /**
@@ -82,7 +82,7 @@ public class Cliente extends Usuario {
                     for(String[] datosPago : pagosArreglos){
                         if(datosEncomienda[0].equals(datosServicio[0]) && datosEncomienda[0].equals(datosPago[0])){
                             serviciosSolicitados.add(new Encomienda(datosServicio[0],datosServicio[2],datosServicio[3],datosServicio[4],datosServicio[5],
-                        datosServicio[6],datosServicio[7], FormaDePago.valueOf(datosPago[3]),datosEncomienda[3],TipoEncomienda.valueOf(datosEncomieda[1]),Integer.valueOf(datosEncomiendo[2])));
+                        datosServicio[6],datosServicio[7], FormaDePago.valueOf(datosPago[3]),datosEncomienda[3],TipoEncomienda.valueOf(datosEncomienda[1]),Integer.valueOf(datosEncomiend[2])));
                         }
                     }
                 }
@@ -93,33 +93,32 @@ public class Cliente extends Usuario {
         
         
         
-        for(Servicio s: serviciosSolicitados){
+        for (Servicio s: serviciosSolicitados){
             if (s instanceof Taxi){
-                System.out.println("/***********************************/");
+                System.out.println("**************************");
                 System.out.println("Tipo: Viaje");
-                System.out.println("Cantidad pasajeros: "+s.getNumPersonas());
-                System.out.println("Fecha: "+ s.getFecha());
-                System.out.println("Hora: "+s.getHora());
-                System.out.println("Desde: "+s.getDesde());
-                System.out.println("Hasta: "+s.getHasta());
-                
-            }
-            else{
+                System.out.println("Cantidad de pasajeros: " + ((Taxi) s).getNumPersonas());
+                System.out.println("Fecha: " + ((Taxi)s).getFecha());
+                System.out.println("Hora: " + ((Taxi)s).getHora());
+                System.out.println("Desde: " + ((Taxi)s).getOrigen());
+                System.out.println("Hasta: " + ((Taxi)s).getDestino());
+        }
+            else if(s instanceof Encomienda){
+                System.out.println("**************************");
                 System.out.println("Tipo: Encomienda");
-                System.out.println("Tipo encomienda: "+s.getTipoE());
-                System.out.println("Cantidad: "+ s.getNumProductos());
-                System.out.println("Fecha: "+ s.getFecha());
-                System.out.println("Hora: "+s.getHora());
-                System.out.println("Desde: "+s.getDesde());
-                System.out.println("Hasta: "+s.getHasta());
+                System.out.println("Cantidad: " + ((Encomienda) s).getNumProductos());
+                System.out.println("Tipo encomienda: " + ((Encomienda)s).getTipoE());
+                System.out.println("Fecha: " + ((Encomienda)s).getFecha());
+                System.out.println("Hora: " + ((Encomienda)s).getHora());
+                System.out.println("Desde: " + ((Encomienda)s).getOrigen());
+                System.out.println("Hasta: " + ((Encomienda)s).getDestino());
             }
         }
-        
     }
     
     
-    public void pagarServicios(Servicio  servicio,FormaDePago formaDePago){
-        Pago p= servicio.calcularvalorpagar();
+    public  void pagarServicios(Servicio  servicio,FormaDePago formaDePago){
+        double p= servicio.calcularvalorapagar();
         Sistema.EscribirArchivo("pagos.txt",p.getIdpago()+p.getFecha()+servicio.getNumeroServicio()+formaDePago+this.getCedula()+p.getSubtotal()+p.getValorPagar());
     }
     
@@ -148,10 +147,10 @@ public class Cliente extends Usuario {
         }
         
         
-        int numeroDeServicio = rd.nextInt(10000, 99999);
+        int numeroDeServicio = rd.nextInt(90000) + 10000;
         
         
-        Taxi viaje = new Taxi(numeroDeServicio , this.getCedula(), datosDelConductorAsignado[0], desde, hasta, fecha, hora, fp, numeroDePasajeros);
+        Taxi viaje = new Taxi(numeroDePasajeros , Conductor.getNombre(), datosDelConductorAsignado[0], desde, hasta, fecha, hora, fp);
         double [] viajeInfo = viaje.calcularValorPagar();
         Sistema.EscribirArchivo("viajes.txt",numeroDeServicio+numeroDePasajeros+viajeInfo[1]+viajeInfo[0]);
     }
@@ -180,7 +179,7 @@ public class Cliente extends Usuario {
         }
         
         
-        int numeroDeServicio = rd.nextInt(10000, 99999);
+        int numeroDeServicio = rd.nextInt(90000) + 10000;
         
         
         Encomienda encomienda = new Encomienda(numeroDeServicio , this.getCedula(), datosDelConductorAsignado[0], desde, hasta, fecha, hora, fp, te, cantidadDeProductos, peso);

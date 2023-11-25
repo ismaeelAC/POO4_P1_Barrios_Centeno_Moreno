@@ -53,24 +53,25 @@ public class Conductor extends Usuario{
         System.out.println("/**********SERVICIO ASIGNADO***********/");
         System.out.println("/*                                    */");
         
-        for(Servicio s: serviciosAsignados){
-            if(s instanceof Taxi){
-                System.out.println("/***********************************/");
-                System.out.println("Tipo: Servicio Taxi");
-                System.out.println("Cantidad pasajeros: "+s.getNumPersonas());
-                System.out.println("Fecha: "+ s.getFecha());
-                System.out.println("Hora: "+s.getHora());
-                System.out.println("Desde: "+s.getDesde());
-                System.out.println("Hasta: "+s.getHasta());
-            }
-            else{
-                System.out.println("Tipo: Servicio de Encomienda");
-                System.out.println("Tipo encomienda: "+s.getTipoE());
-                System.out.println("Cantidad: "+ s.getNumProductos());
-                System.out.println("Fecha: "+ s.getFecha());
-                System.out.println("Hora: "+s.getHora());
-                System.out.println("Desde: "+s.getDesde());
-                System.out.println("Hasta: "+s.getHasta());
+        for (Servicio s: serviciosAsignados){
+            if (s instanceof Taxi){
+                System.out.println("**************************");
+                System.out.println("Tipo: Viaje");
+                System.out.println("Cantidad de pasajeros: " + ((Taxi) s).getNumPersonas());
+                System.out.println("Fecha: " + ((Taxi)s).getFecha());
+                System.out.println("Hora: " + ((Taxi)s).getHora());
+                System.out.println("Desde: " + ((Taxi)s).getOrigen());
+                System.out.println("Hasta: " + ((Taxi)s).getDestino());
+        }
+            else if(s instanceof Encomienda){
+                System.out.println("**************************");
+                System.out.println("Tipo: Encomienda");
+                System.out.println("Cantidad: " + ((Encomienda) s).getNumProductos());
+                System.out.println("Tipo encomienda: " + ((Encomienda)s).getTipoE());
+                System.out.println("Fecha: " + ((Encomienda)s).getFecha());
+                System.out.println("Hora: " + ((Encomienda)s).getHora());
+                System.out.println("Desde: " + ((Encomienda)s).getOrigen());
+                System.out.println("Hasta: " + ((Encomienda)s).getDestino());
             }
         }
     }

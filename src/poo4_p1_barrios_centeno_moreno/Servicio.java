@@ -20,15 +20,29 @@ public class Servicio {
     private String hora;
     private double valorapagar;
     private FormaDePago fp; 
+    
+    
+    //Constructor
+
+    public Servicio(int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora, double valorapagar, FormaDePago fp){
+        this.numeroServicio = numeroServicio;
+        this.nombreConductor = nombreConductor;
+        this.origen = origen;
+        this.destino = destino;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.valorapagar = valorapagar;
+        this.fp = fp;
+    }
 
     /**
      * El método generarID permite generar una identificación única cada vez que se solicita un servicio, ya sea de tipo taxi o encomienda.
      * @return 
      */
-    public int generarID(){
-    Random rd=new Random();
-    int valal=rd.nextInt(1000000000);
-    return valal;
+    public int generarID() {
+        Random rd=new Random();
+        int valal=rd.nextInt(1000000000);
+        return valal;
     }
     
     //Metodos getter
