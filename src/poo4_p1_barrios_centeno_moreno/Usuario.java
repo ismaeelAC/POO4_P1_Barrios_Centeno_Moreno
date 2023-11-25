@@ -16,6 +16,7 @@ public abstract class Usuario {
     private String user;
     private String contrasenia;
     private String celular;
+    private TipoUsuario tipoUsuario;
     
 
     public Usuario(String cedula,String nombre,String apellido,int edad,String user,String contrasenia,String celular,TipoUsuario tipoUsuario){

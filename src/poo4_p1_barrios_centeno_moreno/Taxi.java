@@ -13,7 +13,14 @@ import java.util.Random;
 public class Taxi extends Servicio {
     private int numPersonas;
     
+    //Constructor
+
+    public Taxi(int numPersonas, int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora, double valorapagar, FormaDePago fp) {
+        super(numeroServicio, nombreConductor, origen, destino, fecha, hora, valorapagar, fp);
+        this.numPersonas = numPersonas;
+    }
     
+   
     @Override
    
     public double calcularvalorapagar (){
@@ -39,4 +46,8 @@ public class Taxi extends Servicio {
     //sobreescriibr metodo calcular valor a pagar
     //sobrecaragr metodo valor a paagr
     //metodo guardar datos viaje que me permite guardar todo slos datos en un archivo
+
+    public int getNumPersonas() {
+        return numPersonas;
+    }
 }

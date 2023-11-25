@@ -14,7 +14,45 @@ public class Encomienda extends Servicio {
     private TipoEncomienda tipoE;
     private int numProductos;
     
+    //Constructor
+
+    public Encomienda(double peso, TipoEncomienda tipoE, int numProductos, int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora, double valorapagar, FormaDePago fp) {
+        super(numeroServicio, nombreConductor, origen, destino, fecha, hora, valorapagar, fp);
+        this.peso = peso;
+        this.tipoE = tipoE;
+        this.numProductos = numProductos;
+        
+    }
+    
+    
+    
+    
     //metood calcular valor a pagar
+    @Override
+    public double calcularvalorapagar(){
+        int valorEncomienda = numProductos;
+        double valorCarrera = 4.0;
+        return valorEncomienda + valorCarrera;
+    }
+    
+    
     //metodo guardar datosencomienda
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public TipoEncomienda getTipoE() {
+        return tipoE;
+    }
+
+    public int getNumProductos(){
+        return numProductos;
+    }
+    
+    
+    
 }
+
+
 
