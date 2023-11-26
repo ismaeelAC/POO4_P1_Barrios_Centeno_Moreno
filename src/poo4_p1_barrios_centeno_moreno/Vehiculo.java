@@ -24,17 +24,37 @@ public class Vehiculo {
         this.marca = marca;
         this.tipo = tipo;
     }
+
+    public String getCodigoVehiculo() {
+        return codigoVehiculo;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public TipoVehiculo getTipo() {
+        return tipo;
+    }
     
     
     
     @Override
     public String toString() {
-        return "Vehiculo{" +
-                "codigoVehiculo='" + codigoVehiculo + '\'' +
-                ", placa='" + placa + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", marca='" + marca + '\'' +
-                ", tipo=" + tipo +
+        return "Vehiculo\n" +
+                "codigoVehiculo='" + getCodigoVehiculo() + '\'' +
+                ", placa='" + getPlaca() + '\'' +
+                ", modelo='" + getModelo() + '\'' +
+                ", marca='" + getMarca() + '\'' +
+                ", tipo=" + getTipo() +
                 '}';
     }
 }

@@ -1,1 +1,6 @@
 numeroServicio,tipoEncomienda,cantidadProducctos,peso,subtotal
+150197009,MEDICINA,3,3.0,12.0
+
+545514751,DOCUMENTO,4,5.0,16.0
+
+169468429,MEDICINA,3,5.0,12.0

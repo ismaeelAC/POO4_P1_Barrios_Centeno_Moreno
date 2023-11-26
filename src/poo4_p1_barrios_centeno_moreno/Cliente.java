@@ -53,19 +53,19 @@ public class Cliente extends Usuario {
     // Escribir en el archivo
     //Sistema.EscribirArchivo("pagos.txt", lineaArchivo);
 
- public static String[] encontrarConductorDisponible(ArrayList<String> listaStringDeConductores, ArrayList<String> listaStringDeVehiculos) {
+public static String[] encontrarConductorDisponible(ArrayList<String> listaStringDeConductores, ArrayList<String> listaStringDeVehiculos) {
+    String[] datsconductorres=new String[2];
     for (String conductor : listaStringDeConductores) {
         String[] datosConductor = conductor.split(",");
-        if (datosConductor[1].equals("O")) { // Verifica si el estado es 'Ocupado'
+        if (datosConductor[1].equals("D")) { // Verifica si el estado es 'Ocupado'
             String cedulaConductor = datosConductor[0];
             for (String vehiculo : listaStringDeVehiculos) {
                 String[] datosVehiculo = vehiculo.split(",");
-                if (datosVehiculo[3].equals("A")) { // Verifica si el vehículo está 'Disponible'
+                if (datosVehiculo[4].equals("A")) { // Verifica si el vehículo está 'Disponible'
                     ArrayList<String> datosUsuario = Sistema.LeeFichero("usuarios.txt");
                     for (String usuario : datosUsuario) {
                         String[] datosUsuarioSplit = usuario.split(",");
-                        if (cedulaConductor.equals(datosUsuarioSplit[0])) { // Compara las cédulas
-                            String[] datsconductorres=new String[2];
+                        if (cedulaConductor.equals(datosUsuarioSplit[0])) { 
                             datsconductorres[0]=cedulaConductor;
                             datsconductorres[1]=datosUsuarioSplit[1];
                             return datsconductorres;
@@ -76,21 +76,23 @@ public class Cliente extends Usuario {
         }
     }
     return null; // Si no se encuentra conductor disponible
- }
+ } 
+
+
  
  public static String[] encontrarConductorDisponibleE(ArrayList<String> listaStringDeConductores, ArrayList<String> listaStringDeVehiculos) {
-    for (String conductor : listaStringDeConductores) {
+     String[] datsconductorres=new String[2];
+     for (String conductor : listaStringDeConductores) {
         String[] datosConductor = conductor.split(",");
-        if (datosConductor[1].equals("O")) { // Verifica si el estado es 'Ocupado'
+        if (datosConductor[1].equals("D")) { 
             String cedulaConductor = datosConductor[0];
             for (String vehiculo : listaStringDeVehiculos) {
                 String[] datosVehiculo = vehiculo.split(",");
-                if (datosVehiculo[3].equals("M")) { // Verifica si el vehículo está 'Disponible'
+                if (datosVehiculo[4].equals("M")) { // Verifica si el vehículo está 'Disponible'
                     ArrayList<String> datosUsuario = Sistema.LeeFichero("usuarios.txt");
                     for (String usuario : datosUsuario) {
                         String[] datosUsuarioSplit = usuario.split(",");
                         if (cedulaConductor.equals(datosUsuarioSplit[0])) { // Compara las cédulas
-                            String[] datsconductorres=new String[2];
                             datsconductorres[0]=cedulaConductor;
                             datsconductorres[1]=datosUsuarioSplit[1];
                             return datsconductorres;

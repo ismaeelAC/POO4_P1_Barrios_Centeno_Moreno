@@ -92,7 +92,7 @@ public static void EscribirArchivo(String nombreArchivo, String linea) {
         try {
             fichero = new FileWriter(nombreArchivo,true);
             bw = new BufferedWriter(fichero);
-            bw.write(linea+"\n");
+            bw.write("\n"+linea+"\n");
             
 
         } catch (Exception e) {
@@ -130,6 +130,14 @@ public static void EscribirArchivo(String nombreArchivo, String linea) {
             return TipoEncomienda.MEDICINA;
         } else {
             return TipoEncomienda.DOCUMENTO;
+        }
+    }
+    
+  public TipoVehiculo obtenerEnum(String valor) {
+        if ("A".equals(valor)) {
+            return TipoVehiculo.A;
+        } else {
+            return TipoVehiculo.M;
         }
     }
 /**
@@ -241,17 +249,16 @@ public TipoUsuario verificarusuario(ArrayList<String> ar) {
     } else {
     ArrayList<String> cdrs = LeeFichero("conductores.txt");
     ArrayList<String> movil = LeeFichero("vehículos.txt");
+
     String cedulaCond = ar.get(0);
     String nombreCond = ar.get(2);
     String apellidoCond = ar.get(3);
     String usuarioCond = ar.get(4);
     String contraseniaCond = ar.get(5);
     String celularCond = ar.get(6);
-    String edadCond = ar.get(7);
-    int ageCond = Integer.valueOf(edadCond);
     String estado="";
     String codigovehiculo="";
-    String vehivil="";
+    String tipovehi="";
     String placa="";
     String modelo="";
     String marca="";
@@ -268,12 +275,13 @@ public TipoUsuario verificarusuario(ArrayList<String> ar) {
         placa=datmovil[1];
         modelo=datmovil[2];
         marca=datmovil[3];
-         vehivil=datmovil[4];
+        tipovehi=datmovil[4];
+        
     }
     Estado ev=Estado.valueOf(estado);
-    TipoVehiculo tv=TipoVehiculo.valueOf(vehivil);
+    TipoVehiculo tv=obtenerEnum(tipovehi);
     Vehiculo v1=new Vehiculo(codigovehiculo,placa,modelo,marca,tv);
-    Conductor c1=new Conductor(cedulaCond,nombreCond,apellidoCond,ageCond,usuarioCond,contraseniaCond,celularCond,TipoUsuario.R,ev,v1);
+    Conductor c1=new Conductor(cedulaCond,nombreCond,apellidoCond,0,usuarioCond,contraseniaCond,celularCond,TipoUsuario.R,ev,v1);
     vehiculos.add(v1);
     users.add(c1);
 }
@@ -327,7 +335,7 @@ public void mostrarmenu(TipoUsuario type) {
                  Taxi t1=new Taxi(cantp,id,cd1[0],inception,llegada,date,hour,0.0,fp);
                  double vp=t1.calcularvalorapagar();
                  double vp2=t1.calcularvalorpagar(fp, vp);
-                 System.out.println("Subotal a paagr:"+vp2);
+                 System.out.println("Subotal a pagar:"+vp2);
                  servicios.add(t1);
                  String subto=String.valueOf(vp2);
                  t1.setValorapagar(vp2);
@@ -345,35 +353,35 @@ public void mostrarmenu(TipoUsuario type) {
                  else if (opc == 2) {
                     
                  System.out.println("Desde: ");
-                 String inception=sc.nextLine();
+                 String inception2=sc.nextLine();
                  System.out.println("Hasta: ");
-                 String llegada=sc.nextLine();
+                 String llegada2=sc.nextLine();
                  System.out.println("Fecha: ");
-                 String date=sc.nextLine();
+                 String date2=sc.nextLine();
                  System.out.println("Hora: ");
-                 String hour=sc.nextLine();
+                 String hour2=sc.nextLine();
                  System.out.println("Tipo de encomienda: ");
                  String tipoE=sc.nextLine();
                  System.out.println("Cantidad de productos a enviar: ");
-                 int cantp=sc.nextInt();
+                 int cantp2=sc.nextInt();
                  sc.nextLine();
                  System.out.println("Peso(kg): ");
-                 double weigth=sc.nextInt();
+                 double weigth=sc.nextDouble();
                  sc.nextLine();
                  System.out.println("Forma de pago: ");
-                 String fdp=sc.nextLine();
-                 FormaDePago fp=obtenerEnumDesdeString(fdp);
+                 String fdp2=sc.nextLine();
+                 FormaDePago fp1=obtenerEnumDesdeString(fdp2);
                  int id=Servicio.generarID();
                  String ID= String.valueOf(id);
-                 double Weigth=Double.valueOf(weigth);
+                 
                  TipoEncomienda tpe=obtenerEnumDesdeString2(tipoE);
                  ArrayList<String> drivers = LeeFichero("conductores.txt");
                  ArrayList<String> moviles = LeeFichero("vehículos.txt");
-                 String[] cd1=Cliente.encontrarConductorDisponible(drivers,moviles);
-                 String cproduct=String.valueOf(cantp);
+                 String[] cd1=Cliente.encontrarConductorDisponibleE(drivers,moviles);
+                 String cproduct=String.valueOf(cantp2);
                  String pesow=String.valueOf(weigth);
-                 //int numProductos, int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora, double valorapagar, FormaDePago fp)
-                 Encomienda e1=new Encomienda(Weigth,tpe,cantp,id,cd1[1],inception,llegada,date,hour,0.0,fp);
+          
+                 Encomienda e1=new Encomienda(weigth,tpe,cantp2,id,cd1[1],inception2,llegada2,date2,hour2,0.0,fp1);
                  double sbt=e1.calcularvalorapagar();
                  String SBT=String.valueOf(sbt);
                  Sistema.EscribirArchivo("encomiendas.txt",ID+","+tipoE+","+cproduct+","+pesow+","+SBT);
@@ -382,8 +390,8 @@ public void mostrarmenu(TipoUsuario type) {
                  Pago p=new Pago();
                  int IDP=p.generarIDN();
                  String idp=String.valueOf(IDP);
-                 Sistema.EscribirArchivo("pagos.txt",idp+","+date+","+ID+","+fdp+","+c1.getCedula()+","+SBT+","+SBT);
-             
+                 Sistema.EscribirArchivo("pagos.txt",idp+","+date2+","+ID+","+fdp2+","+c1.getCedula()+","+SBT+","+SBT);
+                 servicios.add(e1);
 
                 } else if (opc == 3) {
                     
@@ -418,23 +426,25 @@ public void mostrarmenu(TipoUsuario type) {
                 for(int i=0;i<users.size();i++){
                 if(users.get(i) instanceof Conductor){
                 users.get(i).consultarServicios(servicios);
+                break;
                 }
                 }
                   break;
                 case 2:
-                Conductor cnd = null;
+                
+              Conductor cnd = null;
                 for (int i = 0; i < users.size(); i++) {
-                 if (users.get(i) instanceof Conductor) {
-                  cnd = (Conductor) users.get(i);
-                    for (int j = 0; j < vehiculos.size(); j++) {
-                 if (cnd.getVehiculo().equals(vehiculos.get(j))) {
-                    System.out.println(vehiculos.get(j)); // Imprime el vehículo si hay coincidencia
-                    
-                break; // Si se encuentra coincidencia, se puede salir del bucle interno
-            }
-        }
+              if (users.get(i) instanceof Conductor) {
+              cnd = (Conductor) users.get(i);
+               System.out.println("Datos del vehículo del conductor " + cnd.getNombre() + ":");
+               System.out.println(cnd.getVehiculo()); // Imprime solo el vehículo del conductor
+                break; // Termina el ciclo después de encontrar al primer conductor y mostrar su vehículo
     }
-}                break;
+}
+
+        
+    
+             break;
 
             
             case 3:

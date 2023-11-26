@@ -33,7 +33,8 @@ public class Encomienda extends Servicio {
         
         int valorEncomienda = this.numProductos;
         double valorCarrera = 4.0;
-        return valorEncomienda + valorCarrera;
+        double valfinal=valorEncomienda*valorCarrera;
+        return valfinal ;
         
     }
     
