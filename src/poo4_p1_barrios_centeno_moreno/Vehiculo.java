@@ -14,5 +14,27 @@ public class Vehiculo {
     private String modelo;
     private String marca;
     private TipoVehiculo tipo;
+
+    // Resto del código de la clase
+
+    public Vehiculo(String codigoVehiculo, String placa, String modelo, String marca, TipoVehiculo tipo) {
+        this.codigoVehiculo = codigoVehiculo;
+        this.placa = placa;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.tipo = tipo;
+    }
     
+    
+    
+    @Override
+    public String toString() {
+        return "Vehiculo{" +
+                "codigoVehiculo='" + codigoVehiculo + '\'' +
+                ", placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", tipo=" + tipo +
+                '}';
+    }
 }

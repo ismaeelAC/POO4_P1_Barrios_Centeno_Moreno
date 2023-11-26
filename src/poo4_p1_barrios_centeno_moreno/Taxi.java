@@ -12,27 +12,32 @@ import java.util.Random;
 
 public class Taxi extends Servicio {
     private int numPersonas;
+    private int km;
     
     //Constructor
 
-    public Taxi(int numPersonas, int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora, double valorapagar, FormaDePago fp) {
-        super(numeroServicio, nombreConductor, origen, destino, fecha, hora, valorapagar, fp);
+    public Taxi(int numPersonas, int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora,double valorapagar, FormaDePago fp) {
+        super(numeroServicio, nombreConductor, origen, destino, fecha, hora,valorapagar, fp);
         this.numPersonas = numPersonas;
+        this.km=0;
+        
     }
     
    
     @Override
    
-    public double calcularvalorapagar (){
+    public  double calcularvalorapagar (){
     Random rd=new Random();
     int min=5;
     int max=45;
     int km=rd.nextInt((max-min)+1)+min;
-    double subtotal=km*0.50;  
+    
+    double subtotal=km*0.50;
+    this.km=km;
     return subtotal;
     }
     
-    //ES PROBABLE QUE TOQUE SOBREESCRIBIR EL METODO EQUASLS
+  
     @Override
     public double calcularvalorpagar(FormaDePago fp1,double subt){
     if (fp1.equals(FormaDePago.TC)){
@@ -50,4 +55,14 @@ public class Taxi extends Servicio {
     public int getNumPersonas() {
         return numPersonas;
     }
+public int getkm(){
+return km;
 }
+@Override
+public String toString(){
+return "Tipo: "+"Viaje"+"\n"+"Cantidad de pasajeros: "+getNumPersonas()+"\n"+super.toString();
+}
+
+
+}
+

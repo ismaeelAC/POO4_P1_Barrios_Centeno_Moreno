@@ -4,6 +4,8 @@
  */
 package poo4_p1_barrios_centeno_moreno;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author grils
@@ -99,8 +101,7 @@ public abstract class Usuario {
     
     
   
-    public abstract void consultarServicios();
-  
-    
+    public void consultarServicios(ArrayList<Servicio> serv){
+    };
 }
 

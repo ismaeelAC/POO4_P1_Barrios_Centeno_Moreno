@@ -17,7 +17,7 @@ public class Encomienda extends Servicio {
     //Constructor
 
     public Encomienda(double peso, TipoEncomienda tipoE, int numProductos, int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora, double valorapagar, FormaDePago fp) {
-        super(numeroServicio, nombreConductor, origen, destino, fecha, hora, valorapagar, fp);
+        super(numeroServicio, nombreConductor, origen, destino, fecha, hora,valorapagar, fp);
         this.peso = peso;
         this.tipoE = tipoE;
         this.numProductos = numProductos;
@@ -30,9 +30,11 @@ public class Encomienda extends Servicio {
     //metood calcular valor a pagar
     @Override
     public double calcularvalorapagar(){
-        int valorEncomienda = numProductos;
+        
+        int valorEncomienda = this.numProductos;
         double valorCarrera = 4.0;
         return valorEncomienda + valorCarrera;
+        
     }
     
     
@@ -50,9 +52,10 @@ public class Encomienda extends Servicio {
         return numProductos;
     }
     
-    
+    @Override
+    public String toString(){
+    return "/***********************************************************************/"+"Tipo: "+"Encomienda\n"+"Tipo encomienda: "+getTipoE()+"\n"+"Cantidad: "+getNumProductos()+"\n"+super.toString();
+    }
     
 }
-
-
 

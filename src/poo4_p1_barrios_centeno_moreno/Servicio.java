@@ -20,11 +20,12 @@ public class Servicio {
     private String hora;
     private double valorapagar;
     private FormaDePago fp; 
+    private int ID;
     
     
     //Constructor
 
-    public Servicio(int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora, double valorapagar, FormaDePago fp){
+    public Servicio(int numeroServicio, String nombreConductor, String origen, String destino, String fecha, String hora,double valorapagar,FormaDePago fp){
         this.numeroServicio = numeroServicio;
         this.nombreConductor = nombreConductor;
         this.origen = origen;
@@ -39,13 +40,16 @@ public class Servicio {
      * El método generarID permite generar una identificación única cada vez que se solicita un servicio, ya sea de tipo taxi o encomienda.
      * @return 
      */
-    public int generarID() {
+    public static int generarID() {
         Random rd=new Random();
         int valal=rd.nextInt(1000000000);
         return valal;
     }
     
     //Metodos getter
+    public int getID(){
+    return ID;
+    }
     public int getNumeroServicio() {
         return numeroServicio;
     }
@@ -119,12 +123,15 @@ public class Servicio {
     public double calcularvalorapagar (){
     return 0.0;
     }
-    public double calcularvalorpagar(FormaDePago fp1, double st){
+    public  double calcularvalorpagar(FormaDePago fp1, double st){
     return 0.0;
     }
     
     //metodo calcular valor pagar
     //Crear metodo guardar datos servicios que me permite escriibr en un archivo los datos obtenido 
-    
+    @Override
+    public String toString(){
+    return "Fecha: "+getFecha()+"\n"+"Hora: "+getHora()+"\n"+"Desde: "+getOrigen()+"\n"+"Hasta: "+getDestino();
+    }
     
 }
