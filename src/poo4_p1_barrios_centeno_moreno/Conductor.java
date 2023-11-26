@@ -16,7 +16,7 @@ public class Conductor extends Usuario{
     private Vehiculo vehiculo;
     
     public Conductor(String cedula,String nombre,String apellido,int edad,String user,String contrasenia,String celular,TipoUsuario tipoUsuario,Estado estado,Vehiculo vehiculo){
-        super(cedula,nombre,apellido,edad,user,contrasenia,celular,tipoUsuario);
+        super(cedula,nombre,apellido,0,user,contrasenia,celular,tipoUsuario);
         
         this.estado=estado;
         this.vehiculo=vehiculo;
@@ -40,16 +40,23 @@ public class Conductor extends Usuario{
     }
 
   @Override 
-  public void consultarServicios(ArrayList<Servicio> serv) {
-  if (serv.isEmpty()) {
-       System.out.println("No tiene asignado ningún servicio");
-    } else {
-        for(int i=0; i<serv.size();i++){
-        if(this.getNombre().equals(serv.get(i).getNombreConductor())){
+public void consultarServicios(ArrayList<Servicio> serv) {
+    boolean tieneServicios = false;
+    int count=0;
+    for (int i = 0; i < serv.size(); i++) {
+        if (this.getNombre().equals(serv.get(i).getNombreConductor())) {
             System.out.println(serv.get(i));
-        }    
-            
+            tieneServicios = true;
         }
-  }
     }
+
+    if (!tieneServicios && count!=1) {
+        System.out.println("No tiene asignado ningún servicio");
+        count++;
+    }
+}
+
+        
+  
+    
 }
