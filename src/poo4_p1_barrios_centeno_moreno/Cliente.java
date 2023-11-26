@@ -19,173 +19,91 @@ import main.Sistema;
  * @author grils
  */
 public class Cliente extends Usuario {
-    private String  tarjetaDeCredito;
     
+   private String  tarjetaDeCredito;
+   //ojo cambié el orden del construcor
    public Cliente(String cedula,String nombre,String apellido,int edad,String user,String contrasenia,String celular,TipoUsuario tipoUsuario, String tarjetaDeCredito){
-       super(cedula,nombre,apellido,edad,user,contrasenia,celular,tipoUsuario);
-       this.tarjetaDeCredito=tarjetaDeCredito;
-       
+     super(cedula,nombre,apellido,edad,user,contrasenia,celular,tipoUsuario); 
+     this.tarjetaDeCredito=tarjetaDeCredito;
+   
    }
 
-   /***
-    * 
-    */
-   
     @Override
-    public void consultarServicios() {
-        ArrayList<Servicio> serviciosSolicitados = new ArrayList<>(); //contiene todos los objetos tipo servicio que el usuario a solicitado durante su experiencia con la app        
-        //encomiendas.txt y viajes.txt
-        
-        //Aqui se procedera a llenar serviciosSolicitados
-        
-        ArrayList<String> encomiendasString = Sistema.LeeFichero("encomiendas.txt");
-        ArrayList<String> viajesString = Sistema.LeeFichero("viajes.txt");
-        ArrayList<String> serviciosString = Sistema.LeeFichero("servicios.txt");
-        ArrayList<String> pagosString = Sistema.LeeFichero("pagos.txt");
-        
-        
-        //recorrer las lineas de los 3 arraylist de arriba
-        ArrayList<String[]> encomiendasArreglos= new ArrayList<>();
-        ArrayList<String[]> viajesArreglos= new ArrayList<>();
-        ArrayList<String[]> serviciosArreglos= new ArrayList<>();
-        ArrayList<String[]> pagosArreglos =  new ArrayList<>();
-        
-        for(String linea: serviciosString){
-            serviciosArreglos.add(linea.split(","));
-        }
-        
-        for(String linea: viajesString){
-            viajesArreglos.add(linea.split(","));
-        }
-        
-        for(String linea: encomiendasString){
-            encomiendasArreglos.add(linea.split(","));
-        }
-        
-        for(String linea: pagosString){
-            pagosArreglos.add(linea.split(","));
-        }
-        
-        for(String[] datosServicio : serviciosArreglos){
-            if (datosServicio[1].equals(TipoServicio.TAXI.toString())){
-                for(String[] datosTaxi : viajesArreglos){
-                    for(String[] datosPago : pagosArreglos){
-                        if(datosTaxi[0].equals(datosServicio[0]) && datosTaxi[0].equals(datosPago[0])){
-                            serviciosSolicitados.add(new Taxi(datosServicio[0],datosServicio[2],datosServicio[3],datosServicio[4],datosServicio[5],
-                        datosServicio[6],datosServicio[7], FormaDePago.valueOf(datosPago[3]),datosTaxi[1]));
-                        }
-                    }
-                }
-            }
-            else{
-                for(String[] datosEncomienda : encomiendasArreglos){
-                    for(String[] datosPago : pagosArreglos){
-                        if(datosEncomienda[0].equals(datosServicio[0]) && datosEncomienda[0].equals(datosPago[0])){
-                            serviciosSolicitados.add(new Encomienda(datosServicio[0],datosServicio[2],datosServicio[3],datosServicio[4],datosServicio[5],
-                        datosServicio[6],datosServicio[7], FormaDePago.valueOf(datosPago[3]),datosEncomienda[3],TipoEncomienda.valueOf(datosEncomienda[1]),Integer.valueOf(datosEncomiend[2])));
-                        }
-                    }
-                }
-            }
-                
-        }
-        
-        
-        
-        
-        for (Servicio s: serviciosSolicitados){
-            if (s instanceof Taxi){
-                System.out.println("**************************");
-                System.out.println("Tipo: Viaje");
-                System.out.println("Cantidad de pasajeros: " + ((Taxi) s).getNumPersonas());
-                System.out.println("Fecha: " + ((Taxi)s).getFecha());
-                System.out.println("Hora: " + ((Taxi)s).getHora());
-                System.out.println("Desde: " + ((Taxi)s).getOrigen());
-                System.out.println("Hasta: " + ((Taxi)s).getDestino());
-        }
-            else if(s instanceof Encomienda){
-                System.out.println("**************************");
-                System.out.println("Tipo: Encomienda");
-                System.out.println("Cantidad: " + ((Encomienda) s).getNumProductos());
-                System.out.println("Tipo encomienda: " + ((Encomienda)s).getTipoE());
-                System.out.println("Fecha: " + ((Encomienda)s).getFecha());
-                System.out.println("Hora: " + ((Encomienda)s).getHora());
-                System.out.println("Desde: " + ((Encomienda)s).getOrigen());
-                System.out.println("Hasta: " + ((Encomienda)s).getDestino());
-            }
-        }
+    public void consultarServicios(ArrayList<Servicio> serv){
+    for(int i=0;i<serv.size();i++){
+        System.out.println(serv.get(i));
+    }
     }
     
-    
-    public  void pagarServicios(Servicio  servicio,FormaDePago formaDePago){
-        double p= servicio.calcularvalorapagar();
-        Sistema.EscribirArchivo("pagos.txt",p.getIdpago()+p.getFecha()+servicio.getNumeroServicio()+formaDePago+this.getCedula()+p.getSubtotal()+p.getValorPagar());
-    }
-    
-    public void solicitarServicioTaxi(String desde, String hasta, String fecha, String hora, FormaDePago fp, int numeroDePasajeros){
-        
-        ArrayList<String> listaStringDeConductores = Sistema.LeeFichero("conductores.txt");
-        ArrayList<String> listaStringDeVehiculos = Sistema.LeeFichero("vehiculos.txt");
-        ArrayList<String[]> vehiculos = new ArrayList<>();
-        String [] datosDelConductorAsignado;
-        for (String linea: listaStringDeVehiculos){
-            String [] datos = linea.split(",");
-            vehiculos.add(datos);
-        }
-        Random rd = new Random();
-        boolean buscandoConductorApto = true;
-        
-        while(buscandoConductorApto){
-            int aleatorio = rd.nextInt(listaStringDeConductores.size());
-            String[] conductorAsignado = listaStringDeConductores.get(aleatorio).split(",");
-            if(vehiculos.get(aleatorio)[0].equals(conductorAsignado[2]) && vehiculos.get(aleatorio)[4].equals((TipoVehiculo.AUTO.toString()))){
-                if(conductorAsignado[1].equals("D")){
-                    buscandoConductorApto = false;
-                    datosDelConductorAsignado=conductorAsignado; 
-                }       
-            }
+  public void pagarServicios(Servicio servicio) {
+    if (servicio instanceof Taxi){
+        Taxi tx1=(Taxi) servicio;
+        if(servicio.getFp().equals(FormaDePago.TC)){
+        double valorapagar=tx1.getValorapagar()+(tx1.getValorapagar()*0.15);}
+        else{
+        double valorapagar=tx1.getValorapagar();
+        tx1.setValorapagar(valorapagar);
         }
         
-        
-        int numeroDeServicio = rd.nextInt(90000) + 10000;
-        
-        
-        Taxi viaje = new Taxi(numeroDePasajeros , Conductor.getNombre(), datosDelConductorAsignado[0], desde, hasta, fecha, hora, fp);
-        double [] viajeInfo = viaje.calcularValorPagar();
-        Sistema.EscribirArchivo("viajes.txt",numeroDeServicio+numeroDePasajeros+viajeInfo[1]+viajeInfo[0]);
-    }
+     }
+    
+  }
+    //String lineaArchivo = idPago + servicio.getFecha() + servid + formaDePago + cl.getCedula() + servicio.getValorapagar() + ;
 
-    public void solicitarServicioEncomienda(String desde, String hasta, String fecha, String hora, FormaDePago fp, TipoEncomienda te, int cantidadDeProductos, double peso){
-        ArrayList<String> listaStringDeConductores = Sistema.LeeFichero("conductores.txt");
-        ArrayList<String> listaStringDeVehiculos = Sistema.LeeFichero("vehiculos.txt");
-        ArrayList<String[]> vehiculos = new ArrayList<>();
-        String [] datosDelConductorAsignado;
-        for (String linea: listaStringDeVehiculos){
-            String [] datos = linea.split(",");
-            vehiculos.add(datos);
-        }
-        Random rd = new Random();
-        boolean buscandoConductorApto = true;
-        
-        while(buscandoConductorApto){
-            int aleatorio = rd.nextInt(listaStringDeConductores.size());
-            String[] conductorAsignado = listaStringDeConductores.get(aleatorio).split(",");
-            if(vehiculos.get(aleatorio)[0].equals(conductorAsignado[2]) && vehiculos.get(aleatorio)[4].equals((TipoVehiculo.MOTO.toString()))){
-                if(conductorAsignado[1].equals("D")){
-                    buscandoConductorApto = false;
-                    datosDelConductorAsignado=conductorAsignado; 
-                }       
+    // Escribir en el archivo
+    //Sistema.EscribirArchivo("pagos.txt", lineaArchivo);
+
+ public static String[] encontrarConductorDisponible(ArrayList<String> listaStringDeConductores, ArrayList<String> listaStringDeVehiculos) {
+    for (String conductor : listaStringDeConductores) {
+        String[] datosConductor = conductor.split(",");
+        if (datosConductor[1].equals("O")) { // Verifica si el estado es 'Ocupado'
+            String cedulaConductor = datosConductor[0];
+            for (String vehiculo : listaStringDeVehiculos) {
+                String[] datosVehiculo = vehiculo.split(",");
+                if (datosVehiculo[3].equals("A")) { // Verifica si el vehículo está 'Disponible'
+                    ArrayList<String> datosUsuario = Sistema.LeeFichero("usuarios.txt");
+                    for (String usuario : datosUsuario) {
+                        String[] datosUsuarioSplit = usuario.split(",");
+                        if (cedulaConductor.equals(datosUsuarioSplit[0])) { // Compara las cédulas
+                            String[] datsconductorres=new String[2];
+                            datsconductorres[0]=cedulaConductor;
+                            datsconductorres[1]=datosUsuarioSplit[1];
+                            return datsconductorres;
+                        }
+                    }
+                }
             }
         }
-        
-        
-        int numeroDeServicio = rd.nextInt(90000) + 10000;
-        
-        
-        Encomienda encomienda = new Encomienda(numeroDeServicio , this.getCedula(), datosDelConductorAsignado[0], desde, hasta, fecha, hora, fp, te, cantidadDeProductos, peso);
-        Sistema.EscribirArchivo("encomiendas.txt",encomienda.getNumeroServicio()+te.toString()+cantidadDeProductos+peso+encomienda.calcularValorPagar(cantidadDeProductos));
     }
-    
-        
-    
+    return null; // Si no se encuentra conductor disponible
+ }
+ 
+ public static String[] encontrarConductorDisponibleE(ArrayList<String> listaStringDeConductores, ArrayList<String> listaStringDeVehiculos) {
+    for (String conductor : listaStringDeConductores) {
+        String[] datosConductor = conductor.split(",");
+        if (datosConductor[1].equals("O")) { // Verifica si el estado es 'Ocupado'
+            String cedulaConductor = datosConductor[0];
+            for (String vehiculo : listaStringDeVehiculos) {
+                String[] datosVehiculo = vehiculo.split(",");
+                if (datosVehiculo[3].equals("M")) { // Verifica si el vehículo está 'Disponible'
+                    ArrayList<String> datosUsuario = Sistema.LeeFichero("usuarios.txt");
+                    for (String usuario : datosUsuario) {
+                        String[] datosUsuarioSplit = usuario.split(",");
+                        if (cedulaConductor.equals(datosUsuarioSplit[0])) { // Compara las cédulas
+                            String[] datsconductorres=new String[2];
+                            datsconductorres[0]=cedulaConductor;
+                            datsconductorres[1]=datosUsuarioSplit[1];
+                            return datsconductorres;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return null; // Si no se encuentra conductor disponible
+ }
+ 
+ 
+ 
+ 
 }
