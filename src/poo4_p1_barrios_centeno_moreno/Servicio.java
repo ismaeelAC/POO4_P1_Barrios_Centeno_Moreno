@@ -38,7 +38,7 @@ public class Servicio {
 
     /**
      * El método generarID permite generar una identificación única cada vez que se solicita un servicio, ya sea de tipo taxi o encomienda.
-     * @return 
+     * @return Retorna un codigo numerico que sirve como identificador
      */
     public static int generarID() {
         Random rd=new Random();

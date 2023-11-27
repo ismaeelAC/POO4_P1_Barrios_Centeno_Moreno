@@ -100,7 +100,10 @@ public abstract class Usuario {
     }
     
     
-  
+    /**
+     * Metodo el cual sera usado para sobrecarga
+     * @param serv Recibe una lista de tipo Servicio
+     */
     public void consultarServicios(ArrayList<Servicio> serv){
     };
 }

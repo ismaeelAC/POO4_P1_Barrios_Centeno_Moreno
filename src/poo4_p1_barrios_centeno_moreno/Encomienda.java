@@ -27,7 +27,10 @@ public class Encomienda extends Servicio {
     
     
     
-    //metood calcular valor a pagar
+    /**
+     * Metodo el cual calcula el valor a pagar dependiendo al numero de producto y le agrega 4 dolares por viaje
+     * @return Retorna el valor a pagar por el servicio
+     */
     @Override
     public double calcularvalorapagar(){
         
@@ -53,6 +56,10 @@ public class Encomienda extends Servicio {
         return numProductos;
     }
     
+    /**
+     * Sobrescritura del metodo toString el cual muestra la informacion del servicio encomienda
+     * @return Informacion sobre el servicio incluyendo sus datos
+     */
     @Override
     public String toString(){
     return "/***********************************************************************/"+"Tipo: "+"Encomienda\n"+"Tipo encomienda: "+getTipoE()+"\n"+"Cantidad: "+getNumProductos()+"\n"+super.toString();

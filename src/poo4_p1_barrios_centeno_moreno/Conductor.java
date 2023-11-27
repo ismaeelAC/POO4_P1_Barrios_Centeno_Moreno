@@ -39,6 +39,10 @@ public class Conductor extends Usuario{
         this.vehiculo = vehiculo;
     }
 
+    /**
+     * Metodo para conductores el cual se encarga de recorrer la lista de servicios para mostrar el registro de cada elemento
+     * @param serv el parametro recibido es una lista que guarda los registros de cada elemento de tipo Servicio
+     */
   @Override 
 public void consultarServicios(ArrayList<Servicio> serv) {
     boolean tieneServicios = false;
