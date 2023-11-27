@@ -46,7 +46,10 @@ public class Vehiculo {
     }
     
     
-    
+    /**
+     * Metodo toString que muestra la informacion de un vehiculo
+     * @return Devuelve los datos especificos de dicho vehiculo
+     */
     @Override
     public String toString() {
         return "Vehiculo\n" +

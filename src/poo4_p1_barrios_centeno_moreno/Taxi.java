@@ -23,9 +23,12 @@ public class Taxi extends Servicio {
         
     }
     
-   
+   /**
+    * Metodo el cual se encarga de calcular el valor a pagar por un viaje considerando los minutos y la distancia
+    * @return Devuelve el valor a pagar para el Cliente
+    */
+    
     @Override
-   
     public  double calcularvalorapagar (){
     Random rd=new Random();
     int min=5;
@@ -38,6 +41,12 @@ public class Taxi extends Servicio {
     }
     
   
+    /**
+     * Metodo que calcular el valor a pagar en el caso de Tarjetas de credito
+     * @param fp1 Recibe una variable fp1 el cual especifica la forma de pago, si es Tarjeta o Efectivo
+     * @param subt Recibe un subtotal del valor ya establecido de pago 
+     * @return 
+     */
     @Override
     public double calcularvalorpagar(FormaDePago fp1,double subt){
     if (fp1.equals(FormaDePago.TC)){
@@ -58,6 +67,11 @@ public class Taxi extends Servicio {
 public int getkm(){
 return km;
 }
+
+/**
+ * Metodo toString que muesta los datos e informacion del viaje
+ * @return retorna datos e informacion de un viaje registrado
+ */
 @Override
 public String toString(){
 return "Tipo: "+"Viaje"+"\n"+"Cantidad de pasajeros: "+getNumPersonas()+"\n"+super.toString();

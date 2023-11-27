@@ -28,12 +28,22 @@ public class Cliente extends Usuario {
    
    }
 
+    /**
+     * Metodo el cual funciona con una lista de tipo Servicio y la recorre mostrando cada uno de los elementos
+     * @param serv Parametro de tipo lista - Servicio, el cual contiene todos los servicios registrados
+     */
+   
     @Override
     public void consultarServicios(ArrayList<Servicio> serv){
     for(int i=0;i<serv.size();i++){
         System.out.println(serv.get(i));
     }
     }
+    
+    /**
+     * Metodo el cual se encarga de registrar el pago de un servicio especifico y registrarlo en un txt
+     * @param servicio Parametro de tipo servicio que sirve para especificar que tipo de servicio se esta pagando
+     */
     
   public void pagarServicios(Servicio servicio) {
     if (servicio instanceof Taxi){
@@ -53,6 +63,13 @@ public class Cliente extends Usuario {
     // Escribir en el archivo
     //Sistema.EscribirArchivo("pagos.txt", lineaArchivo);
 
+  
+  /**
+   * Metodo para Viajes el cual determina si hay conductores disponibles mediante su estado O o D, y si tiene un vehiculo que sea auto
+   * @param listaStringDeConductores Lista que guarda los datos de cada uno de los usarios Conductores
+   * @param listaStringDeVehiculos Lista que guarda los vehiculos y de que tipo son
+   * @return 
+   */
 public static String[] encontrarConductorDisponible(ArrayList<String> listaStringDeConductores, ArrayList<String> listaStringDeVehiculos) {
     String[] datsconductorres=new String[2];
     for (String conductor : listaStringDeConductores) {
@@ -79,7 +96,12 @@ public static String[] encontrarConductorDisponible(ArrayList<String> listaStrin
  } 
 
 
- 
+ /**
+  * Metodo para Encomiendas el cual identifica si hay un conductor disponible y si este posee un vehiculo que sea moto
+  * @param listaStringDeConductores Lista que guarda los datos de los usuarios conductores
+  * @param listaStringDeVehiculos lista que guarda los datos de los vehiculos
+  * @return 
+  */
  public static String[] encontrarConductorDisponibleE(ArrayList<String> listaStringDeConductores, ArrayList<String> listaStringDeVehiculos) {
      String[] datsconductorres=new String[2];
      for (String conductor : listaStringDeConductores) {

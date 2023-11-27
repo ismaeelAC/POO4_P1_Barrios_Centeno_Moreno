@@ -18,6 +18,11 @@ public class Pago {
     private Double subtotal;
     private Double valorPagar;
     
+    
+ /**
+  * Metodo el cual genera aleatoriamente un codigo de identificacion para el pago de un servicio en especifico
+  * @return Un codigo numerico que sirve como identificador para un pago realizado
+  */
   public int generarIDN() {
         Random rd=new Random();
         int valal=rd.nextInt(1000000000);

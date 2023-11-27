@@ -182,7 +182,7 @@ public static void EscribirArchivo(String nombreArchivo, String linea) {
 }
 
 /**
- * verificarusuario ingresa al archivo clientes.txt para asegurarse de que el usuario tenga los datos edad y tarjeta de crédito también rgistradoos, de lo contrario, se los pide y los guarda en el archivo
+ * verificarusuario ingresa al archivo clientes.txt para asegurarse de que el usuario tenga los datos edad y tarjeta de crédito también registradoos, de lo contrario, se los pide y los guarda en el archivo
  * @param ar; ar es el arreglo que obtenemos del método iniciarSesion.
  * @return Un char que es el tipo de usuario que es la persona que ingresó al sistema.
  */
@@ -291,7 +291,10 @@ public TipoUsuario verificarusuario(ArrayList<String> ar) {
         return TipoUsuario.R;
     }
 }
-
+ /**
+  * Metodo el cual muestra toda la lista de opciones que tiene el usuario dependiendo si es conductor o cliente
+  * @param type Es el tipo de usuario que ingresa al sistema el cual es tipo enum, C o R.
+  */
 
 public void mostrarmenu(TipoUsuario type) {
     switch (type) {
@@ -463,7 +466,7 @@ public void mostrarmenu(TipoUsuario type) {
     }
 
 
- 
+
  
  public static void main(String[] args){
     
