@@ -4,13 +4,3 @@ numeroServicio,tipoEncomienda,cantidadProducctos,peso,subtotal
 545514751,DOCUMENTO,4,5.0,16.0
 
 169468429,MEDICINA,3,5.0,12.0
-
-515119712,Documento,2,23.0,8.0
-
-693957927,MEDICINA,4,6.0,16.0
-
-945992304,medicina,5,6.0,20.0
-
-980998029,8,9,78.0,36.0
-
-681566876,2,2,3.0,8.0
