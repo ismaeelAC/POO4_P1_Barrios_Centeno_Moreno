@@ -92,6 +92,7 @@ public static void EscribirArchivo(String nombreArchivo, String linea) {
         try {
             fichero = new FileWriter(nombreArchivo,true);
             bw = new BufferedWriter(fichero);
+            System.out.println("");
             bw.write("\n"+linea+"\n");
             
 
@@ -262,14 +263,14 @@ public TipoUsuario verificarusuario(ArrayList<String> ar) {
     String placa="";
     String modelo="";
     String marca="";
-    for(int i=0; i<cdrs.size();i++){
+    for(int i=1; i<cdrs.size();i++){
     String[] datconductor=cdrs.get(i).split(",");
     if (datconductor[0].equals(cedulaCond)){
      estado=datconductor[1];
      codigovehiculo=datconductor[2];
     }
     }
-    for(int i=0;i<movil.size();i++){
+    for(int i=1;i<movil.size();i++){
     String[] datmovil=movil.get(i).split(",");
     if (datmovil[0].equals(codigovehiculo)){
         placa=datmovil[1];
@@ -277,17 +278,15 @@ public TipoUsuario verificarusuario(ArrayList<String> ar) {
         marca=datmovil[3];
         tipovehi=datmovil[4];
         
-    }
     Estado ev=Estado.valueOf(estado);
     TipoVehiculo tv=obtenerEnum(tipovehi);
     Vehiculo v1=new Vehiculo(codigovehiculo,placa,modelo,marca,tv);
     Conductor c1=new Conductor(cedulaCond,nombreCond,apellidoCond,0,usuarioCond,contraseniaCond,celularCond,TipoUsuario.R,ev,v1);
     vehiculos.add(v1);
     users.add(c1);
+    }
+    
 }
-        
-        
-        
         return TipoUsuario.R;
     }
 }
