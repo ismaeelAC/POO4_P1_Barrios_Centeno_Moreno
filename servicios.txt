@@ -1,9 +1,0 @@
-numeroServicio,tipoServicio,cedulaCliente,nombreConductor,desde,hasta,fecha,hora
-
-711078948,E,0986353323,Juan,Sopeña,Espol,12/03/23,23:00
-
-93228859,E,0986353323,Juan,Sopeña,Espol,23/07/12,23:00
-
-941624752,TC,0986353323,Juan,Arrullo,de estrellas,12/12/12,06:06
-
-416815824,TC,0986353323,Juan,Espol,Sopeña,12/03/12,23:00

@@ -1,0 +1,4 @@
+idPago,FechaPago,numeroServicio,formaPago,cedulaCliente,subtotal,valorPagar
+
+392572786,12/07/23,861214733,TC,0945698598,7.15,7.15
+176814167,15/12/23,436997981,TC,0945698598,8.0,8.0

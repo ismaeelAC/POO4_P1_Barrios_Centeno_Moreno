@@ -1,3 +1,0 @@
-cedula,estado,codigoVehiculo
-0986353323,D,12
-0987654322,O,15
