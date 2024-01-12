@@ -1,0 +1,4 @@
+Cédula,nombre,Apellido,usuario,contraseña
+1234567890,Juan,Pérez,juanito123,secreta123
+2345678901,María,García,maria22,password123
+3456789012,Carlos,López,carlitos99,seguridad456

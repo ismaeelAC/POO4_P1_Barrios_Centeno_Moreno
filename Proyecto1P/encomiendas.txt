@@ -1,0 +1,4 @@
+numeroServicio,tipoEncomienda,cantidadProductos,peso,subtotal
+
+
+436997981,MEDICINA,2,23.6,8.0

@@ -1,0 +1,2 @@
+cedula,edad,tarjetaCredito
+0945698598,23,1233345

@@ -1,0 +1,4 @@
+numeroServicio,tipoServicio,cedulaCliente,nombreConductor,desde,hasta,fecha,hora
+
+861214733,T,0986353323,Juan,Sopeña,Espol,12/07/23,12:00
+436997981,E,0986353323,Juan,Fertiza,Acacias,15/12/23,12:00
