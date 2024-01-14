@@ -22,6 +22,7 @@ public class Cliente {
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
+    
 
     public String getCed() {
         return ced;
