@@ -1,0 +1,15 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 20 ene 2024, 03:14:40
+    Author     : rb122
+*/
+.root {
+    -fx-background-image: url('e5.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+
