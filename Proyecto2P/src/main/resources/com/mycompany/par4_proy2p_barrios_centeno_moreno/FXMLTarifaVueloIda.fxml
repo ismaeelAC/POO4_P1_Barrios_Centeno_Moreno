@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1116.0" prefWidth="586.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Selecciona tu tarifa" textFill="#901940">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <VBox fx:id="coStarifa" alignment="BOTTOM_CENTER" prefHeight="198.0" prefWidth="506.0" spacing="20.0" style="-fx-border-color: F99B2A;">
+         <VBox.margin>
+            <Insets left="40.0" right="40.0" />
+         </VBox.margin>
+         <children>
+            <Label text="S: VIAJA LIGERO" textFill="#f99b2a">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <GridPane hgap="10.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.60003662109375" minWidth="10.0" prefWidth="72.60003662109375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.1999931335449" minWidth="10.0" prefWidth="431.7999633789062" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="58.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/equipajeMano.png" />
+                     </image></ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../Images/MILES.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="1 equipaje de mano (10kg)" GridPane.columnIndex="1" />
+                  <Label text="Acumula a 1000 millas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </GridPane>
+            <HBox alignment="CENTER" maxHeight="50.0" prefHeight="100.0" prefWidth="505.0" style="-fx-background-color: #f99b2a;">
+               <children>
+                  <Label fx:id="lbSprecio" alignment="BOTTOM_CENTER" text="--" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="coMtarifa" alignment="BOTTOM_CENTER" prefHeight="314.0" prefWidth="506.0" spacing="20.0" style="-fx-border-color: F15A3A;">
+         <VBox.margin>
+            <Insets left="40.0" right="40.0" />
+         </VBox.margin>
+         <children>
+            <Label text="M: MÁS CONFORT" textFill="#f15a3a">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <GridPane alignment="TOP_RIGHT" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" vgap="20.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="60.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="432.8000244140625" minWidth="10.0" prefWidth="432.8000244140625" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/equipajeMano.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="84.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../Images/MILES.png" />
+                     </image></ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../Images/bodega.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </GridPane.margin></ImageView>
+                  <ImageView fitHeight="77.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../Images/sentarse.png" />
+                     </image></ImageView>
+                  <Label text="1 equipaje de mano (150 kg)" GridPane.columnIndex="1" />
+                  <Label text="Acumula 1000 millas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="1 equipaje de bodega (23 kg)" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Elige asiento" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </GridPane>
+            <HBox alignment="CENTER" maxHeight="100.0" prefHeight="54.0" prefWidth="505.0" style="-fx-background-color: F15A3A;">
+               <children>
+                  <Label fx:id="lbMprecio" alignment="BOTTOM_CENTER" text="--" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="conLtarifa" alignment="BOTTOM_CENTER" prefHeight="358.0" prefWidth="506.0" spacing="10.0" style="-fx-border-color: EE3184;">
+         <VBox.margin>
+            <Insets left="40.0" right="40.0" />
+         </VBox.margin>
+         <children>
+            <Label text="L: MÁS FLEXIBILIDAD" textFill="#ee3184">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <GridPane hgap="10.0" vgap="20.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="60.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.3999443054199" minWidth="10.0" prefWidth="396.8000122070313" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="1 equipaje de mano (10 kg)" GridPane.columnIndex="1" />
+                  <Label text="Acumula 1000 millas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Acumula 1000 millas" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Elige asiento plus" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Cambia vuelo gratis por una ocasión" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/equipajeMano.png" />
+                     </image></ImageView>
+                  <ImageView fitHeight="65.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../Images/MILES.png" />
+                     </image></ImageView>
+                  <ImageView fitHeight="81.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../Images/bodega.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></ImageView>
+                  <ImageView fitHeight="87.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../Images/sentarse.png" />
+                     </image></ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../Images/calendario.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </GridPane>
+            <HBox alignment="CENTER" prefHeight="66.0" prefWidth="505.0" style="-fx-background-color: EE3184;">
+               <children>
+                  <Label fx:id="lbLprecio" text="--" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

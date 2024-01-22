@@ -19,7 +19,9 @@ public class App extends Application {
     public static String pathachiInput="src/main/resources/com/mycompany/archivos de entrada/";
     public static String pathachiOutput="src/main/resources/com/mycompany/archivos de salida/";
     public static String pathachiImage="src/main/resources/com/mycompany/Images/";
+    
     public static ArrayList<Cliente> cliente;
+    
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -38,6 +40,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        
         launch();
     }
 
