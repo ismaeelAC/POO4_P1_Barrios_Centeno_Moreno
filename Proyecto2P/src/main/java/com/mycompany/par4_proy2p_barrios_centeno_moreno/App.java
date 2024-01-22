@@ -20,16 +20,36 @@ public class App extends Application {
     public static String pathachiOutput="src/main/resources/com/mycompany/archivos de salida/";
     public static String pathachiImage="src/main/resources/com/mycompany/Images/";
     public static ArrayList<Cliente> cliente;
+    private static Stage Primarystage;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("FXMLVentanadeInicio"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        //scene = new Scene(loadFXML("FXMLVentanadeInicio"), 640, 480);
+        //scene = new Scene(loadFXML("FXMLVentanaReserva"), 640, 480);
+        //stage.setScene(scene);
+        //stage.show();
+        Primarystage = stage;
+        setRoot("FXMLVentanadeInicio",600,400,"style.css", "VentanaReserva1");
+        
+        //Scene scene = Primarystage.getScene();
+        //scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        Primarystage.show();
+        
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    static void setRoot(String fxml, int width, int height, String cssFile, String title) throws IOException {
+        //scene.setRoot(loadFXML(fxml));
+        Parent root = loadFXML(fxml);
+        Scene s = new Scene(root,width,height);
+        
+        if (cssFile != null && !cssFile.isEmpty()){
+            s.getStylesheets().add(App.class.getResource(cssFile).toExternalForm());
+        }
+        Primarystage.setScene(s);
+        Primarystage.setTitle(title);
+        Primarystage.show();
+        
+        
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
