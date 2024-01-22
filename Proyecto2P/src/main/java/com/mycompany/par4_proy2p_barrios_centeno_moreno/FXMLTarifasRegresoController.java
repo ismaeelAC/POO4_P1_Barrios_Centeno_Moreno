@@ -104,8 +104,8 @@ public class FXMLTarifasRegresoController implements Initializable {
 
     @FXML
     private void cambiarescna1(MouseEvent event) {
-        try{App.setRoot("FXMLResumenreserva")
-       
+        try{
+       App.setRoot("FXMLResumenreserva");
        }catch(IOException e){
            System.out.println(e.getMessage());
        }
@@ -113,8 +113,8 @@ public class FXMLTarifasRegresoController implements Initializable {
 
     @FXML
     private void cambiarescena2(MouseEvent event) {
-         try{App.setRoot("FXMLResumenreserva");
-       
+       try{
+        App.setRoot("FXMLResumenreserva");
        }catch(IOException e){
            System.out.println(e.getMessage());
        }
