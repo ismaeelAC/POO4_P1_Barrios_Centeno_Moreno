@@ -1,0 +1,4 @@
+Río de Janeiro,Brasi
+Toronto,Canada
+Cali,Colombia
+México,México
