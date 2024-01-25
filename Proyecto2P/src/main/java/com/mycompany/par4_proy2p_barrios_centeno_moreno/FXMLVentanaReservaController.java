@@ -4,6 +4,7 @@
  */
 package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Destinos;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,6 +13,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -61,13 +63,18 @@ public class FXMLVentanaReservaController implements Initializable {
         bcantidad.setValueFactory(sp);
         comboO.getItems().setAll("Guayaquil","Quito","Cuenca");
         
-        ArrayList<String> listaD = new ArrayList<>();
+        ArrayList<Destinos> listaD = new ArrayList<>();
+        
+        
         try(BufferedReader bf = new BufferedReader(new FileReader("destinos.txt"))){
             String line;
             while((line = bf.readLine()) != null){
-                String paises[] = line.split(",");
-                listaD.add(paises[0]);
-                listaD.add(paises[1]);
+                String datosD[] = line.split(",");
+                String city = datosD[0];
+                String country = datosD[1];
+                
+                Destinos d1 = new Destinos(datosD[0],datosD[1]);
+                listaD.add(d1);
             }
         }catch(FileNotFoundException e){
             System.out.println("no se encontro el archivo");
@@ -76,7 +83,19 @@ public class FXMLVentanaReservaController implements Initializable {
             System.out.println("No se puedo leer el archivo");
         }
         
-        comboD.getItems().setAll(listaD);
+        for (Destinos d1:listaD){
+            String city1 = d1.getCiudad();
+            comboD.getItems().add(city1);
+        }
+        
+        comboO.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hola");
+                String choice1 = comboO.getValue();
+                choiceO.add(choice1);
+            }
+        });
     }
     
     @FXML
@@ -90,24 +109,22 @@ public class FXMLVentanaReservaController implements Initializable {
         
     }
     
-    static ArrayList<String> datos1 = new ArrayList<>();
+    static ArrayList<String> choiceO = new ArrayList<>();
+    static ArrayList<String> choiceD = new ArrayList<>();
     
-    public String seleccion1(ActionEvent e3){
-        String choice1 = comboO.getValue();
-        datos1.add(choice1);
-        return choice1;
-    }
     
-    public String seleccion2 (ActionEvent e4){
+//    public void seleccion1(ActionEvent e3){
+//        String choice1 = comboO.getValue();
+//        choiceO.add(choice1);
+//        
+//    }
+    
+    
+    public void seleccion2 (ActionEvent e4) throws IOException{
         String choice2 = comboD.getValue();
-        datos1.add(choice2);
-        return choice2;
-    }
-    
+        choiceD.add(choice2);
 
-    
-    
-    
+    }
     
     
 }

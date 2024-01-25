@@ -24,15 +24,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        //scene = new Scene(loadFXML("FXMLVentanadeInicio"), 640, 480);
-        //scene = new Scene(loadFXML("FXMLVentanaReserva"), 640, 480);
-        //stage.setScene(scene);
-        //stage.show();
+
         Primarystage = stage;
         setRoot("FXMLVentanadeInicio",600,400,"style.css", "VentanaReserva1");
-        
-        //Scene scene = Primarystage.getScene();
-        //scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         Primarystage.show();
         
     }
