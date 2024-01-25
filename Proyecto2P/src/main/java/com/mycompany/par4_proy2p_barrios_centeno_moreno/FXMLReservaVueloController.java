@@ -58,15 +58,16 @@ public class FXMLReservaVueloController implements Initializable {
     ArrayList<Vuelo> vuelos = new ArrayList<>();
     ArrayList<Vuelo> vueloSelect = new ArrayList<>();
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        titulo2.setText("Selecciona tu vuelo " + FXMLVentanaReservaController.datos1.get(0) + " - " + FXMLVentanaReservaController.datos1.get(1));
+        titulo2.setText("Selecciona tu vuelo " + FXMLVentanaReservaController.choiceO.get(0) + " - " + FXMLVentanaReservaController.choiceD.get(0));
         titulo2.setFont(new Font("Britannic bold",18));
         titulo2.setTextFill(Color.WHITE);
         ordenar.getItems().setAll("Precio","Duracion");
         
-        try(BufferedReader br = new BufferedReader(new FileReader("viaje.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("vuelos.txt"))){
             String line1;
             br.readLine();
             while((line1=br.readLine())!= null){
@@ -92,7 +93,7 @@ public class FXMLReservaVueloController implements Initializable {
         Boolean validacion = false;
         
         for (Vuelo v2 : vuelos){
-            if (v2.getOrigen().equals(FXMLVentanaReservaController.datos1.get(0)) && v2.getDestino().equals(FXMLVentanaReservaController.datos1.get(1))){
+            if (v2.getOrigen().equals(FXMLVentanaReservaController.choiceO.get(0)) && v2.getDestino().equals(FXMLVentanaReservaController.choiceD.get(0))){
                 vueloSelect.add(v2);
                 validacion = true;  
             } 
@@ -119,6 +120,8 @@ public class FXMLReservaVueloController implements Initializable {
         
         root3.add(sp, 0, 2);
         vbox1.setStyle("-fx-background-color: white;");
+        
+        
     }
     
     

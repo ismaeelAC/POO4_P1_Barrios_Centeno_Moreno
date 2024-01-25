@@ -1,0 +1,21 @@
+Número Vuelo, Origen, Destino, Duracion, Fecha Salida, Hora Salida, Fecha Llegada, Hora Llegada, Código Avión, Precio
+AV8384,Guayaquil,Toronto,56,03:30,05:25,Airbus A319,700.06
+AR5678,Quito,Toronto,15,09:45,02:30,Boeing 737,420.50
+KL3456,Quito,México,10,14:15,07:10,Airbus A380,890.75
+QW9012,Guayaquil,Cali,25,23:00,09:45,Boeing 777,1100.20
+UA6789,Quito,México,12,06:20,03:15,Embraer E190,320.80
+EK4321,Cuenca,Cali,18,17:50,08:40,Boeing 747,980.40
+SA7890,Cuenca,México,22,20:30,11:55,Airbus A350,750.90
+AV8385,Toronto,Guayaquil,21,06:15,08:10,Airbus A319,653.06
+JL1234,Guayaquil,México,27,02:10,14:45,Boeing 777,1200.30
+BA4567,Quito,Río de Janeiro,13,15:40,08:05,Embraer E190,550.40
+AF8901,Cuenca,Río de Janeiro,19,21:20,06:30,Boeing 747,800.75
+AV8386,Guayaquil,Toronto,59,08:40,10:35,Airbus A319,1000.06
+CX3456,Cuenca,Toronto,16,13:05,15:50,Airbus A350,700.80
+DL5678,Guayaquil,Río de Janeiro,11,05:00,01:15,Boeing 737,280.90
+EY9012,Quito,Cali,26,22:30,09:15,Embraer E190,950.20
+KL6789,Cuenca,Río de Janeiro,23,18:55,03:10,Boeing 777,420.30
+AV8387,Barcelona,Guayaquil,23,10:20,12:15,Airbus A319,800.06
+UA2345,Toronto,Quito,15,14:45,04:30,Airbus A380,800.50
+QF6789,Cuenca,Toronto,20,20:10,07:55,Boeing 747,680.90
+AV8384,Guayaquil,Toronto,44,03:30,05:25,Airbus A319,800.06
