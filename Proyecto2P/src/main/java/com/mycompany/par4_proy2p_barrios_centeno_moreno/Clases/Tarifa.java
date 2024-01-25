@@ -84,7 +84,7 @@ public class Tarifa {
     }
     
     public static double calcularpreciotarifa(Vuelo v, Tarifa t){
-    double preciovuelo= v.getprecio();
+    double preciovuelo= v.getPrecio();
     double preciofinal=preciovuelo+((preciovuelo*t.getPorcentaje())/100);
     return preciofinal;
     }
