@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLTarifasRegresoController">
+   <children>
+      <HBox prefHeight="67.0" prefWidth="600.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="105.0" text="Selecciona la tarifa" />
+         </children>
+         <padding>
+            <Insets left="250.0" top="25.0" />
+         </padding>
+      </HBox>
+      <Pane layoutX="4.0" layoutY="67.0" prefHeight="171.0" prefWidth="593.0">
+         <children>
+            <Label fx:id="nombretarifa" layoutX="276.0" layoutY="6.0" text="Label" />
+            <GridPane layoutX="36.0" layoutY="29.0" prefHeight="89.0" prefWidth="499.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.20001220703125" minWidth="10.0" prefWidth="148.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.5999755859375" minWidth="10.0" prefWidth="332.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="47.60000152587891" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="37.80000610351563" minHeight="10.0" prefHeight="36.2" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="S_carac1" alignment="CENTER" prefHeight="18.0" prefWidth="318.0" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="S_carac2" alignment="CENTER" prefHeight="18.0" prefWidth="327.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ImageView fx:id="S_image1" fitHeight="32.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="S_image2" fitHeight="35.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <Button fx:id="mostarprecio1" layoutX="260.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#cambiarescna1" text="Button" />
+         </children>
+      </Pane>
+      <Pane layoutX="8.0" layoutY="233.0" prefHeight="262.0" prefWidth="585.0">
+         <children>
+            <Label layoutX="265.0" layoutY="14.0" text="Label" />
+            <GridPane layoutX="56.0" layoutY="59.0" prefHeight="171.0" prefWidth="443.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.2000366210938" minWidth="10.0" prefWidth="172.79998779296875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.40001220703124" minWidth="10.0" prefWidth="269.40001220703124" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="54.19998779296875" minHeight="10.0" prefHeight="47.799993896484374" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="44.59999389648438" minHeight="10.0" prefHeight="43.7999755859375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="43.199981689453125" minHeight="10.0" prefHeight="34.399993896484375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="28.800006103515614" minHeight="10.0" prefHeight="28.800006103515614" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="M_carac1" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="M_caarc2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="M_carac3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="M_carac4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ImageView fx:id="M_image1" fitHeight="52.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="M_image2" fitHeight="49.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <ImageView fx:id="M_image3" fitHeight="35.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                  <ImageView fx:id="M_image4" fitHeight="29.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <Button fx:id="mostrarprecio2" layoutX="253.0" layoutY="235.0" mnemonicParsing="false" onMouseClicked="#cambiarescena2" text="Button" />
+         </children>
+      </Pane>
+      <Pane layoutX="6.0" layoutY="499.0" prefHeight="199.0" prefWidth="593.0">
+         <children>
+            <Label layoutX="283.0" layoutY="6.0" text="Label" />
+            <GridPane layoutX="111.0" layoutY="48.0" prefHeight="104.0" prefWidth="390.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.5999755859375" minWidth="10.0" prefWidth="68.80000000000001" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.2000244140625" minWidth="10.0" prefWidth="260.8" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="L_caract2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="L_carac1" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="L_carac3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="L_carac4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="L_carac5" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ImageView fx:id="L_image1" fitHeight="23.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="17.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="L_image2" fitHeight="22.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <ImageView fx:id="L_image3" fitHeight="20.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                  <ImageView fx:id="L_image4" fitHeight="21.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                  <ImageView fx:id="L_image5" fitHeight="18.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <Button fx:id="mostrarprecio3" layoutX="271.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#cambairescena3" text="Button" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
