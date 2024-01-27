@@ -3,44 +3,63 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLResumenreservaController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="550.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLResumenreservaController">
    <children>
-      <VBox prefHeight="78.0" prefWidth="600.0">
+      <Label text="Resumen de la reserva" />
+      <VBox prefHeight="61.0" prefWidth="550.0" spacing="20.0">
          <children>
-            <Label text="Resumen de la reserva">
-               <VBox.margin>
-                  <Insets left="245.0" top="20.0" />
-               </VBox.margin>
-            </Label>
+            <Label fx:id="vueloifecha" prefHeight="18.0" prefWidth="210.0" text="Label" />
+            <Label fx:id="origendestino1" prefHeight="18.0" prefWidth="218.0" text="Label" />
          </children>
       </VBox>
-      <Label fx:id="fechavueloida" layoutX="28.0" layoutY="93.0" text="Label" />
-      <Label fx:id="desdehasta1" layoutX="28.0" layoutY="120.0" text="Label" />
-      <Pane layoutX="12.0" layoutY="150.0" prefHeight="200.0" prefWidth="583.0">
+      <VBox alignment="CENTER" prefHeight="153.0" prefWidth="550.0" spacing="20.0">
          <children>
-            <Button fx:id="detallevueloida" layoutX="421.0" layoutY="153.0" mnemonicParsing="false" onMouseClicked="#mostardetalles1" text="Detalles del vuelo" />
-            <Label fx:id="duracion1" layoutX="260.0" layoutY="29.0" text="Label" />
-            <Label fx:id="precioVida" layoutX="260.0" layoutY="114.0" text="Label" />
-            <Label fx:id="horapartida" layoutX="38.0" layoutY="83.0" text="Label" />
-            <Label fx:id="horallegada" layoutX="503.0" layoutY="83.0" text="Label" />
+            <Label fx:id="duracionvi" text="Label" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label fx:id="horainicio" text="Label" />
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="horallegada" text="Label" />
+               </children>
+            </HBox>
+            <Label fx:id="preciovueloi" text="Label" />
+            <Button fx:id="btndetallevueloi" mnemonicParsing="false" onAction="#mostrarddetallevueloi" prefHeight="26.0" prefWidth="121.0" text="Detalles del vuelo">
+               <VBox.margin>
+                  <Insets left="370.0" />
+               </VBox.margin>
+            </Button>
          </children>
-      </Pane>
-      <Pane layoutX="12.0" layoutY="390.0" prefHeight="200.0" prefWidth="568.0">
+      </VBox>
+      <VBox prefHeight="75.0" prefWidth="550.0" spacing="20.0">
          <children>
-            <Label fx:id="duracion2" layoutX="256.0" layoutY="23.0" text="Label" />
-            <Label fx:id="precioVregreso" layoutX="256.0" layoutY="117.0" text="Label" />
-            <Label fx:id="horapartida2" layoutX="26.0" layoutY="92.0" text="Label" />
-            <Label fx:id="Horallegada2" layoutX="493.0" layoutY="83.0" text="Label" />
-            <Button fx:id="detallevueloregreso" layoutX="430.0" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#mostrardetalle2" text="Detalle del vuelo" />
+            <Label fx:id="vueloregresofecha" prefHeight="18.0" prefWidth="210.0" text="Label" />
+            <Label fx:id="origendestino2" prefHeight="18.0" prefWidth="212.0" text="Label" />
          </children>
-      </Pane>
-      <Button fx:id="continuar" layoutX="270.0" layoutY="645.0" mnemonicParsing="false" text="Confirmar" />
-      <Label fx:id="preciofinal" layoutX="468.0" layoutY="604.0" text="Label" />
-      <Label fx:id="fechavueloregreso" layoutX="42.0" layoutY="356.0" text="Label" />
-      <Label fx:id="desdehasta2" layoutX="42.0" layoutY="382.0" text="Label" />
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="180.0" prefWidth="550.0" spacing="20.0">
+         <children>
+            <Label fx:id="duracionvR" text="Label" />
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="550.0" spacing="20.0">
+               <children>
+                  <Label fx:id="horainicio2" text="Label" />
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="horallegada2" text="Label" />
+               </children>
+            </HBox>
+            <Label fx:id="preciovueloR" text="Label" />
+            <Button fx:id="btndetallevueloR" mnemonicParsing="false" onAction="#mostrarddetallevueloR" text="Detalles del vuelo">
+               <VBox.margin>
+                  <Insets left="370.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Label fx:id="preciotoalf" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="18.0" prefWidth="418.0" text="Label" />
+      <Button fx:id="btncontinuar" mnemonicParsing="false" onAction="#continuar" text="Continuar" />
    </children>
-</Pane>
+</VBox>
