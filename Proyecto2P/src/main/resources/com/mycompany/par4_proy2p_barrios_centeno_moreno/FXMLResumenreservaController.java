@@ -6,6 +6,7 @@ package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,39 +19,38 @@ import javafx.scene.input.MouseEvent;
  * @author LNV
  */
 public class FXMLResumenreservaController implements Initializable {
-
-    @FXML
-    private Label fechavueloida;
-    @FXML
-    private Label desdehasta1;
-    @FXML
-    private Button detallevueloida;
-    @FXML
-    private Label duracion1;
-    @FXML
-    private Label precioVida;
-    @FXML
-    private Label horapartida;
     @FXML
     private Label horallegada;
     @FXML
-    private Label duracion2;
+    private Label vueloifecha;
     @FXML
-    private Label precioVregreso;
+    private Label origendestino1;
     @FXML
-    private Label horapartida2;
+    private Label duracionvi;
     @FXML
-    private Label Horallegada2;
+    private Label horainicio;
     @FXML
-    private Button detallevueloregreso;
+    private Label preciovueloi;
     @FXML
-    private Button continuar;
+    private Button btndetallevueloi;
     @FXML
-    private Label preciofinal;
+    private Label vueloregresofecha;
     @FXML
-    private Label fechavueloregreso;
+    private Label origendestino2;
     @FXML
-    private Label desdehasta2;
+    private Label duracionvR;
+    @FXML
+    private Label horainicio2;
+    @FXML
+    private Label horallegada2;
+    @FXML
+    private Label preciovueloR;
+    @FXML
+    private Button btndetallevueloR;
+    @FXML
+    private Label preciotoalf;
+    @FXML
+    private Button btncontinuar;
 
     /**
      * Initializes the controller class.
@@ -64,11 +64,17 @@ public class FXMLResumenreservaController implements Initializable {
     
 
     @FXML
-    private void mostardetalles1(MouseEvent event) {
+    private void mostrarddetallevueloi(ActionEvent event) {
+        
+        
     }
 
     @FXML
-    private void mostrardetalle2(MouseEvent event) {
+    private void mostrarddetallevueloR(ActionEvent event) {
+    }
+
+    @FXML
+    private void continuar(ActionEvent event) {
     }
     
 }
