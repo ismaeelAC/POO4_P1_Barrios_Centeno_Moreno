@@ -6,6 +6,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -29,7 +30,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Origen:" textFill="#762989">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Origen:" textFill="#1f6a7b">
                      <HBox.margin>
                         <Insets bottom="5.0" left="40.0" right="5.0" top="20.0" />
                      </HBox.margin>
@@ -41,6 +42,9 @@
                      <HBox.margin>
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ComboBox>
                </children>
                <VBox.margin>
@@ -49,7 +53,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="250.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Salida:" textFill="#762989">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Salida:" textFill="#1f6a7b">
                      <HBox.margin>
                         <Insets bottom="5.0" left="40.0" right="5.0" top="-5.0" />
                      </HBox.margin>
@@ -61,6 +65,9 @@
                      <HBox.margin>
                         <Insets left="15.0" right="-5.0" top="-10.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </DatePicker>
                </children>
             </HBox>
@@ -70,7 +77,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Destino:" textFill="#762989">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Destino:" textFill="#1f6a7b">
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" top="20.0" />
                      </HBox.margin>
@@ -82,12 +89,15 @@
                      <HBox.margin>
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ComboBox>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Regreso:" textFill="#762989">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Regreso:" textFill="#1f6a7b">
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" top="-5.0" />
                      </HBox.margin>
@@ -99,19 +109,25 @@
                      <HBox.margin>
                         <Insets left="8.0" top="-10.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </DatePicker>
                </children>
             </HBox>
          </children>
       </VBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" minWidth="200.0" prefWidth="800.0" text="RESERVA" textFill="#762989" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" minWidth="200.0" prefWidth="800.0" text="RESERVA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
          <font>
-            <Font name="Britannic Bold" size="30.0" />
+            <Font name="Britannic Bold" size="49.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Label>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <children>
-            <Label text="¿Cuantos viajan?" textFill="#762989">
+            <Label text="¿Cuantos viajan?" textFill="#1f6a7b">
                <VBox.margin>
                   <Insets left="40.0" top="-20.0" />
                </VBox.margin>
@@ -121,7 +137,7 @@
             </Label>
             <HBox prefHeight="85.0" prefWidth="602.0">
                <children>
-                  <Label text="Cantidad:" textFill="#762989">
+                  <Label text="Cantidad:" textFill="#1f6a7b">
                      <HBox.margin>
                         <Insets bottom="5.0" left="40.0" right="5.0" top="20.0" />
                      </HBox.margin>
@@ -129,22 +145,28 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Spinner fx:id="bcantidad" editable="true">
+                  <Spinner fx:id="bcantidad" editable="true" onMouseClicked="#obtenerNumero">
                      <HBox.margin>
                         <Insets top="15.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Spinner>
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="bbuscar" mnemonicParsing="false" onAction="#buscar1" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #762989;" text="BUSCAR" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button fx:id="bbuscar" mnemonicParsing="false" onAction="#buscar1" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: white;" text="BUSCAR" textFill="#1f6a7b" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
          <GridPane.margin>
-            <Insets top="30.0" />
+            <Insets bottom="-50.0" top="30.0" />
          </GridPane.margin>
+         <effect>
+            <DropShadow />
+         </effect>
       </Button>
       <Label fx:id="validate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>

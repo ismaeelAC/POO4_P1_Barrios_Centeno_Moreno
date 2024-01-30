@@ -20,7 +20,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -57,7 +56,7 @@ public class FXMLReservaVueloController implements Initializable {
     
     ArrayList<Vuelo> vuelos = new ArrayList<>();
     ArrayList<Vuelo> vueloSelect = new ArrayList<>();
-    
+    ArrayList<Vuelo> vRegreso = new ArrayList<>();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,13 +91,16 @@ public class FXMLReservaVueloController implements Initializable {
         
         Boolean validacion = false;
         
+        //Se agregan los vuelos de ida
         for (Vuelo v2 : vuelos){
             if (v2.getOrigen().equals(FXMLVentanaReservaController.choiceO.get(0)) && v2.getDestino().equals(FXMLVentanaReservaController.choiceD.get(0))){
                 vueloSelect.add(v2);
                 validacion = true;  
-            } 
+            }
         }
         
+        
+        //Se muestran los datos del vuelo en la escena
         if(validacion){
             MostrarOpciones(vueloSelect);
         }else{
@@ -108,7 +110,23 @@ public class FXMLReservaVueloController implements Initializable {
             l5.setText("No se encontraron vuelos dispnibles");
             l5.setTextFill(Color.BLACK);
         }
+        
+        
+        //Se agregan los vuelos de regreso
+        for(Vuelo v2: vuelos){
+            if (v2.getOrigen().equals(FXMLVentanaReservaController.choiceD.get(0))&& v2.getDestino().equals(FXMLVentanaReservaController.choiceO.get(0))){
+                vRegreso.add(v2);
+            }
+        }
+        
+        
+        //Verificacion
+        System.out.println("Los vuelos de regreso son:");
+        for(Vuelo b1 : vRegreso){
+            System.out.println(b1);
+        }
          
+        
         
         vbox1.setSpacing(10);
         vbox1.setPadding(new Insets(20,0,20,0));
@@ -120,7 +138,6 @@ public class FXMLReservaVueloController implements Initializable {
         
         root3.add(sp, 0, 2);
         vbox1.setStyle("-fx-background-color: white;");
-        
         
     }
     
@@ -164,14 +181,13 @@ public class FXMLReservaVueloController implements Initializable {
             VBox.setMargin(l2, new Insets(0,0,30,0));     
 
             v1.setOnMouseClicked(event -> {
-                System.out.println("Clic en el bloque " + index);
                 v1.setStyle("-fx-border-color: gold; -fx-border-width: 5px; -fx-border-padding: 100px;");
             });
             
             v1.getChildren().addAll(l1,h1,l2);
             h1.getChildren().addAll(l3,n1,l4);
             vbox1.getChildren().add(v1);
-            
+           
         }
     }
     

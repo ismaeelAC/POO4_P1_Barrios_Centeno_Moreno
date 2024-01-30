@@ -66,6 +66,7 @@ public class FXMLVentanaReservaController implements Initializable {
         ArrayList<Destinos> listaD = new ArrayList<>();
         
         
+        
         try(BufferedReader bf = new BufferedReader(new FileReader("destinos.txt"))){
             String line;
             while((line = bf.readLine()) != null){
@@ -101,16 +102,19 @@ public class FXMLVentanaReservaController implements Initializable {
     @FXML
     private void buscar1(ActionEvent e1) throws IOException{
         if (comboO.getValue() != null && comboD.getValue() != null){
-          App.setRoot("FXMLReservaVuelo",400,600,"style2.css","VentanaReserva2");
+          //App.setRoot("FXMLReservaVuelo",400,600,"style2.css","VentanaReserva2");
+          App.setRoot("FXMLVentanaPasajeros",600,400,null,"VentanaPasajeros");
         }
         else{
             validate.setText("Escoga una opcion");
+            validate.setStyle("-fx-text-fill: red;");
         }
         
     }
     
     static ArrayList<String> choiceO = new ArrayList<>();
     static ArrayList<String> choiceD = new ArrayList<>();
+    static int numP;
     
     
 //    public void seleccion1(ActionEvent e3){
@@ -123,7 +127,14 @@ public class FXMLVentanaReservaController implements Initializable {
     public void seleccion2 (ActionEvent e4) throws IOException{
         String choice2 = comboD.getValue();
         choiceD.add(choice2);
-
+    }
+    
+    @FXML
+    public void obtenerNumero(){
+         //num.add(bcantidad.getValue());
+         int selected1 = bcantidad.getValue();
+         System.out.println(selected1);
+         numP = selected1;
     }
     
     

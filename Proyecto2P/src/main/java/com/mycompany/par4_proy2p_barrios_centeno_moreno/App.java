@@ -26,7 +26,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         Primarystage = stage;
-        setRoot("FXMLVentanadeInicio",600,400,"style.css", "VentanaReserva1");
+        setRoot("FXMLVentanadeInicio",600,400,null, "VentanaReserva1");
 
         Primarystage.show();
         
