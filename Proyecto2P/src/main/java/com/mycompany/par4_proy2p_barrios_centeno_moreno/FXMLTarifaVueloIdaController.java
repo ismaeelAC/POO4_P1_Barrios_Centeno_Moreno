@@ -24,7 +24,7 @@ import javafx.scene.layout.VBox;
 /**
  * FXML Controller class
  *
- * @author Administrator
+ * @author grilsemo
  */
 public class FXMLTarifaVueloIdaController implements Initializable {
 
@@ -42,7 +42,7 @@ public class FXMLTarifaVueloIdaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        ArrayList<Tarifa> tarifas = new ArrayList<>();
+        ArrayList<Tarifa> tarifas = Tarifa.leerdatostarifa();
         for(Tarifa t : tarifas){
             coVentana.getChildren().add(crearSeccionTarifa(t));
         }
