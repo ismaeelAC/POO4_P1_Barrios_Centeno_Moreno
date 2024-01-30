@@ -34,6 +34,8 @@ import javafx.stage.Stage;
  */
 public class FXMLVentanaReservaController implements Initializable {
     
+    static String choice1;
+    
     @FXML
     private ComboBox<String> comboO;
     
@@ -101,8 +103,8 @@ public class FXMLVentanaReservaController implements Initializable {
     @FXML
     private void buscar1(ActionEvent e1) throws IOException{
         if (comboO.getValue() != null && comboD.getValue() != null){
-          App.setRoot("FXMLReservaVuelo",400,600,"style2.css","VentanaReserva2");
-          //App.setRoot("FXMLVentanaPasajeros",600,400,null,"VentanaPasajeros");
+          //App.setRoot("FXMLReservaVueloIda",400,600,"style2.css","Reserva tu vuelo");
+          App.setRoot("FXMLVentanaPasajeros",600,400,null,"Datos de los pasajeros");
         }
         else{
             validate.setText("Escoga una opcion");
@@ -110,7 +112,7 @@ public class FXMLVentanaReservaController implements Initializable {
         }
         
     }
-    
+    static String choice2;
     static ArrayList<String> choiceO = new ArrayList<>();
     static ArrayList<String> choiceD = new ArrayList<>();
     static int numP;
@@ -124,6 +126,7 @@ public class FXMLVentanaReservaController implements Initializable {
     
     
     public void seleccion2 (ActionEvent e4) throws IOException{
+        choice2 = null;
         String choice2 = comboD.getValue();
         choiceD.add(choice2);
     }
