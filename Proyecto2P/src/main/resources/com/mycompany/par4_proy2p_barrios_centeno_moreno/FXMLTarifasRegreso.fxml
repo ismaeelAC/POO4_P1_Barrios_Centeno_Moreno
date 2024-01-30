@@ -1,120 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="550.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLTarifasRegresoController">
+<VBox fx:id="idTvueloregreso" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1116.0" prefWidth="586.0" spacing="30.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLTarifasRegresoController">
    <children>
-      <Label text="Selecciona tu tarifa">
+      <Label text="Selecciona tu tarifa" textFill="#901940">
          <font>
-            <Font name="Arial" size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-         <children>
-            <Label fx:id="nombret1" text="Label" />
-            <GridPane hgap="10.0" prefHeight="76.0" prefWidth="470.0" vgap="10.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.20001220703125" minWidth="10.0" prefWidth="126.4" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.79998779296875" minWidth="10.0" prefWidth="344.80000000000007" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label fx:id="Scarc1" text="Label" GridPane.columnIndex="1" />
-                  <Label fx:id="Scarac2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ImageView fx:id="Simage1" fitHeight="39.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="Simage2" fitHeight="40.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </GridPane>
-            <Button fx:id="mostarprecio1" mnemonicParsing="false" onAction="#cambiar3scena1" prefHeight="23.0" prefWidth="470.0" text="Button" />
-         </children>
-         <VBox.margin>
-            <Insets left="40.0" right="40.0" />
-         </VBox.margin>
-      </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-         <children>
-            <Label fx:id="nombret2" text="Label" />
-            <GridPane hgap="10.0" prefHeight="122.0" prefWidth="470.0" vgap="2.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.20001220703125" minWidth="10.0" prefWidth="125.4000244140625" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.5999755859375" minWidth="10.0" prefWidth="344.5999755859375" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <ImageView fx:id="Mimage1" fitHeight="28.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="Mimage2" fitHeight="23.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                  <ImageView fx:id="Mimage3" fitHeight="20.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-                  <ImageView fx:id="Mimage4" fitHeight="24.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
-                  <Label fx:id="Mcarac1" text="Label" GridPane.columnIndex="1" />
-                  <Label fx:id="Mcarac2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="Mcarac3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="Mcarac4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </GridPane>
-            <Button fx:id="mostrarprecio2" mnemonicParsing="false" onAction="#cambiar3scena2" prefHeight="32.0" prefWidth="470.0" text="Button" />
-         </children>
-         <VBox.margin>
-            <Insets left="40.0" right="40.0" />
-         </VBox.margin>
-      </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-         <children>
-            <Label fx:id="nombret3" text="Label" />
-            <GridPane hgap="10.0" prefHeight="119.0" prefWidth="470.0" vgap="2.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.20001220703125" minWidth="10.0" prefWidth="126.9999755859375" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.3999786376953" minWidth="10.0" prefWidth="343.0000244140625" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label fx:id="Lcarac1" text="Label" GridPane.columnIndex="1" />
-                  <Label fx:id="Lcarac2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="Lcarac3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="Lcarac4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="Lcarac5" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ImageView fx:id="Limage1" fitHeight="24.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="Limage2" fitHeight="21.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                  <ImageView fx:id="Limage3" fitHeight="24.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-                  <ImageView fx:id="Limage4" fitHeight="24.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
-                  <ImageView fx:id="Limage5" fitHeight="20.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </GridPane>
-            <Button mnemonicParsing="false" onAction="#cambiar3scena3" prefHeight="26.0" prefWidth="469.0" text="Button" />
-         </children>
-         <VBox.margin>
-            <Insets left="40.0" right="40.0" />
-         </VBox.margin>
-      </VBox>
    </children>
 </VBox>
