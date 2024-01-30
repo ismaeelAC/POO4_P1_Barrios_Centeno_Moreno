@@ -60,7 +60,7 @@ public class Tarifa {
         this.porcentaje = porcentaje;
     }
     
-    public static ArrayList<Tarifa> leerdatostarifa(String s){
+    public static ArrayList<Tarifa> leerdatostarifa(){
     ArrayList<Tarifa> Tarifaobjects=new ArrayList<>();
     ArrayList<String> caract=new ArrayList<>();
     try(BufferedReader bf=new BufferedReader(new FileReader(App.pathachiInput+"tarifa.txt"))){
@@ -83,10 +83,5 @@ public class Tarifa {
     return Tarifaobjects;
     }
     
-    public static double calcularpreciotarifa(Vuelo v, Tarifa t){
-    double preciovuelo= v.getPrecio();
-    double preciofinal=preciovuelo+((preciovuelo*t.getPorcentaje())/100);
-    return preciofinal;
-    }
     
 }

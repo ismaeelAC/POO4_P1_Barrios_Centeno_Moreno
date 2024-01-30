@@ -5,6 +5,9 @@
 package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Tarifa;
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Vuelo;
+import static com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLTarifaVueloIdaController.tarifaSeleccionada;
+import static com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLTarifaVueloIdaController.vueloSeleccionado;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,11 +18,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -29,198 +35,130 @@ import javafx.scene.layout.VBox;
  */
 public class FXMLTarifasRegresoController implements Initializable {
     
+    
     @FXML
-    private Button mostarprecio1;
-    @FXML
-    private Button mostrarprecio2;
-    @FXML
-    private Label nombret1;
-    @FXML
-    private Label Scarc1;
-    @FXML
-    private Label Scarac2;
-    @FXML
-    private ImageView Simage1;
-    @FXML
-    private ImageView Simage2;
-    @FXML
-    private Label nombret2;
-    @FXML
-    private ImageView Mimage1;
-    @FXML
-    private ImageView Mimage2;
-    @FXML
-    private ImageView Mimage3;
-    @FXML
-    private ImageView Mimage4;
-    @FXML
-    private Label Mcarac1;
-    @FXML
-    private Label Mcarac2;
-    @FXML
-    private Label Mcarac3;
-    @FXML
-    private Label Mcarac4;
-    @FXML
-    private Label nombret3;
-    @FXML
-    private Label Lcarac1;
-    @FXML
-    private Label Lcarac2;
-    @FXML
-    private Label Lcarac3;
-    @FXML
-    private Label Lcarac4;
-    @FXML
-    private Label Lcarac5;
-    @FXML
-    private ImageView Limage1;
-    @FXML
-    private ImageView Limage2;
-    @FXML
-    private ImageView Limage3;
-    @FXML
-    private ImageView Limage4;
-    @FXML
-    private ImageView Limage5;
+    private VBox idTvueloregreso;
+    public static Vuelo vueloSeleccionado;
+    
+    public static Tarifa tarifaSeleccionada;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       ArrayList<Tarifa> objetosTarifa=Tarifa.leerdatostarifa(App.pathachiInput+"tarifas.txt");
-       Scarc1.setText( objetosTarifa.get(0).getListaofcarac().get(0));
-       Scarac2.setText(objetosTarifa.get(0).getListaofcarac().get(1));
-       //mostarprecio1.setText(String.valueOf(Tarifa.calcularpreciotarifa(v, objetosTarifa.get(0))));
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"equipajeMano.png")){
-       Image im=new Image(input);
-       Simage1.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"MILES.png")){
-       Image im=new Image(input);
-       Simage2.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       
-       
-       Mcarac1.setText(objetosTarifa.get(1).getListaofcarac().get(0));
-       Mcarac2.setText(objetosTarifa.get(1).getListaofcarac().get(1));
-       Mcarac3.setText(objetosTarifa.get(1).getListaofcarac().get(2));
-       Mcarac4.setText(objetosTarifa.get(1).getListaofcarac().get(3));
-       //mostrarprecio2.setText(String.valueOf(Tarifa.calcularpreciotarifa(v, objetosTarifa.get(1))));
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"equipajeMano.png")){
-       Image im=new Image(input);
-       Mimage1.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"MILES.png")){
-       Image im=new Image(input);
-       Mimage2.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"bodega.png")){
-       Image im=new Image(input);
-       Mimage3.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"sentarse.png")){
-       Image im=new Image(input);
-       Mimage4.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       
- 
-       Lcarac1.setText(objetosTarifa.get(2).getListaofcarac().get(0));
-       Lcarac2.setText(objetosTarifa.get(2).getListaofcarac().get(1));
-       Lcarac3.setText(objetosTarifa.get(2).getListaofcarac().get(2));
-       Lcarac4.setText(objetosTarifa.get(2).getListaofcarac().get(3));
-       Lcarac5.setText(objetosTarifa.get(2).getListaofcarac().get(4));
-       
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"equipajeMano.png")){
-       Image im=new Image(input);
-       Limage1.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"MILES.png")){
-       Image im=new Image(input);
-       Limage2.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"bodega.png")){
-       Image im=new Image(input);
-       Limage3.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       try(FileInputStream input=new FileInputStream(App.pathachiImage+"sentarse.png")){
-       Image im=new Image(input);
-       Limage4.setImage(im);
-       }catch(FileNotFoundException e){
-           System.out.println("No se ha encontrado la imagen");
-       }catch(IOException e2){
-           System.out.println(e2.getMessage());
-       }
-       
-       
-    }  
-
-    @FXML
-    private void cambiar3scena1(ActionEvent event) {
-        try{
-        App.setRoot("FXMLResumenreserva",200,300,null,null);
-       }catch(IOException e){
-           System.out.println(e.getMessage());
-       }
+       ArrayList<Tarifa> tarifas = Tarifa.leerdatostarifa();
+        for(Tarifa t : tarifas){
+            idTvueloregreso.getChildren().add(crearSeccionTarifa(t));
+        }
+        
+        VBox coS = (VBox)idTvueloregreso.lookup("#coS");
+        coS.setOnMouseClicked(e->{
+            for(Tarifa t: tarifas){
+                if("S".equals(t.getTipo())){
+                    try {
+                        tarifaSeleccionada = t;
+                        App.setRoot("FXMLReservaVuelo", 400, 600, null, "SeleccionarTarifa");
+                    } catch (IOException ex) {
+                    }
+                } 
+            }
+        
+        });
+        VBox coM = (VBox)idTvueloregreso.lookup("#coM");
+        
+        coM.setOnMouseClicked(e->{
+            for(Tarifa t: tarifas){
+                if("M".equals(t.getTipo())){
+                    try {
+                        tarifaSeleccionada = t;
+                        App.setRoot("FXMLReservaVuelo", 400, 600, null, "SeleccionarTarifa");
+                    } catch (IOException ex) {
+                    }
+                } 
+            }
+        
+        });
+        
+        
+        VBox coL = (VBox)idTvueloregreso.lookup("#coL");
+        coL.setOnMouseClicked(e->{
+            for(Tarifa t: tarifas){
+                if("L".equals(t.getTipo())){
+                    try {
+                        tarifaSeleccionada = t;
+                        App.setRoot("FXMLReservaVuelo", 400, 600, null, "SeleccionarTarifa");
+                    } catch (IOException ex) {
+                    }
+                } 
+            }
+        
+        });
     }
-
-    @FXML
-    private void cambiar3scena2(ActionEvent event) {
-        try{App.setRoot("FXMLResumenreserva",300,200,null,null);
-       
-       }catch(IOException e){
-           System.out.println(e.getMessage());
-       }
-    }
-
-    @FXML
-    private void cambiar3scena3(ActionEvent event) {
-        try{App.setRoot("FXMLResumenreserva",300,200,null,null);
-       
-       }catch(IOException e){
-           System.out.println(e.getMessage());
-       }
-    }
+    
+    public VBox crearSeccionTarifa(Tarifa t){
+      //recursos
+      String[] nombreImagenes = {"equipajeMano.png","MILES.png","bodega.png","sentarse.png","calendario.png"};
+      String precio= String.valueOf(vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);
+      //nodos
+      Label lbTitulo = new Label(t.getTipo()+":"+t.getNombre());
+      Label lbPrecio = new Label(precio);
+        //Labels para las caracteristicas
+      ArrayList<Label> caracteristicas= new ArrayList();
+      for(String caracteristica : t.getListaofcarac()){
+          Label lb = new Label(caracteristica);
+      }
+        //images para las imagenes
+      ArrayList<ImageView> imagenes = new ArrayList<>();
+      for(int i = 0; i<t.getListaofcarac().size();i++){
+          Image im = new Image(App.class.getResource("/com.mycompany.Images/"+nombreImagenes[i]).toString());
+          ImageView imagen = new ImageView(im);
+          imagen.setFitHeight(50);
+          imagen.setFitWidth(50);
+          imagenes.add(imagen);  
+      }
+        
+      //contenedores
+      
+      HBox hbContenedorCaracteristicas = new HBox(); 
+      hbContenedorCaracteristicas.setAlignment(Pos.CENTER_LEFT);
+      GridPane gp = new GridPane();
+      gp.setVgap(10);
+      gp.setHgap(20);
+      hbContenedorCaracteristicas.getChildren().add(gp);
+      for(int i = 0;i<t.getListaofcarac().size() ;i++){
+          gp.add(imagenes.get(i), 0, i);
+          gp.add(caracteristicas.get(i), 1, i);
+      }
+      HBox hbContenedorPrecio = new HBox();
+      
+      //root
+      VBox hbContenedorPrincipal = new VBox();
+      hbContenedorPrincipal.setAlignment(Pos.CENTER);
+      hbContenedorPrincipal.getChildren().add(lbTitulo);
+      hbContenedorPrincipal.getChildren().add(hbContenedorCaracteristicas);
+      hbContenedorPrincipal.getChildren().add(lbPrecio);
+      hbContenedorPrincipal.setSpacing(20);
+      switch(t.getTipo()){
+          case "S":
+              hbContenedorPrincipal.setStyle("-fx-background-color: #f99b2a");
+              hbContenedorPrincipal.setId("coS");
+              break;
+          
+          case "M":
+              hbContenedorPrincipal.setStyle("-fx-background-color: #F15A3A");
+              hbContenedorPrincipal.setId("coM");
+              break;
+              
+          case "L":
+          
+              hbContenedorPrincipal.setStyle("-fx-background-color: #EE3184");
+              hbContenedorPrincipal.setId("coL");
+              break; 
+      }
+      return hbContenedorPrincipal;
+  }  
+     
+    
     
     
 }

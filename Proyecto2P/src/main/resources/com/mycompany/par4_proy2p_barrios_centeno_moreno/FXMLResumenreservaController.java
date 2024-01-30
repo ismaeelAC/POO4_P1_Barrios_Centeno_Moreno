@@ -20,37 +20,37 @@ import javafx.scene.input.MouseEvent;
  */
 public class FXMLResumenreservaController implements Initializable {
     @FXML
-    private Label horallegada;
+    private Label lbFechaIda;
     @FXML
-    private Label vueloifecha;
+    private Label lbRutaIda;
     @FXML
-    private Label origendestino1;
+    private Label lbHoraIdaSalida;
     @FXML
-    private Label duracionvi;
+    private Label lbDuracionIda;
     @FXML
-    private Label horainicio;
+    private Label lbPrecioIda;
     @FXML
-    private Label preciovueloi;
+    private Label lbHoraIdaLlegada;
     @FXML
-    private Button btndetallevueloi;
+    private Button btDetallesIda;
     @FXML
-    private Label vueloregresofecha;
+    private Label lbFechaRetorno;
     @FXML
-    private Label origendestino2;
+    private Label lbRutaRetorno;
     @FXML
-    private Label duracionvR;
+    private Label lbHoraRetornoSalida;
     @FXML
-    private Label horainicio2;
+    private Label lbDuracionRetorno;
     @FXML
-    private Label horallegada2;
+    private Label lbPrecioRetorno;
     @FXML
-    private Label preciovueloR;
+    private Label lbHoraRetornoLlegada;
     @FXML
-    private Button btndetallevueloR;
+    private Button btDetallesRetorno;
     @FXML
-    private Label preciotoalf;
+    private Label lbSumaPrecios;
     @FXML
-    private Button btncontinuar;
+    private Button btContinuar;
 
     /**
      * Initializes the controller class.
@@ -59,22 +59,5 @@ public class FXMLResumenreservaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    
-    
-
-    @FXML
-    private void mostrarddetallevueloi(ActionEvent event) {
-        
-        
-    }
-
-    @FXML
-    private void mostrarddetallevueloR(ActionEvent event) {
-    }
-
-    @FXML
-    private void continuar(ActionEvent event) {
-    }
     
 }
