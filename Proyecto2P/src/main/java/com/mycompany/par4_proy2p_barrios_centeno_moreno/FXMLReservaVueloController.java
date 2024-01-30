@@ -55,8 +55,9 @@ public class FXMLReservaVueloController implements Initializable {
             
     
     ArrayList<Vuelo> vuelos = new ArrayList<>();
-    ArrayList<Vuelo> vueloSelect = new ArrayList<>();
+    ArrayList<Vuelo> vDisponibles = new ArrayList<>();
     ArrayList<Vuelo> vRegreso = new ArrayList<>();
+    ArrayList<Vuelo> vChoice = new ArrayList<>();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -94,7 +95,7 @@ public class FXMLReservaVueloController implements Initializable {
         //Se agregan los vuelos de ida
         for (Vuelo v2 : vuelos){
             if (v2.getOrigen().equals(FXMLVentanaReservaController.choiceO.get(0)) && v2.getDestino().equals(FXMLVentanaReservaController.choiceD.get(0))){
-                vueloSelect.add(v2);
+                vDisponibles.add(v2);
                 validacion = true;  
             }
         }
@@ -102,7 +103,7 @@ public class FXMLReservaVueloController implements Initializable {
         
         //Se muestran los datos del vuelo en la escena
         if(validacion){
-            MostrarOpciones(vueloSelect);
+            MostrarOpciones(vDisponibles);
         }else{
             Label l5 =  new Label();
             vbox1.getChildren().add(l5);
@@ -118,14 +119,6 @@ public class FXMLReservaVueloController implements Initializable {
                 vRegreso.add(v2);
             }
         }
-        
-        
-        //Verificacion
-        System.out.println("Los vuelos de regreso son:");
-        for(Vuelo b1 : vRegreso){
-            System.out.println(b1);
-        }
-         
         
         
         vbox1.setSpacing(10);
@@ -149,17 +142,19 @@ public class FXMLReservaVueloController implements Initializable {
             HBox h1 = new HBox();
             Line n1 = new Line();
             
+            //Variables de datos
+            
             Label l1 = new Label();
-            l1.setText("Duracion: " + vueloSelect.get(i).getDuracion());
+            l1.setText("Duracion: " + vDisponibles.get(i).getDuracion());
             
             Label l2 = new Label();
-            l2.setText(String.valueOf((vueloSelect.get(i).getPrecio())));
+            l2.setText(String.valueOf((vDisponibles.get(i).getPrecio())));
             
             Label l3 = new Label();
-            l3.setText(vueloSelect.get(i).getHoraS());
+            l3.setText(vDisponibles.get(i).getHoraS());
             
             Label l4 = new Label();
-            l4.setText(vueloSelect.get(i).getHoraL());
+            l4.setText(vDisponibles.get(i).getHoraL());
             
             l1.setTextFill(Color.BLACK);
             l2.setTextFill(Color.BLACK);
@@ -176,29 +171,39 @@ public class FXMLReservaVueloController implements Initializable {
             v1.setSpacing(20);
             h1.setSpacing(20);
             
-            v1.setStyle("-fx-border-color: gold; -fx-border-width: 1px; -fx-border-padding: 100px;");
+            v1.setStyle("-fx-border-color: blue; -fx-border-width: 1px; -fx-border-padding: 100px;");
             VBox.setMargin(l1, new Insets(30,0,0,0));
             VBox.setMargin(l2, new Insets(0,0,30,0));     
 
             v1.setOnMouseClicked(event -> {
-                v1.setStyle("-fx-border-color: gold; -fx-border-width: 5px; -fx-border-padding: 100px;");
+                if (vChoice.contains(vDisponibles.get(index))) {
+                vChoice.remove(vDisponibles.get(index));
+            } else {
+                vChoice.clear(); 
+                vChoice.add(vDisponibles.get(index));
+                
+                //Vuelo seleccionado
+                    System.out.println(vChoice);
+            }
+     
             });
             
             v1.getChildren().addAll(l1,h1,l2);
             h1.getChildren().addAll(l3,n1,l4);
-            vbox1.getChildren().add(v1);
-           
+            vbox1.getChildren().add(v1);      
+
         }
     }
     
+    
     public void ordenarPrecio(){
-        Collections.sort(vueloSelect);
-        MostrarOpciones(vueloSelect);
+        Collections.sort(vDisponibles);
+        MostrarOpciones(vDisponibles);
     }
     
     public void ordenarDuracion(){
-        Collections.sort(vueloSelect,Vuelo::compareToD);
-        MostrarOpciones(vueloSelect);
+        Collections.sort(vDisponibles,Vuelo::compareToD);
+        MostrarOpciones(vDisponibles);
     }
     
     public void Opcion1(ActionEvent e){

@@ -92,7 +92,6 @@ public class FXMLVentanaReservaController implements Initializable {
         comboO.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hola");
                 String choice1 = comboO.getValue();
                 choiceO.add(choice1);
             }
@@ -102,8 +101,8 @@ public class FXMLVentanaReservaController implements Initializable {
     @FXML
     private void buscar1(ActionEvent e1) throws IOException{
         if (comboO.getValue() != null && comboD.getValue() != null){
-          //App.setRoot("FXMLReservaVuelo",400,600,"style2.css","VentanaReserva2");
-          App.setRoot("FXMLVentanaPasajeros",600,400,null,"VentanaPasajeros");
+          App.setRoot("FXMLReservaVuelo",400,600,"style2.css","VentanaReserva2");
+          //App.setRoot("FXMLVentanaPasajeros",600,400,null,"VentanaPasajeros");
         }
         else{
             validate.setText("Escoga una opcion");

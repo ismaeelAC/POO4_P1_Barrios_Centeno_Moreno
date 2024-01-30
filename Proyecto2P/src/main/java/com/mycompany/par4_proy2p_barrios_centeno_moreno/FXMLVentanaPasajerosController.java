@@ -34,9 +34,7 @@ public class FXMLVentanaPasajerosController implements Initializable {
         // TODO
         for (int i= 0; i<= FXMLVentanaReservaController.numP; i++){
         mostrarDatos(i);
-            
-            
-            
+   
         }
     }
     
