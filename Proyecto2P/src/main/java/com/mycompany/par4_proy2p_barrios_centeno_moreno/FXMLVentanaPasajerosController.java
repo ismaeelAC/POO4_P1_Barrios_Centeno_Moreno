@@ -4,13 +4,17 @@
  */
 package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -27,23 +31,35 @@ public class FXMLVentanaPasajerosController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private VBox rootV;
+    private Button buttonp;
+    
+    @FXML
+    private GridPane rootV;
+    
+    @FXML
+    private VBox vb0;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        for (int i= 0; i<= FXMLVentanaReservaController.numP; i++){
+        for (int i= 1; i<= FXMLVentanaReservaController.numP; i++){
         mostrarDatos(i);
-   
+
         }
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(vb0);
+        sp.setFitToWidth(true);
+        
+        rootV.add(sp, 0, 1);
+        vb0.setStyle("-fx-background-color: white;");
     }
     
     public void mostrarDatos(int i){
             Label lb =  new Label();
-            rootV.getChildren().add(lb);
+            vb0.getChildren().add(lb);
             lb.setText("Pasajero " + i );
-            //VBox.setMargin(lb, new Insets(20,0,0,0));
-            rootV.setSpacing(20);
+            vb0.setSpacing(20);
             
             VBox vb = new VBox();
             HBox hb1 = new HBox();
@@ -125,12 +141,23 @@ public class FXMLVentanaPasajerosController implements Initializable {
             h4.setSpacing(15);
             
             vb.getChildren().addAll(hb1, hb2);
-            vb.setStyle("-fx-border-color: gold; -fx-border-width: 1px; -fx-border-padding: 100px;");
-            vb.setStyle("-fx-border-color: gold; -fx-border-width: 5px; -fx-border-padding: 100px;");
+            vb.setStyle("-fx-border-color: cyan; -fx-border-width: 1px; -fx-border-padding: 100px;");
+            vb.setStyle("-fx-border-color: cyan; -fx-border-width: 5px; -fx-border-padding: 100px;");
             
-            rootV.getChildren().add(vb);
+            VBox.setMargin(hb1, new Insets(30,0,0,0));
+            VBox.setMargin(hb2, new Insets(0,0,30,0));
+            
+            vb0.getChildren().add(vb);
+            
             //VBox.setMargin(vb,new Insets(0,0,0,0));
 }
+    
+    
+    
+    public void continuar(ActionEvent e) throws IOException{
+        //App.setRoot("FXMLReservaVueloRegreso",400,600,"style2.css","Reserva tu vuelo de regreso");
+
+    }
 }    
     
     
