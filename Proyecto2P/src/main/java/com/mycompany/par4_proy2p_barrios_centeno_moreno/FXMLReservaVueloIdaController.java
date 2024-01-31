@@ -71,11 +71,11 @@ public class FXMLReservaVueloIdaController implements Initializable {
             datosV.add(FXMLVentanaReservaController.choiceD.get(cantD - 1));
             tituloI.setText("Selecciona tu vuelo " + datosV.get(0) + " - " + datosV.get(1));
         }
-        
-        
         tituloI.setFont(new Font("Britannic bold",18));
         tituloI.setTextFill(Color.WHITE);
         ordenarI.getItems().setAll("Precio","Duracion");
+        
+        
         
         try(BufferedReader br = new BufferedReader(new FileReader("vuelos.txt"))){
             String line1;
@@ -141,6 +141,7 @@ public class FXMLReservaVueloIdaController implements Initializable {
         
         rootI.add(sp, 0, 2);
         vboxI.setStyle("-fx-background-color: white;");
+        
         
     }
     

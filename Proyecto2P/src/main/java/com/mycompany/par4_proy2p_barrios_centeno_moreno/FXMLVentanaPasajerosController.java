@@ -53,6 +53,7 @@ public class FXMLVentanaPasajerosController implements Initializable {
         
         rootV.add(sp, 0, 1);
         vb0.setStyle("-fx-background-color: white;");
+        
     }
     
     public void mostrarDatos(int i){
