@@ -61,7 +61,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <DatePicker prefWidth="150.0">
+                  <DatePicker fx:id="dp1" onAction="#obtenerFechaIda" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="15.0" right="-5.0" top="-10.0" />
                      </HBox.margin>
@@ -105,7 +105,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <DatePicker prefWidth="150.0">
+                  <DatePicker fx:id="dp2" onAction="#obtenerFechaRegreso" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="8.0" top="-10.0" />
                      </HBox.margin>

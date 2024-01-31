@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -46,8 +48,13 @@ public class FXMLVentanaReservaController implements Initializable {
     private Button bbuscar;
     
     @FXML
-    private Spinner<Integer> bcantidad;
+    private DatePicker dp1;
     
+    @FXML
+    private DatePicker dp2;
+    
+    @FXML
+    private Spinner<Integer> bcantidad;
     SpinnerValueFactory<Integer> sp = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,30);
     
     @FXML
@@ -55,6 +62,9 @@ public class FXMLVentanaReservaController implements Initializable {
     
     @FXML
     private Label validate;
+    
+    static LocalDate f1;
+    static LocalDate f2;
     
     /**
      * Initializes the controller class.
@@ -124,7 +134,7 @@ public class FXMLVentanaReservaController implements Initializable {
 //        
 //    }
     
-    
+    @FXML
     public void seleccion2 (ActionEvent e4) throws IOException{
         choice2 = null;
         String choice2 = comboD.getValue();
@@ -139,5 +149,14 @@ public class FXMLVentanaReservaController implements Initializable {
          numP = selected1;
     }
     
+    @FXML
+    public void obtenerFechaIda(){
+        f1 = dp1.getValue();
+    }
+    
+    @FXML
+    public void obtenerFechaRegreso(){
+        f2 = dp2.getValue();
+    }
     
 }
