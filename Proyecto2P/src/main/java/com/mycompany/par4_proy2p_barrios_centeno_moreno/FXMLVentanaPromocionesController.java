@@ -40,10 +40,10 @@ public class FXMLVentanaPromocionesController implements Initializable {
     @FXML
     private AnchorPane conMapa;
     
-    public static int contador=5;
     
-    private ArrayList<Promocion> promociones = new ArrayList<>();
+    public static ArrayList<Promocion> promociones = new ArrayList<>();
     
+    private static int contador = 5;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         leerDatosPromociones();
@@ -54,27 +54,40 @@ public class FXMLVentanaPromocionesController implements Initializable {
                 ImageView pin = new ImageView(i);
                 pin.setFitHeight(50);
                 pin.setFitWidth(50);
-                pin.setEffect(new DropShadow());
+                pin.setEffect(new DropShadow());//efecto de sombra al pin
                 pin.setLayoutX(promo.getCoordenadaX());
                 pin.setLayoutY(promo.getCoordenadaY());
                 
+                
+                
                 pin.setOnMouseClicked(e -> {
-                    Stage stage = new Stage();
-                    HBox root = new Popup().createPopup(promo, stage);
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                    Label id = (Label)root.lookup("#lbCerrando");
-                    Timeline t = new Timeline(new KeyFrame(Duration.seconds(1),event ->{
-                        id.setText("Cerrando en "+contador+" segundos...");
-                        contador--;
-                    }));
-                    t.setCycleCount(6);
-                    t.setOnFinished(event -> {
-                        stage.close();
-                        contador=5;
+                    Stage ventanaPopUp = new Stage();
+                    HBox root = new Popup().createPopup(promo, ventanaPopUp);
+                    Scene escena = new Scene(root);
+                    ventanaPopUp.setScene(escena);
+                    ventanaPopUp.show();
+                    //KeyFrame objeto que permite definir eventos controlados por tiempo
+                
+                    KeyFrame k = new KeyFrame(Duration.seconds(1),event->{
+
+                        //se intento usar Thread.sleep para manejar tiempo pero lastimosamente su uso causa
+                        //que el FX Application Thread se bloquee lo cual ocaciona que la ventana este en blanco
+                        //y no muestre los nodos
+                        Label cerrandoEn = (Label)root.lookup("#lbCerrando");
+                        Platform.runLater(()->{
+                                cerrandoEn.setText("Cerrando en "+FXMLVentanaPromocionesController.contador+ " segundos...");
+                            });
+                        FXMLVentanaPromocionesController.contador--;
                     });
-                    t.play();
+                    //Timeline: linea de tiempo donde se sincroniza los keyFrames
+                    Timeline lineaDeTiempo = new Timeline(k);
+                    lineaDeTiempo.setCycleCount(6); //veces que el KeyFrame se ejecutara en la linea del tiempo
+                    lineaDeTiempo.setOnFinished(event->{ //cuando la linea de tiempo llegue a su final
+                        ventanaPopUp.close(); 
+                        FXMLVentanaPromocionesController.contador=5;
+                    });
+                    
+                    lineaDeTiempo.play();
                     
                 });
                 

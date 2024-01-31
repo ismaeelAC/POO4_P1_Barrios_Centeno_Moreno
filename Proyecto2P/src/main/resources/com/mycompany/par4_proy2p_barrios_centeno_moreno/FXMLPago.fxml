@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="875.0" prefWidth="501.0" spacing="50.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLVentanaReservaController">
+   <children>
+      <Label text="Pago" textFill="#901941">
+         <font>
+            <Font name="Calibri Bold" size="40.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+         <children>
+            <Label text="Selecciona tu metodo de pago:">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="rbTarjeta" mnemonicParsing="false" text="Tarjeta de credito">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupo" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbEfectivo" mnemonicParsing="false" text="Efectivo" toggleGroup="$grupo">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </VBox>
+      <VBox fx:id="coTipoPago" alignment="CENTER_LEFT" minHeight="-Infinity" />
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Label text="Codigo promocional:">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfCodigo" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER_RIGHT" spacing="10.0">
+         <children>
+            <Label fx:id="lbSubtotal" text="Resumen de compra:">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Label>
+            <VBox fx:id="coResumen" alignment="TOP_RIGHT" spacing="10.0" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+         <children>
+            <Button mnemonicParsing="false" style="-fx-background-color: #901941;" text="Pagar" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: #901941;" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+   </padding>
+</VBox>
