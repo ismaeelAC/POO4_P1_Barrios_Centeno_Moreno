@@ -38,7 +38,7 @@ public class FXMLTarifasRegresoController implements Initializable {
     
     @FXML
     private VBox idTvueloregreso;
-    public static Vuelo vueloSeleccionado;
+    public static Vuelo vueloSeleccionado=FXMLReservaVueloIdaController.vChoice.get(1);
     
     public static Tarifa tarifaSeleccionada;
     /**
@@ -57,7 +57,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("S".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLReservaVuelo", 400, 600, null, "SeleccionarTarifa");
+                        App.setRoot("FXMLResumenreserva", 400, 600, null, "Resumen de los Vuelos");
                     } catch (IOException ex) {
                     }
                 } 
@@ -71,7 +71,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("M".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLReservaVuelo", 400, 600, null, "SeleccionarTarifa");
+                        App.setRoot("FXMLResumenreserva", 400, 600, null, "Resumen de los vuelos");
                     } catch (IOException ex) {
                     }
                 } 
@@ -86,7 +86,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("L".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLReservaVuelo", 400, 600, null, "SeleccionarTarifa");
+                        App.setRoot("FXMLResumenreserva", 400, 600, null, "Resumen de los Vuelos");
                     } catch (IOException ex) {
                     }
                 } 
