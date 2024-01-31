@@ -173,7 +173,7 @@ public class FXMLResumenreservaController implements Initializable {
         imageView.setFitWidth(232.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
-        Image image = new Image(App.class.getResource("/Imagenes/icon_detalle.png").toString());
+        Image image = new Image(App.pathachiImage+"icon_detalle.png");
         imageView.setImage(image);
 
         hBox.getChildren().addAll(vBox, imageView);
