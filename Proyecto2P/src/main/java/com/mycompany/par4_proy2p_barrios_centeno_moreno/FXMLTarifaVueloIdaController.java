@@ -53,7 +53,7 @@ public class FXMLTarifaVueloIdaController implements Initializable {
                 if("S".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLReservaVueloRegreso", 400, 600, null, "SeleccionarTarifa");
+                        App.setRoot("FXMLReservaVueloRegreso", 600, 400, null, "Reserva tu vuelo de regreso");
                     } catch (IOException ex) {
                     }
                 } 
@@ -67,7 +67,7 @@ public class FXMLTarifaVueloIdaController implements Initializable {
                 if("M".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLReservaVueloRegreso", 400, 600, null, "SeleccionarTarifa");
+                        App.setRoot("FXMLReservaVueloRegreso", 600, 400, null, "Reserva tu vuelo de regreso");
                     } catch (IOException ex) {
                     }
                 } 
@@ -82,7 +82,7 @@ public class FXMLTarifaVueloIdaController implements Initializable {
                 if("L".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLReservaVueloRegreso", 400, 600, null, "SeleccionarTarifa");
+                        App.setRoot("FXMLReservaVueloRegreso", 600, 400, null, "Reserva tu vuelo de regreso");
                     } catch (IOException ex) {
                     }
                 } 

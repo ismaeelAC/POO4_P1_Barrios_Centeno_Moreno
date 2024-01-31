@@ -113,7 +113,7 @@ public class FXMLReservaVueloIdaController implements Initializable {
         
         //Se muestran los datos del vuelo en la escena
         if(validacion){
-            MostrarOpciones(vIda);
+            mostrarOpciones(vIda);
         }else{
             Label l5 =  new Label();
             vboxI.getChildren().add(l5);
@@ -145,8 +145,11 @@ public class FXMLReservaVueloIdaController implements Initializable {
         
     }
     
-    
-    public void MostrarOpciones(ArrayList<Vuelo> listaV){
+    /**
+     * Metodo MostrarOpciones que crea de forma dinamica los bloques que muestran los viajes de ida disponibles para el usuario.
+     * @param listaV: ArrayList de tipo Vuelo que contiene todos los vuelos de ida disponibles para el usuario.
+     */
+    public void mostrarOpciones(ArrayList<Vuelo> listaV){
         for (int i=0; i<listaV.size(); i++){
             final int index = i;
             VBox v1 = new VBox();
@@ -186,19 +189,21 @@ public class FXMLReservaVueloIdaController implements Initializable {
             VBox.setMargin(l1, new Insets(30,0,0,0));
             VBox.setMargin(l2, new Insets(0,0,30,0));     
 
+            
+            
             v1.setOnMouseClicked(event -> {
                 vChoice.clear(); 
                 vChoice.add(listaV.get(index));
                 
                 //Vuelo seleccionado
-                System.out.println(vChoice);
                 try {
-                    App.setRoot("FXMLReservaVueloRegreso",400,600,"style2.css","Reserva tu vuelo de regreso");
+                    App.setRoot("FXMLTarifaVueloIda",400,600,null,"Selecciona tu Tarifa");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-            
             });
+            
+            
             
             v1.getChildren().addAll(l1,h1,l2);
             h1.getChildren().addAll(l3,n1,l4);
@@ -208,16 +213,31 @@ public class FXMLReservaVueloIdaController implements Initializable {
     }
     
     
+    
+    /**
+     * Metodo OrdenarPrecio que ordena la lista ingresada en funcion del precio, de menor a mayor.
+     * @param listaV ArrayList de tipo Vuelo que contiene todos los vuelos de ida disponibles para el usuario.
+     */
     public void ordenarPrecio(ArrayList<Vuelo> listaV){
         Collections.sort(listaV);
-        MostrarOpciones(listaV);
+        mostrarOpciones(listaV);
     }
     
+    
+    /**
+     * Metodo OrdenarDuracion que ordena la lista ingresada en funcion de la duracion, de menor a mayor.
+     * @param listaV ArrayList de tipo Vuelo que contiene todos los vuelos de ida disponibles para el usuario.
+     */
     public void ordenarDuracion(ArrayList<Vuelo> listaV){
         Collections.sort(listaV,Vuelo::compareToD);
-        MostrarOpciones(listaV);
+        mostrarOpciones(listaV);
     }
     
+    
+    /**
+     * Meotodo Opcion1 para el Combobox de las opciones ordenar, que verifica la seleccion del usuario y elige el metodo ordenar en base a eso.
+     * @param e Objeto de tipo ActionEvent para establecer el evento al usar el button.
+     */
     public void Opcion1(ActionEvent e){
         String choice = ordenarI.getValue();
         if (choice.equals("Precio")){

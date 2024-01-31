@@ -38,7 +38,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="comboO" prefWidth="150.0">
+                  <ComboBox fx:id="comboO" onAction="#seleccion1" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
