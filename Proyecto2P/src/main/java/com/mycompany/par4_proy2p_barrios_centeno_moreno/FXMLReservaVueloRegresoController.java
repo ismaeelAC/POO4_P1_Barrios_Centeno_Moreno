@@ -6,9 +6,7 @@ package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Vuelo;
 import static com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLReservaVueloIdaController.datosV;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import static com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLReservaVueloIdaController.vChoice;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -73,7 +71,7 @@ public class FXMLReservaVueloRegresoController implements Initializable {
         //Se muestran los datos del vuelo en la escena
         
         if(!FXMLReservaVueloIdaController.vRegreso.isEmpty()){
-            MostrarOpciones(FXMLReservaVueloIdaController.vRegreso);
+            mostrarOpciones2(FXMLReservaVueloIdaController.vRegreso);
         }else{
             Label l5 =  new Label();
             vboxR.getChildren().add(l5);
@@ -99,7 +97,12 @@ public class FXMLReservaVueloRegresoController implements Initializable {
     }
     
     
-    public void MostrarOpciones(ArrayList<Vuelo> listaV){
+    
+    /**
+     * Metodo mostrarOpciones2 que crea de forma dinamica los bloques de los vuelos de regreso disponibles para el usuario.
+     * @param listaV ArrayList que tipo Vuelo que contiene todos los vuelos de regreso para el usuario.
+     */
+    public void mostrarOpciones2(ArrayList<Vuelo> listaV){
         for (int i=0; i<listaV.size(); i++){
             final int index = i;
             VBox v1 = new VBox();
@@ -139,18 +142,20 @@ public class FXMLReservaVueloRegresoController implements Initializable {
             VBox.setMargin(l1, new Insets(30,0,0,0));
             VBox.setMargin(l2, new Insets(0,0,30,0));     
 
+            
             v1.setOnMouseClicked(event -> {
-                if (FXMLReservaVueloIdaController.vChoice.contains(listaV.get(index))) {
-                listaV.remove(listaV.get(index));
-            } else {
-                FXMLReservaVueloIdaController.vChoice.clear(); 
-                FXMLReservaVueloIdaController.vChoice.add(listaV.get(index));
+                vChoice.clear(); 
+                vChoice.add(listaV.get(index));
                 
                 //Vuelo seleccionado
-                    System.out.println(FXMLReservaVueloIdaController.vChoice);
-            }
-     
+                try {
+                    App.setRoot("FXMLTarifasRegreso",400,600,null,"Selecciona tu Tarifa de regreso");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             });
+            
+            
             
             v1.getChildren().addAll(l1,h1,l2);
             h1.getChildren().addAll(l3,n1,l4);
@@ -160,16 +165,33 @@ public class FXMLReservaVueloRegresoController implements Initializable {
     }
     
     
+    
+    /**
+     * Metodo OrdenarPrecioR el cual ordena el precio de los vuelos de regreso de menor a mayor.
+     * @param listaV ArrayList que tipo Vuelo que contiene todos los vuelos de regreso para el usuario.
+     */
     public void ordenarPrecioR(ArrayList<Vuelo> listaV){
         Collections.sort(listaV);
-        MostrarOpciones(listaV);
+        mostrarOpciones2(listaV);
     }
     
+    
+    
+    /**
+     * Metodo OrdenarPrecioR el cual ordena la duracion de los vuelos de regreso de menor a mayor.
+     * @param listaV ArrayList que tipo Vuelo que contiene todos los vuelos de regreso para el usuario.
+     */
     public void ordenarDuracionR(ArrayList<Vuelo> listaV){
         Collections.sort(listaV,Vuelo::compareToD);
-        MostrarOpciones(listaV);
+        mostrarOpciones2(listaV);
     }
     
+    
+    
+    /**
+     * Meotodo Opcion1 para el Combobox de las opciones ordenar, que verifica la seleccion del usuario y elige el metodo ordenar en base a eso.
+     * @param e Objeto de tipo ActionEvent para establecer el evento al usar el button.
+     */
     public void Opcion2(ActionEvent e){
         String choice = ordenarR.getValue();
         if (choice.equals("Precio")){
@@ -180,8 +202,11 @@ public class FXMLReservaVueloRegresoController implements Initializable {
             vboxR.getChildren().clear();
             ordenarDuracionR(FXMLReservaVueloIdaController.vRegreso);
         }
-        
     }
+  
+    
+    
+    
     
 } 
     

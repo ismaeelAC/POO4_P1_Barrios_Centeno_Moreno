@@ -101,46 +101,71 @@ public class FXMLVentanaReservaController implements Initializable {
             comboD.getItems().add(city1);
         }
         
-        comboO.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                String choice1 = comboO.getValue();
-                choiceO.add(choice1);
-            }
-        });
+//        comboO.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                String choice1 = comboO.getValue();
+//                choiceO.add(choice1);
+//            }
+//        });
     }
     
-    @FXML
-    private void buscar1(ActionEvent e1) throws IOException{
-        if (comboO.getValue() != null && comboD.getValue() != null){
-          //App.setRoot("FXMLReservaVueloIda",400,600,"style2.css","Reserva tu vuelo");
-          App.setRoot("FXMLVentanaPasajeros",600,400,null,"Datos de los pasajeros");
-        }
-        else{
-            validate.setText("Escoga una opcion");
-            validate.setStyle("-fx-text-fill: red;");
-        }
-        
-    }
     static String choice2;
     static ArrayList<String> choiceO = new ArrayList<>();
     static ArrayList<String> choiceD = new ArrayList<>();
     static int numP;
+
     
     
-//    public void seleccion1(ActionEvent e3){
-//        String choice1 = comboO.getValue();
-//        choiceO.add(choice1);
-//        
-//    }
     
+    /**
+     * Metodo buscar1 para el boton bbuscar que valida la seleccion del usuario y permite abrir la siguiente ventana.
+     * @param e1 Objeto de tipo ActionEvent para establecer el evento al usar el button.
+     * @throws IOException Excepcion que se lanza para el cambio de escena.
+     */
     @FXML
-    public void seleccion2 (ActionEvent e4) throws IOException{
+    private void buscar1(ActionEvent e1) throws IOException{
+        if (comboO.getValue() != null && comboD.getValue() != null){
+          //App.setRoot("FXMLReservaVueloIda",400,600,"style2.css","Reserva tu vuelo");
+          App.setRoot("FXMLReservaVueloIda",400,600,"style.css","Datos de los pasajeros");
+          
+        }else{
+            validate.setText("Escoga una opcion");
+            validate.setStyle("-fx-text-fill: red;");
+        }
+    }
+    
+ 
+    
+    /**
+     * Metodo Seleccion1 el cual guarda la variable de la seleccion del usuario en el comboBox y la agrega a la lista choiceO.
+     * @param e3 Objeto de tipo ActionEvent para establecer el evento al usar el button.
+     */
+    @FXML
+    public void seleccion1(ActionEvent e3){
+        String choice1 = comboO.getValue();
+        choiceO.add(choice1);  
+    }
+    
+    
+    
+    /**
+     * Metodo Seleccion1 e2 cual guarda la variable de la seleccion del usuario en el comboBox y la agrega a la lista choiceD.
+     * @param e4 Objeto de tipo ActionEvent para establecer el evento al usar el button
+     */
+    @FXML
+    public void seleccion2 (ActionEvent e4){
         choice2 = null;
         String choice2 = comboD.getValue();
         choiceD.add(choice2);
     }
     
+    
+    
+    
+    /**
+     * Metodo ObtenerNumero para el objeto Spinner, el cual guarda en una variable statica el numero seleccionado por el usuario en dicho Spinner.
+     */
     @FXML
     public void obtenerNumero(){
          //num.add(bcantidad.getValue());
@@ -149,11 +174,20 @@ public class FXMLVentanaReservaController implements Initializable {
          numP = selected1;
     }
     
+    
+    
+    /**
+     * Metodo obtenerFechaIda para el objeto DatePicker, el cual guarda en una variable statica la seleccion del usuario de la fecha de ida en dicho DatePicker.
+     */
     @FXML
     public void obtenerFechaIda(){
         f1 = dp1.getValue();
     }
     
+    
+    /**
+     * Metodo obtenerFechaRegreso para el objeto DatePicker, el cual guarda en una variable statica la seleccion del usuario de la fecha de regreso en dicho DatePicker.
+     */
     @FXML
     public void obtenerFechaRegreso(){
         f2 = dp2.getValue();

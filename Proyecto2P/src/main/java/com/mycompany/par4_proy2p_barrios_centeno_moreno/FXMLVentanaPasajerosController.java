@@ -56,6 +56,10 @@ public class FXMLVentanaPasajerosController implements Initializable {
         
     }
     
+    /**
+     * Metodo MostrarDatos el cual de forma dinamica crea los bloques de registro de datos de pasajeros en base al numero de pasajeros que ingreso el usuario.
+     * @param i Variable que guarda el numero de pasajeros que ingreso el usuario.
+     */
     public void mostrarDatos(int i){
             Label lb =  new Label();
             vb0.getChildren().add(lb);
@@ -154,7 +158,11 @@ public class FXMLVentanaPasajerosController implements Initializable {
 }
     
     
-    
+    /**
+     * Metodo continuar para el boton continuar que abre la siguiente ventana.
+     * @param e Objeto de tipo ActionEvent para establecer el evento al usar el button.
+     * @throws IOException Excepcion se le lanza para controlar la invocacion de una nueva ventana.
+     */
     public void continuar(ActionEvent e) throws IOException{
         //App.setRoot("FXMLReservaVueloRegreso",400,600,"style2.css","Reserva tu vuelo de regreso");
 
