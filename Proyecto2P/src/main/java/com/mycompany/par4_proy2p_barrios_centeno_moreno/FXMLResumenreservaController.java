@@ -136,7 +136,12 @@ public class FXMLResumenreservaController implements Initializable {
             }
         });
     }    
-     
+    
+  /**
+   * El método crearDetalleVuelo permite construir la escena que mostrará los detalles del fuelo, según el vuelo y la tarifa ingresados en los parámetros.
+   * @param vuelo
+   * @param t 
+   */ 
    public void crearDetalleVuelo(Vuelo vuelo, Tarifa t){
         Stage stage = new Stage();
         

@@ -48,7 +48,7 @@ public class FXMLTarifasRegresoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        ArrayList<Tarifa> tarifas = Tarifa.leerdatostarifa();
         for(Tarifa t : tarifas){
-            idTvueloregreso.getChildren().add(crearSeccionTarifa(t));
+            idTvueloregreso.getChildren().add(crearSeccionTarifa2(t));
         }
         
         VBox coS = (VBox)idTvueloregreso.lookup("#coS");
@@ -94,8 +94,12 @@ public class FXMLTarifasRegresoController implements Initializable {
         
         });
     }
-    
-    public VBox crearSeccionTarifa(Tarifa t){
+    /**
+     * El mpetodo crearSeccionTarifa2 es utilizado para generar la sección de las tarifas, de forma dinámica, que se muestran al usuario.
+     * @param t
+     * @return VBox
+     */
+    public VBox crearSeccionTarifa2(Tarifa t){
       //recursos
       String[] nombreImagenes = {"equipajeMano.png","MILES.png","bodega.png","sentarse.png","calendario.png"};
       String precio= String.valueOf(vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);

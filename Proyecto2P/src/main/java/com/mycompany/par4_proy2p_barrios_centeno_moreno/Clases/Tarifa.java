@@ -59,7 +59,10 @@ public class Tarifa {
     public void setPorcentaje(int porcentaje) {
         this.porcentaje = porcentaje;
     }
-    
+    /**
+     * El método leerdatostarifa permite leer el archivo tarrifas y construir cada uno de los objeto de tipo Tarifa y almacenarlos en un ArrayList correspondiente.
+     * @return 
+     */
     public static ArrayList<Tarifa> leerdatostarifa(){
     ArrayList<Tarifa> Tarifaobjects=new ArrayList<>();
     ArrayList<String> caract=new ArrayList<>();
