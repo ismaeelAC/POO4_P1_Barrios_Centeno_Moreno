@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="897.0" prefWidth="1024.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.PromocionesController">
+<VBox alignment="CENTER" prefHeight="897.0" prefWidth="1024.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLVentanaPromocionesController">
    <children>
       <Label text="Explora Ofertas" textFill="#901941">
          <font>
@@ -29,7 +29,7 @@
          <children>
             <ImageView fitHeight="666.0" fitWidth="951.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagenes/mapa.png" />
+                  <Image url="@../Images/mapa.png" />
                </image>
                <effect>
                   <DropShadow />
