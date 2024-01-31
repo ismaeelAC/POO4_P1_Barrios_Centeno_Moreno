@@ -65,13 +65,13 @@ public class Tarifa {
      */
     public static ArrayList<Tarifa> leerdatostarifa(){
     ArrayList<Tarifa> Tarifaobjects=new ArrayList<>();
-    ArrayList<String> caract=new ArrayList<>();
     try(BufferedReader bf=new BufferedReader(new FileReader(App.pathachiInput+"tarifa.txt"))){
     String primeralinea=bf.readLine();
     String linea;
     while((linea=bf.readLine())!=null){
     String[] datarifa=linea.trim().strip().split(",");
     String[] charac=datarifa[2].split("-");
+    ArrayList<String> caract = new ArrayList<>();
     for(String st: charac){
     caract.add(st);
     }
