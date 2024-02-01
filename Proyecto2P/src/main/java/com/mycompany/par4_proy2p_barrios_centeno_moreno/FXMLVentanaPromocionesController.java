@@ -66,6 +66,7 @@ public class FXMLVentanaPromocionesController implements Initializable {
                     Scene escena = new Scene(root);
                     ventanaPopUp.setScene(escena);
                     ventanaPopUp.show();
+                    Label cerrandoEn = (Label)root.lookup("#lbCerrando");
                     //KeyFrame objeto que permite definir eventos controlados por tiempo
                 
                     KeyFrame k = new KeyFrame(Duration.seconds(1),event->{
@@ -73,7 +74,7 @@ public class FXMLVentanaPromocionesController implements Initializable {
                         //se intento usar Thread.sleep para manejar tiempo pero lastimosamente su uso causa
                         //que el FX Application Thread se bloquee lo cual ocaciona que la ventana este en blanco
                         //y no muestre los nodos
-                        Label cerrandoEn = (Label)root.lookup("#lbCerrando");
+                        
                         Platform.runLater(()->{
                                 cerrandoEn.setText("Cerrando en "+FXMLVentanaPromocionesController.contador+ " segundos...");
                             });
@@ -106,7 +107,11 @@ public class FXMLVentanaPromocionesController implements Initializable {
         hilo.start();
     }
     
-    
+  /**
+ * Lee los datos de promociones desde un archivo de texto y los almacena en la lista de promociones.
+ * 
+ * @throws IOException Si ocurre un error de entrada durante la lectura del archivo.
+ */
     private void leerDatosPromociones(){
         try(BufferedReader br = new BufferedReader(new FileReader("promociones.txt"))){
             br.readLine();
