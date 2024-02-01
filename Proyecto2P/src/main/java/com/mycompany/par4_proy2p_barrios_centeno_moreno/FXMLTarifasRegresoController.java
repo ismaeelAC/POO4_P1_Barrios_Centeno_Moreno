@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -46,18 +48,19 @@ public class FXMLTarifasRegresoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       ArrayList<Tarifa> tarifas = Tarifa.leerdatostarifa();
+     
+        ArrayList<Tarifa> tarifas = Tarifa.leerdatostarifa();
         for(Tarifa t : tarifas){
-            idTvueloregreso.getChildren().add(crearSeccionTarifa2(t));
+            idTvueloregreso.getChildren().add(crearSeccionTarifa(t));
         }
-        
+        System.out.println("Terminand de crear las tarifas");
         VBox coS = (VBox)idTvueloregreso.lookup("#coS");
         coS.setOnMouseClicked(e->{
             for(Tarifa t: tarifas){
                 if("S".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLResumenreserva", 400, 600, null, "Resumen de los Vuelos");
+                        App.setRoot("FXMLResumenreserva", 400, 600,"style.css", "Resumen de la reserva");
                     } catch (IOException ex) {
                     }
                 } 
@@ -71,7 +74,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("M".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLResumenreserva", 400, 600, null, "Resumen de los vuelos");
+                        App.setRoot("FXMLResumenreserva", 400, 600, "style.css", "Resumen de la reserva");
                     } catch (IOException ex) {
                     }
                 } 
@@ -86,7 +89,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("L".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLResumenreserva", 400, 600, null, "Resumen de los Vuelos");
+                        App.setRoot("FXMLResumenreserva", 400, 600, "style.css", "Resumen de la reserva");
                     } catch (IOException ex) {
                     }
                 } 
@@ -94,75 +97,90 @@ public class FXMLTarifasRegresoController implements Initializable {
         
         });
     }
-    /**
-     * El mpetodo crearSeccionTarifa2 es utilizado para generar la sección de las tarifas, de forma dinámica, que se muestran al usuario.
-     * @param t
-     * @return VBox
-     */
-    public VBox crearSeccionTarifa2(Tarifa t){
+    
+    public VBox crearSeccionTarifa(Tarifa t){
       //recursos
       String[] nombreImagenes = {"equipajeMano.png","MILES.png","bodega.png","sentarse.png","calendario.png"};
       String precio= String.valueOf(vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);
       //nodos
       Label lbTitulo = new Label(t.getTipo()+":"+t.getNombre());
       Label lbPrecio = new Label(precio);
+      lbPrecio.setTextFill(Color.WHITE);
         //Labels para las caracteristicas
+      
       ArrayList<Label> caracteristicas= new ArrayList();
       for(String caracteristica : t.getListaofcarac()){
           Label lb = new Label(caracteristica);
+          caracteristicas.add(lb);
       }
         //images para las imagenes
       ArrayList<ImageView> imagenes = new ArrayList<>();
       for(int i = 0; i<t.getListaofcarac().size();i++){
-          Image im = new Image(App.class.getResource("/com.mycompany.Images/"+nombreImagenes[i]).toString());
-          ImageView imagen = new ImageView(im);
-          imagen.setFitHeight(50);
-          imagen.setFitWidth(50);
+          ImageView imagen=null;
+          try(FileInputStream input=new FileInputStream(App.pathachiImage+nombreImagenes[i])){
+          Image im=new Image(input);
+          imagen=new ImageView(im);
+          imagen.setFitHeight(25);
+          imagen.setFitWidth(35);
           imagenes.add(imagen);  
+          }catch(FileNotFoundException e1){
+              System.out.println("No se ha encontrado la imagen");
+          }
+          catch(IOException e){
+              System.out.println(e.getMessage());
+          }
+          
+          
       }
         
       //contenedores
       
       HBox hbContenedorCaracteristicas = new HBox(); 
       hbContenedorCaracteristicas.setAlignment(Pos.CENTER_LEFT);
+      hbContenedorCaracteristicas.setPadding(new Insets(0, 0, 0, 20));
       GridPane gp = new GridPane();
       gp.setVgap(10);
       gp.setHgap(20);
-      hbContenedorCaracteristicas.getChildren().add(gp);
+      
       for(int i = 0;i<t.getListaofcarac().size() ;i++){
           gp.add(imagenes.get(i), 0, i);
           gp.add(caracteristicas.get(i), 1, i);
       }
+      hbContenedorCaracteristicas.getChildren().add(gp);
       HBox hbContenedorPrecio = new HBox();
+      hbContenedorPrecio.setAlignment(Pos.CENTER);
+      hbContenedorPrecio.setPrefWidth(1000);
+      hbContenedorPrecio.setPrefHeight(300);
+      hbContenedorPrecio.getChildren().add(lbPrecio);
       
       //root
       VBox hbContenedorPrincipal = new VBox();
       hbContenedorPrincipal.setAlignment(Pos.CENTER);
       hbContenedorPrincipal.getChildren().add(lbTitulo);
       hbContenedorPrincipal.getChildren().add(hbContenedorCaracteristicas);
-      hbContenedorPrincipal.getChildren().add(lbPrecio);
-      hbContenedorPrincipal.setSpacing(20);
+      hbContenedorPrincipal.getChildren().add(hbContenedorPrecio);
+      hbContenedorPrincipal.setSpacing(10);
       switch(t.getTipo()){
           case "S":
-              hbContenedorPrincipal.setStyle("-fx-background-color: #f99b2a");
+              hbContenedorPrincipal.setStyle("-fx-background-color: #E3EF9E");
+              hbContenedorPrecio.setStyle("-fx-background-color: #2261BB");
               hbContenedorPrincipal.setId("coS");
               break;
           
           case "M":
-              hbContenedorPrincipal.setStyle("-fx-background-color: #F15A3A");
+              hbContenedorPrincipal.setStyle("-fx-background-color: #E3EF9E");
+              hbContenedorPrecio.setStyle("-fx-background-color: #2261BB");
               hbContenedorPrincipal.setId("coM");
               break;
               
           case "L":
-          
-              hbContenedorPrincipal.setStyle("-fx-background-color: #EE3184");
+              hbContenedorPrincipal.setStyle("-fx-background-color: #E3EF9E");
+              hbContenedorPrecio.setStyle("-fx-background-color: #2261BB");
               hbContenedorPrincipal.setId("coL");
               break; 
       }
-      return hbContenedorPrincipal;
-  }  
-     
+      return hbContenedorPrincipal;  
     
-    
+    }
     
 }

@@ -173,13 +173,26 @@ public class FXMLResumenreservaController implements Initializable {
         vBox.getChildren().addAll(lbNumeroVuelo, lbTipoAvion, lbTipoTarifa);
 
         
-        ImageView imageView = new ImageView();
+        ImageView imageView = null;
+        try(FileInputStream input=new FileInputStream(App.pathachiImage+"icon_detalle.png")){
+        Image im=new Image(input);
+        imageView=new ImageView(im);
         imageView.setFitHeight(146.0);
         imageView.setFitWidth(232.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
+        
+        }catch(FileNotFoundException e){
+            System.out.println("No se ha encontrado la imagen");
+        }catch(IOException e2){
+            System.out.println(e2.getMessage());
+        }
+        /*imageView.setFitHeight(146.0);
+        imageView.setFitWidth(232.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
         Image image = new Image(App.pathachiImage+"icon_detalle.png");
-        imageView.setImage(image);
+        imageView.setImage(image);*/
 
         hBox.getChildren().addAll(vBox, imageView);
 

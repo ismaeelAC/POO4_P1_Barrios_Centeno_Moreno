@@ -145,7 +145,7 @@ public class FXMLReservaVueloRegresoController implements Initializable {
 
             
             v1.setOnMouseClicked(event -> {
-                vChoice.clear(); 
+                //vChoice.clear();
                 vChoice.add(listaV.get(index));
                 
                 //Vuelo seleccionado
