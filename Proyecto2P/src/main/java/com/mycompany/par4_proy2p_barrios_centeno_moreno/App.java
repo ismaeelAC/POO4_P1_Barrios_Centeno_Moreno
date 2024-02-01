@@ -21,7 +21,7 @@ public class App extends Application {
     public static String pathachiOutput="src/main/resources/com/mycompany/archivos de salida/";
     public static String pathachiImage="src/main/resources/com/mycompany/Images/";
     public static ArrayList<Cliente> cliente;
-    public static ArrayList<Pago> pagos;
+    public static ArrayList<Pago> pagos = new ArrayList<>();
     private static Stage Primarystage;
 
     @Override
