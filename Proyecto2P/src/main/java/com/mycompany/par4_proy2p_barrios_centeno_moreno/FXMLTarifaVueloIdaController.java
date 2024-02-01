@@ -7,6 +7,8 @@ package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Tarifa;
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Vuelo;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,7 +48,7 @@ public class FXMLTarifaVueloIdaController implements Initializable {
         for(Tarifa t : tarifas){
             coVentana.getChildren().add(crearSeccionTarifa(t));
         }
-        
+        System.out.println("Terminand de crear las tarifas");
         VBox coS = (VBox)coVentana.lookup("#coS");
         coS.setOnMouseClicked(e->{
             for(Tarifa t: tarifas){
@@ -99,18 +101,30 @@ public class FXMLTarifaVueloIdaController implements Initializable {
       Label lbTitulo = new Label(t.getTipo()+":"+t.getNombre());
       Label lbPrecio = new Label(precio);
         //Labels para las caracteristicas
+      
       ArrayList<Label> caracteristicas= new ArrayList();
       for(String caracteristica : t.getListaofcarac()){
           Label lb = new Label(caracteristica);
+          caracteristicas.add(lb);
       }
         //images para las imagenes
       ArrayList<ImageView> imagenes = new ArrayList<>();
       for(int i = 0; i<t.getListaofcarac().size();i++){
-          Image im = new Image(App.class.getResource("/com.mycompany.Images/"+nombreImagenes[i]).toString());
-          ImageView imagen = new ImageView(im);
+          ImageView imagen=null;
+          try(FileInputStream input=new FileInputStream(App.pathachiImage+nombreImagenes[i])){
+          Image im=new Image(input);
+          imagen=new ImageView(im);
           imagen.setFitHeight(50);
           imagen.setFitWidth(50);
           imagenes.add(imagen);  
+          }catch(FileNotFoundException e1){
+              System.out.println("No se ha encontrado la imagen");
+          }
+          catch(IOException e){
+              System.out.println(e.getMessage());
+          }
+          
+          
       }
         
       //contenedores
@@ -120,11 +134,12 @@ public class FXMLTarifaVueloIdaController implements Initializable {
       GridPane gp = new GridPane();
       gp.setVgap(10);
       gp.setHgap(20);
-      hbContenedorCaracteristicas.getChildren().add(gp);
+      
       for(int i = 0;i<t.getListaofcarac().size() ;i++){
           gp.add(imagenes.get(i), 0, i);
           gp.add(caracteristicas.get(i), 1, i);
       }
+      hbContenedorCaracteristicas.getChildren().add(gp);
       HBox hbContenedorPrecio = new HBox();
       
       //root

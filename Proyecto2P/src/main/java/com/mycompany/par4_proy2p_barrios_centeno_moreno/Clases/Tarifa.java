@@ -65,11 +65,11 @@ public class Tarifa {
      */
     public static ArrayList<Tarifa> leerdatostarifa(){
     ArrayList<Tarifa> Tarifaobjects=new ArrayList<>();
-    try(BufferedReader bf=new BufferedReader(new FileReader(App.pathachiInput+"tarifa.txt"))){
+    try(BufferedReader bf=new BufferedReader(new FileReader(App.pathachiInput+"tarifas.txt"))){
     String primeralinea=bf.readLine();
     String linea;
     while((linea=bf.readLine())!=null){
-    String[] datarifa=linea.trim().strip().split(",");
+    String[] datarifa=linea.trim().split(",");
     String[] charac=datarifa[2].split("-");
     ArrayList<String> caract = new ArrayList<>();
     for(String st: charac){

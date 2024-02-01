@@ -5,6 +5,7 @@
 package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Cliente;
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Tarifa;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -45,7 +46,7 @@ public class FXMLVentanadeInicioController implements Initializable {
     @FXML
     private void ingresar(ActionEvent event) {
         App.cliente= new ArrayList<>();
-
+       
         try(BufferedReader bf=new BufferedReader(new FileReader(App.pathachiInput+"clientes.txt"))){
         bf.readLine();
         String linea;
