@@ -96,6 +96,11 @@ public class FXMLTarifaVueloIdaController implements Initializable {
         });
     }
     
+    /**
+     * Metodo el cual crea de forma dinamica los bloques graficos que contiene la informacion de tarifas de ida.
+     * @param t Objeto de tipo Tarifa.
+     * @return 
+     */
     public VBox crearSeccionTarifa(Tarifa t){
       //recursos
       String[] nombreImagenes = {"equipajeMano.png","MILES.png","bodega.png","sentarse.png","calendario.png"};

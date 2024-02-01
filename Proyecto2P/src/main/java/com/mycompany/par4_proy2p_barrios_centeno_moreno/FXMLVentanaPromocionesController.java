@@ -106,6 +106,7 @@ public class FXMLVentanaPromocionesController implements Initializable {
         hilo.start();
     }
     
+    
     private void leerDatosPromociones(){
         try(BufferedReader br = new BufferedReader(new FileReader("promociones.txt"))){
             br.readLine();

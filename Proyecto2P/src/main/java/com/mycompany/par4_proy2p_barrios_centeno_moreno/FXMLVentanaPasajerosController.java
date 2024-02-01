@@ -148,8 +148,7 @@ public class FXMLVentanaPasajerosController implements Initializable {
             h4.setSpacing(15);
             
             vb.getChildren().addAll(hb1, hb2);
-            vb.setStyle("-fx-border-color: cyan; -fx-border-width: 1px; -fx-border-padding: 100px;");
-            vb.setStyle("-fx-border-color: cyan; -fx-border-width: 5px; -fx-border-padding: 100px;");
+            vb.setStyle("-fx-border-color: black; -fx-border-width: 5px; -fx-border-padding: 100px;");
             
             VBox.setMargin(hb1, new Insets(30,0,0,0));
             VBox.setMargin(hb2, new Insets(0,0,30,0));
@@ -166,7 +165,6 @@ public class FXMLVentanaPasajerosController implements Initializable {
      * @throws IOException Excepcion se le lanza para controlar la invocacion de una nueva ventana.
      */
     public void continuar(ActionEvent e) throws IOException{
-        //App.setRoot("FXMLReservaVueloRegreso",400,600,"style2.css","Reserva tu vuelo de regreso");
         App.setRoot("FXMLPago", 501, 875, null, "ReservaPago");
 
     }
