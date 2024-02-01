@@ -20,7 +20,9 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -33,6 +35,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -69,6 +72,9 @@ public class FXMLPagoController implements Initializable,Pagable {
     
     @FXML
     private Button btPagar;
+    
+    @FXML
+    private Button btCancelar;
     
     public static ArrayList<Promocion> promociones = new ArrayList<>();
     
@@ -132,6 +138,20 @@ public class FXMLPagoController implements Initializable,Pagable {
             
             });
         
+        btCancelar.setOnAction(e->{
+            FXMLLoader f = new FXMLLoader(App.class.getResource("FXMLCancelarCompra.fxml"));
+            Stage stage = new Stage();
+            Scene scene=null;
+            try {
+                scene = new Scene(f.load());
+            } catch (IOException ex) {
+            }
+            
+            stage.setScene(scene);
+            stage.show();
+            FXMLCancelarCompraController.stage=stage;
+        });
+        
     }
     
     private boolean verificarCodigo() throws CodigoInvalidoException{
@@ -144,10 +164,11 @@ public class FXMLPagoController implements Initializable,Pagable {
                 siExiste = true;
                 descuento = p.getDescuento();
             }else{
-                CodigoInvalidoException exception = new CodigoInvalidoException("El codigo ingresado no es valido. Borre el codigo invalido o Ingrese uno valido para continuar.");
+                if(coException.getChildren().size()>1){coException.getChildren().remove(1);}
+                CodigoInvalidoException exception = new CodigoInvalidoException("El codigo ingresado no es valido. Borre el codigo invalido o Ingrese uno \n valido para continuar.");
                 Label lbException = new Label(); 
                 lbException.setText(exception.getMessage());
-                lbException.setFont(new Font("Calibri",30));
+                lbException.setFont(new Font("Calibri",12));
                 lbException.setTextFill(Color.RED);
                 coException.getChildren().add(lbException);
                 throw exception;   

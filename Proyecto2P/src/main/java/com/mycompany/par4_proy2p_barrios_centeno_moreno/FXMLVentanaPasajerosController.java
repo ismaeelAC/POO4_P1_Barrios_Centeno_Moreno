@@ -54,6 +54,8 @@ public class FXMLVentanaPasajerosController implements Initializable {
         rootV.add(sp, 0, 1);
         vb0.setStyle("-fx-background-color: white;");
         
+        
+        
     }
     
     /**
@@ -165,6 +167,7 @@ public class FXMLVentanaPasajerosController implements Initializable {
      */
     public void continuar(ActionEvent e) throws IOException{
         //App.setRoot("FXMLReservaVueloRegreso",400,600,"style2.css","Reserva tu vuelo de regreso");
+        App.setRoot("FXMLPago", 501, 875, null, "ReservaPago");
 
     }
 }    

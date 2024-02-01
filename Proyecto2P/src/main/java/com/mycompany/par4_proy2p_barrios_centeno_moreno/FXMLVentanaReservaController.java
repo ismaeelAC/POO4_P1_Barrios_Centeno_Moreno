@@ -72,7 +72,9 @@ public class FXMLVentanaReservaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
         bcantidad.setValueFactory(sp);
+
         comboO.getItems().setAll("Guayaquil","Quito","Cuenca");
         
         ArrayList<Destinos> listaD = new ArrayList<>();

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="875.0" prefWidth="501.0" spacing="50.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLVentanaReservaController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="875.0" prefWidth="501.0" spacing="50.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLPagoController">
    <children>
       <Label text="Pago" textFill="#901941">
          <font>
@@ -71,7 +71,7 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #901941;" text="Cancelar" textFill="WHITE">
+            <Button fx:id="btCancelar" mnemonicParsing="false" style="-fx-background-color: #901941;" text="Cancelar" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
