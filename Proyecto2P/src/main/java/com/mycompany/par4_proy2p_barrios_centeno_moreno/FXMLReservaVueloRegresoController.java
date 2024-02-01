@@ -66,6 +66,7 @@ public class FXMLReservaVueloRegresoController implements Initializable {
         
         tituloR.setFont(new Font("Britannic bold",18));
         tituloR.setTextFill(Color.WHITE);
+        tituloR.setStyle("-fx-effect: dropshadow( three-pass-box , rgba(0, 0, 0, 0.7), 10, 0.50, 0, 0);");
         ordenarR.getItems().setAll("Precio","Duracion");
         
         //Se muestran los datos del vuelo en la escena
@@ -131,14 +132,14 @@ public class FXMLReservaVueloRegresoController implements Initializable {
             n1.setStartX(0);
             n1.setEndX(200);
             n1.setStrokeWidth(2);
-            n1.setStroke(Color.CYAN);
+            n1.setStroke(Color.BLACK);
             
             h1.setAlignment(Pos.CENTER);
             v1.setAlignment(Pos.CENTER);
             v1.setSpacing(20);
             h1.setSpacing(20);
             
-            v1.setStyle("-fx-border-color: cyan; -fx-border-width: 1px; -fx-border-padding: 100px;");
+            v1.setStyle("-fx-border-color: black; -fx-border-width: 3px; -fx-border-padding: 100px;");
             VBox.setMargin(l1, new Insets(30,0,0,0));
             VBox.setMargin(l2, new Insets(0,0,30,0));     
 

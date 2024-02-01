@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -30,6 +31,9 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
+               <effect>
+                  <DropShadow spread="0.5" />
+               </effect>
             </Label>
             <ComboBox fx:id="ordenarI" onAction="#Opcion1" prefWidth="150.0">
                <HBox.margin>

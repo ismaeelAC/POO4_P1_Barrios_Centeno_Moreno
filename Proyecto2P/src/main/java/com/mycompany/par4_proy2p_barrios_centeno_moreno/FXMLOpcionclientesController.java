@@ -42,13 +42,13 @@ public class FXMLOpcionclientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
           ltitulo.setText("¡Hola " + App.cliente.get(0).getNombre()+ "!");
-          ltitulo.setFont(new Font("Britannic bold",45));
+          ltitulo.setFont(new Font("Britannic bold",55));
           ltitulo.setTextFill(Color.WHITE);
           
           //conexion a la ventana FXMLVentanaPromociones
           b2.setOnAction(e->{
               try {
-                  App.setRoot("FXMLVentanaPromociones" ,1024,768,null,"MapaPromociones");
+                  App.setRoot("FXMLVentanaPromociones" ,1024,768,"style2.css","MapaPromociones");
               } catch (IOException ex) {
                   ex.printStackTrace();
               }
