@@ -37,6 +37,9 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Label>
                   <ComboBox fx:id="comboO" onAction="#seleccion1" prefWidth="150.0">
                      <HBox.margin>
@@ -60,6 +63,9 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Label>
                   <DatePicker fx:id="dp1" onAction="#obtenerFechaIda" prefWidth="150.0">
                      <HBox.margin>
@@ -84,6 +90,9 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Label>
                   <ComboBox fx:id="comboD" onAction="#seleccion2" prefWidth="150.0">
                      <HBox.margin>
@@ -104,6 +113,9 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Label>
                   <DatePicker fx:id="dp2" onAction="#obtenerFechaRegreso" prefWidth="150.0">
                      <HBox.margin>
@@ -134,6 +146,9 @@
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <HBox prefHeight="85.0" prefWidth="602.0">
                <children>
@@ -144,6 +159,9 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Label>
                   <Spinner fx:id="bcantidad" editable="true" onMouseClicked="#obtenerNumero">
                      <HBox.margin>

@@ -73,6 +73,7 @@ public class FXMLReservaVueloIdaController implements Initializable {
         }
         tituloI.setFont(new Font("Britannic bold",18));
         tituloI.setTextFill(Color.WHITE);
+        tituloI.setStyle("-fx-effect: dropshadow( three-pass-box , rgba(0, 0, 0, 0.7), 10, 0.50, 0, 0);");
         ordenarI.getItems().setAll("Precio","Duracion");
         
         
@@ -142,7 +143,7 @@ public class FXMLReservaVueloIdaController implements Initializable {
         rootI.add(sp, 0, 2);
         vboxI.setStyle("-fx-background-color: white;");
         
-        
+       
     }
     
     /**
@@ -178,26 +179,26 @@ public class FXMLReservaVueloIdaController implements Initializable {
             n1.setStartX(0);
             n1.setEndX(200);
             n1.setStrokeWidth(2);
-            n1.setStroke(Color.CYAN);
+            n1.setStroke(Color.BLACK);
             
             h1.setAlignment(Pos.CENTER);
             v1.setAlignment(Pos.CENTER);
             v1.setSpacing(20);
             h1.setSpacing(20);
             
-            v1.setStyle("-fx-border-color: cyan; -fx-border-width: 1px; -fx-border-padding: 100px;");
+            v1.setStyle("-fx-border-color: black; -fx-border-width: 3px; -fx-border-padding: 100px;");
             VBox.setMargin(l1, new Insets(30,0,0,0));
             VBox.setMargin(l2, new Insets(0,0,30,0));     
 
             
             
             v1.setOnMouseClicked(event -> {
-                vChoice.clear(); 
+                 
                 vChoice.add(listaV.get(index));
                 
                 //Vuelo seleccionado
                 try {
-                    App.setRoot("FXMLTarifaVueloIda",400,600,null,"Selecciona tu Tarifa");
+                    App.setRoot("FXMLTarifaVueloIda",400,800,null,"Selecciona tu Tarifa");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

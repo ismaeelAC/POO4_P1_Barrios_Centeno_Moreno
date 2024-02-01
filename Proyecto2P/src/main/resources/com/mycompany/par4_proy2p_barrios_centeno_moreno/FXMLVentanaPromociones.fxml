@@ -10,12 +10,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="897.0" prefWidth="1024.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLVentanaPromocionesController">
+<VBox alignment="CENTER" prefHeight="897.0" prefWidth="1024.0" spacing="30.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLVentanaPromocionesController">
    <children>
-      <Label text="Explora Ofertas" textFill="#901941">
+      <Label text="Explora Ofertas" textFill="WHITE">
          <font>
-            <Font name="Calibri Bold" size="30.0" />
+            <Font name="Calibri Bold" size="47.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Label>
       <Label text="De click sobre el pais que interesa y aprovecha las promociones disponibles">
          <font>

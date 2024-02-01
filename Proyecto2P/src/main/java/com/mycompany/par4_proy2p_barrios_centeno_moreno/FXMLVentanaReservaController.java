@@ -127,7 +127,7 @@ public class FXMLVentanaReservaController implements Initializable {
     private void buscar1(ActionEvent e1) throws IOException{
         if (comboO.getValue() != null && comboD.getValue() != null){
           //App.setRoot("FXMLReservaVueloIda",400,600,"style2.css","Reserva tu vuelo");
-          App.setRoot("FXMLReservaVueloIda",400,600,"style.css","Datos de los pasajeros");
+          App.setRoot("FXMLReservaVueloIda",400,600,"style.css","Reserva tu vuelo");
           
         }else{
             validate.setText("Escoga una opcion");
