@@ -60,7 +60,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("S".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLResumenreserva", 400, 600,"style.css", "Resumen de la reserva");
+                        App.setRoot("FXMLResumenreserva", 600, 800,"style.css", "Resumen de la reserva");
                     } catch (IOException ex) {
                     }
                 } 
@@ -74,7 +74,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("M".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLResumenreserva", 400, 600, "style.css", "Resumen de la reserva");
+                        App.setRoot("FXMLResumenreserva", 600, 800, "style.css", "Resumen de la reserva");
                     } catch (IOException ex) {
                     }
                 } 
@@ -89,7 +89,7 @@ public class FXMLTarifasRegresoController implements Initializable {
                 if("L".equals(t.getTipo())){
                     try {
                         tarifaSeleccionada = t;
-                        App.setRoot("FXMLResumenreserva", 400, 600, "style.css", "Resumen de la reserva");
+                        App.setRoot("FXMLResumenreserva", 600, 400, "style.css", "Resumen de la reserva");
                     } catch (IOException ex) {
                     }
                 } 

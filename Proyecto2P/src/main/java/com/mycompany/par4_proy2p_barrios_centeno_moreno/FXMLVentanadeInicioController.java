@@ -61,7 +61,7 @@ public class FXMLVentanadeInicioController implements Initializable {
         }       
      }
         if(acceso){
-        App.setRoot("FXMLOpcionclientes",600,400,"style3.css","VentanasOpciones");
+        App.setRoot("FXMLVentanaReserva",600,400,"style.css","VentanasOpciones");
         }
         else{
         confirmacceso.setText("Por favor, ingrese correctamente sus datos");

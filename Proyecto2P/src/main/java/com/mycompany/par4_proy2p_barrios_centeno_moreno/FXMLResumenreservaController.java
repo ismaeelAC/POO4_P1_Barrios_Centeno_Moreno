@@ -130,7 +130,7 @@ public class FXMLResumenreservaController implements Initializable {
         
         btContinuar.setOnAction(e->{
             try {
-                App.setRoot("FXMLVentanaPasajeros",300,200,null,"Datos personales");
+                App.setRoot("FXMLVentanaPasajeros",600,400,"style2.css","Datos personales");
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }

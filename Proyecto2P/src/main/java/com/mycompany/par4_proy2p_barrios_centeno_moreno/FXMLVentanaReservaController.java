@@ -81,7 +81,7 @@ public class FXMLVentanaReservaController implements Initializable {
         
         
         
-        try(BufferedReader bf = new BufferedReader(new FileReader("destinos.txt"))){
+        try(BufferedReader bf = new BufferedReader(new FileReader(App.pathachiInput + "destinos.txt"))){
             String line;
             while((line = bf.readLine()) != null){
                 String datosD[] = line.split(",");
@@ -102,14 +102,6 @@ public class FXMLVentanaReservaController implements Initializable {
             String city1 = d1.getCiudad();
             comboD.getItems().add(city1);
         }
-        
-//        comboO.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                String choice1 = comboO.getValue();
-//                choiceO.add(choice1);
-//            }
-//        });
     }
     
     static String choice2;

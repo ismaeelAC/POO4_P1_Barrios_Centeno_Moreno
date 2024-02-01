@@ -36,7 +36,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>com.mycompany.par4_proy2p_barrios_centeno_moreno.App</mainClass>
+                    <mainClass>com.mycompany.par4_proy2p_barrios_centeno_moreno.Starter</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -78,6 +78,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>com.mycompany.par4_proy2p_barrios_centeno_moreno.Starter</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 </project>
