@@ -6,7 +6,7 @@
 
 <VBox fx:id="coVentana" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1116.0" prefWidth="586.0" spacing="30.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.par4_proy2p_barrios_centeno_moreno.FXMLTarifaVueloIdaController">
    <children>
-      <Label text="Selecciona tu tarifa" textFill="#901940">
+      <Label text="Selecciona tu tarifa" textFill="#5c8b99e6">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>

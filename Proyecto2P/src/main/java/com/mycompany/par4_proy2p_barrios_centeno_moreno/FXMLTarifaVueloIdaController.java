@@ -15,13 +15,16 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import static javafx.print.PrintColor.COLOR;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -100,6 +103,7 @@ public class FXMLTarifaVueloIdaController implements Initializable {
       //nodos
       Label lbTitulo = new Label(t.getTipo()+":"+t.getNombre());
       Label lbPrecio = new Label(precio);
+      lbPrecio.setTextFill(Color.WHITE);
         //Labels para las caracteristicas
       
       ArrayList<Label> caracteristicas= new ArrayList();
@@ -114,8 +118,8 @@ public class FXMLTarifaVueloIdaController implements Initializable {
           try(FileInputStream input=new FileInputStream(App.pathachiImage+nombreImagenes[i])){
           Image im=new Image(input);
           imagen=new ImageView(im);
-          imagen.setFitHeight(50);
-          imagen.setFitWidth(50);
+          imagen.setFitHeight(25);
+          imagen.setFitWidth(35);
           imagenes.add(imagen);  
           }catch(FileNotFoundException e1){
               System.out.println("No se ha encontrado la imagen");
@@ -131,6 +135,7 @@ public class FXMLTarifaVueloIdaController implements Initializable {
       
       HBox hbContenedorCaracteristicas = new HBox(); 
       hbContenedorCaracteristicas.setAlignment(Pos.CENTER_LEFT);
+      hbContenedorCaracteristicas.setPadding(new Insets(0, 0, 0, 20));
       GridPane gp = new GridPane();
       gp.setVgap(10);
       gp.setHgap(20);
@@ -141,28 +146,34 @@ public class FXMLTarifaVueloIdaController implements Initializable {
       }
       hbContenedorCaracteristicas.getChildren().add(gp);
       HBox hbContenedorPrecio = new HBox();
+      hbContenedorPrecio.setAlignment(Pos.CENTER);
+      hbContenedorPrecio.setPrefWidth(1000);
+      hbContenedorPrecio.setPrefHeight(300);
+      hbContenedorPrecio.getChildren().add(lbPrecio);
       
       //root
       VBox hbContenedorPrincipal = new VBox();
       hbContenedorPrincipal.setAlignment(Pos.CENTER);
       hbContenedorPrincipal.getChildren().add(lbTitulo);
       hbContenedorPrincipal.getChildren().add(hbContenedorCaracteristicas);
-      hbContenedorPrincipal.getChildren().add(lbPrecio);
-      hbContenedorPrincipal.setSpacing(20);
+      hbContenedorPrincipal.getChildren().add(hbContenedorPrecio);
+      hbContenedorPrincipal.setSpacing(10);
       switch(t.getTipo()){
           case "S":
-              hbContenedorPrincipal.setStyle("-fx-background-color: #f99b2a");
+              hbContenedorPrincipal.setStyle("-fx-background-color: #E3EF9E");
+              hbContenedorPrecio.setStyle("-fx-background-color: #2261BB");
               hbContenedorPrincipal.setId("coS");
               break;
           
           case "M":
-              hbContenedorPrincipal.setStyle("-fx-background-color: #F15A3A");
+              hbContenedorPrincipal.setStyle("-fx-background-color: #E3EF9E");
+              hbContenedorPrecio.setStyle("-fx-background-color: #2261BB");
               hbContenedorPrincipal.setId("coM");
               break;
               
           case "L":
-          
-              hbContenedorPrincipal.setStyle("-fx-background-color: #EE3184");
+              hbContenedorPrincipal.setStyle("-fx-background-color: #E3EF9E");
+              hbContenedorPrecio.setStyle("-fx-background-color: #2261BB");
               hbContenedorPrincipal.setId("coL");
               break; 
       }
