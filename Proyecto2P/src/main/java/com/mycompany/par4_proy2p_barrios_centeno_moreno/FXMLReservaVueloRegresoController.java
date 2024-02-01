@@ -150,7 +150,7 @@ public class FXMLReservaVueloRegresoController implements Initializable {
                 
                 //Vuelo seleccionado
                 try {
-                    App.setRoot("FXMLTarifasRegreso",400,600,null,"Selecciona tu Tarifa de regreso");
+                    App.setRoot("FXMLTarifasRegreso",400,800,null,"Selecciona tu Tarifa de regreso");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

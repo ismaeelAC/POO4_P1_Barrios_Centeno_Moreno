@@ -78,7 +78,7 @@ public class FXMLReservaVueloIdaController implements Initializable {
         
         
         
-        try(BufferedReader br = new BufferedReader(new FileReader("vuelos.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader(App.pathachiInput + "vuelos.txt"))){
             String line1;
             br.readLine();
             while((line1=br.readLine())!= null){
@@ -195,7 +195,6 @@ public class FXMLReservaVueloIdaController implements Initializable {
             v1.setOnMouseClicked(event -> {
                  
                 vChoice.add(listaV.get(index));
-                
                 //Vuelo seleccionado
                 try {
                     App.setRoot("FXMLTarifaVueloIda",400,800,null,"Selecciona tu Tarifa");
