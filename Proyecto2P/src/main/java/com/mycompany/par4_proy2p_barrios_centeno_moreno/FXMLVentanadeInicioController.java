@@ -14,10 +14,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -62,6 +65,17 @@ public class FXMLVentanadeInicioController implements Initializable {
      }
         if(acceso){
         App.setRoot("FXMLVentanaReserva",600,400,"style.css","VentanasOpciones");
+        FXMLLoader f = new FXMLLoader(App.class.getResource("FXMLReservasCreadas.fxml"));
+            Stage stage = new Stage();
+            Scene scene=null;
+            try {
+                scene = new Scene(f.load());
+            } catch (IOException ex) {
+            }
+            
+            stage.setScene(scene);
+            stage.show();
+            FXMLReservasCreadasController.stage=stage;
         }
         else{
         confirmacceso.setText("Por favor, ingrese correctamente sus datos");

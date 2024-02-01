@@ -19,6 +19,12 @@ import javafx.stage.Stage;
  */
 public class Popup {
     
+    /**
+     * Metodo que crea de forma dinamica la informacion de compra
+     * @param promo Objeto Promo
+     * @param stage Objeto Stage
+     * @return 
+     */
     public HBox createPopup(Promocion promo,Stage stage) {
         HBox root = new HBox();
         root.setAlignment(javafx.geometry.Pos.BOTTOM_LEFT);

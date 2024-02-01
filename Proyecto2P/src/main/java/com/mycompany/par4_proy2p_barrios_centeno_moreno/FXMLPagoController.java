@@ -156,6 +156,11 @@ public class FXMLPagoController implements Initializable,Pagable {
         
     }
     
+     /**
+     * Metodo Verificar codigo que recorre valida si el codigo pertenece al txt de codigos.
+     * @return Devuelve un valor de true o false.
+     * @throws CodigoInvalidoException Excepcion en caso de que el codigo no sea correct.
+     */
     private boolean verificarCodigo() throws CodigoInvalidoException{
         String codigo = tfCodigo.getText();
         boolean siExiste = false;
@@ -180,6 +185,9 @@ public class FXMLPagoController implements Initializable,Pagable {
         
     }
     
+    /**
+    * Metodo LeerDatosPromociones que abre un achivo txt, lee su elementos guardandolos en variables para crear el objeto promocion.
+    */
     private void leerDatosPromociones(){
         try(BufferedReader br = new BufferedReader(new FileReader("promociones.txt"))){
             br.readLine();
@@ -191,7 +199,11 @@ public class FXMLPagoController implements Initializable,Pagable {
             }
         }catch(IOException e){}
     }
-            
+    
+    /**
+    * Metodo Para crear el bloque grafico de ingreso de informacion de las tarjetas.
+    * @return Vbox con todo el bloque grafico.
+    */
     private VBox crearSeccionTarjeta(){
         // Crear VBox
         VBox coTarjeta = new VBox();
@@ -286,6 +298,10 @@ public class FXMLPagoController implements Initializable,Pagable {
         return coTarjeta;
     }
     
+    /**
+    * Metodo el cual crea un bloque grafico para pagos en efectivo.
+    * @return Label Recordatorio de pago.
+    */
     private Label crearSeccionEfectivo(){
         // Crear un Label con el texto y las propiedades dadas
         Label label = new Label("Estimado cliente, tiene 24 horas para acercarse a realizar el pago. De lo contrario, la reserva se anulará.");
@@ -300,6 +316,13 @@ public class FXMLPagoController implements Initializable,Pagable {
         return label;
     }
     
+    
+    /**
+    * Meotdo el cual crea un Resumen general sobre el la compra.
+    * @param ida Vuelo seleccionado de ida.
+    * @param retorno Vuelo seleccionado de regreso.
+    * @param promo Promocion seleccionada.
+    */
     private void crearResumen(Vuelo ida, Vuelo retorno,Promocion promo){
         Label lbDescuento = new Label();
         Label lbTotal = new Label();
@@ -320,6 +343,9 @@ public class FXMLPagoController implements Initializable,Pagable {
         
     }
 
+    /**
+    * Metodo el cual lee el txt de promociones y va guardando las datos en variables.
+    */
     private void leerDatosDestinos(){
         try(BufferedReader br = new BufferedReader(new FileReader("promociones.txt"))){
             br.readLine();
@@ -332,6 +358,10 @@ public class FXMLPagoController implements Initializable,Pagable {
         }catch(IOException e){}
     }
     
+    /**
+    * Metodo el cual genera un codigo aleatorio.
+    * @return Devuelve un string que contiene dicho codigo.
+    */
     private String generarCodigoReserva(){
         String codigoReserva="";
         for(int i = 0; i<6; i++){
@@ -341,7 +371,11 @@ public class FXMLPagoController implements Initializable,Pagable {
         
         return codigoReserva;
     }
-
+    
+    /**
+    * Evento cuando el usuario da clic en pagar, valida si es una tarjeta o es en efectivo y da paso a la siguiente ventana.
+    * @throws DatosIncompletosException 
+    */
     private void eventoBotonPagar() throws DatosIncompletosException {
         if(tfCodigo.getText().equals("") || codigoValido){
                 if(esTarjeta){
@@ -371,6 +405,7 @@ public class FXMLPagoController implements Initializable,Pagable {
                 }else{
                     
                     String codigoReserva = generarCodigoReserva();
+                    FXMLReservasCreadasController.codigo1 = codigoReserva;
                     numeroReserva= codigoReserva;
                     
                 }
@@ -388,6 +423,15 @@ public class FXMLPagoController implements Initializable,Pagable {
             }
         
     }
+    /**
+    * Metodo sobreescrito generarTransaccion que crear un objeto de tipo vuelo.
+    * @param idPago
+    * @param codigoReserva
+    * @param totalReserva
+    * @param descuento
+    * @param formaPago
+    * @param totalPagar 
+    */
     @Override
     public void generarTransaccion(String idPago,String codigoReserva,double totalReserva,double descuento,char formaPago,double totalPagar) {
         Pago pago = new Pago(idPago,codigoReserva,totalReserva,descuento,formaPago,totalPagar);

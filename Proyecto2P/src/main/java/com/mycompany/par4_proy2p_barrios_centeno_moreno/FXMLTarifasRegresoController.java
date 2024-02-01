@@ -97,7 +97,11 @@ public class FXMLTarifasRegresoController implements Initializable {
         
         });
     }
-    
+    /**
+     * Metodo el cual crea de forma dinamica los bloques graficos que contiene la informacion de tarifas de regreso.
+     * @param t Objeto Tarifa
+     * @return 
+     */
     public VBox crearSeccionTarifa(Tarifa t){
       //recursos
       String[] nombreImagenes = {"equipajeMano.png","MILES.png","bodega.png","sentarse.png","calendario.png"};
