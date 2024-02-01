@@ -1,6 +1,7 @@
 package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Cliente;
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Pago;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +21,7 @@ public class App extends Application {
     public static String pathachiOutput="src/main/resources/com/mycompany/archivos de salida/";
     public static String pathachiImage="src/main/resources/com/mycompany/Images/";
     public static ArrayList<Cliente> cliente;
+    public static ArrayList<Pago> pagos;
     private static Stage Primarystage;
 
     @Override

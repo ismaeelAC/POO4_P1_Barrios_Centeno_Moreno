@@ -40,16 +40,20 @@
          </children>
       </VBox>
       <VBox fx:id="coTipoPago" alignment="CENTER_LEFT" minHeight="-Infinity" />
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <VBox fx:id="coException" alignment="CENTER">
          <children>
-            <Label text="Codigo promocional:">
-               <font>
-                  <Font name="Calibri" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfCodigo" />
+            <HBox spacing="10.0">
+               <children>
+                  <Label text="Codigo promocional:">
+                     <font>
+                        <Font name="Calibri" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCodigo" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
       <VBox alignment="CENTER_RIGHT" spacing="10.0">
          <children>
             <Label fx:id="lbSubtotal" text="Resumen de compra:">
@@ -62,7 +66,7 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #901941;" text="Pagar" textFill="WHITE">
+            <Button fx:id="btPagar" mnemonicParsing="false" style="-fx-background-color: #901941;" text="Pagar" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>

@@ -5,17 +5,23 @@
 package com.mycompany.par4_proy2p_barrios_centeno_moreno;
 
 
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.CodigoInvalidoException;
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.DatosIncompletosException;
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Pagable;
+import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Pago;
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Promocion;
 import com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases.Vuelo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -25,6 +31,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
@@ -33,7 +40,7 @@ import javafx.util.Duration;
  *
  * @author grilsemo
  */
-public class FXMLPagoController implements Initializable {
+public class FXMLPagoController implements Initializable,Pagable {
 
     /**
      * Initializes the controller class.
@@ -57,11 +64,30 @@ public class FXMLPagoController implements Initializable {
     @FXML
     private TextField tfCodigo;
     
+    @FXML
+    private VBox coException;
+    
+    @FXML
+    private Button btPagar;
+    
+    public static ArrayList<Promocion> promociones = new ArrayList<>();
+    
     private HashMap<String,String> destinos = new HashMap<>();
+    
+    Vuelo vueloIda = FXMLReservaVueloIdaController.vChoice.get(0); 
+    Vuelo vueloRetorno = FXMLReservaVueloIdaController.vChoice.get(1);
+    double descuento = 0;
+    boolean codigoValido;
+    boolean esTarjeta;
+    double totalPagar;
+    static String numeroReserva;
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Vuelo vueloIda=null; // necesito el objeto tipo Vuelo de la ruta de ida
-        Vuelo vueloRetorno=null; //necesito el objeto tipo Vuelo de la ruta de retorno
+        leerDatosPromociones();
+        
+         
         leerDatosDestinos();
         
         lbSubtotal.setText("Resumen de compra: "+String.valueOf(vueloIda.getPrecio()+vueloRetorno.getPrecio()));
@@ -69,25 +95,20 @@ public class FXMLPagoController implements Initializable {
         rbTarjeta.setOnAction(e->{
             coTipoPago.getChildren().clear();
             coTipoPago.getChildren().add(crearSeccionTarjeta());
+            esTarjeta = true;
             
         });
         
         rbEfectivo.setOnAction(e->{
             coTipoPago.getChildren().clear();
             coTipoPago.getChildren().add(crearSeccionEfectivo());
+            esTarjeta = false;
         });
         
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(event -> {
-            boolean promoEncontrada=false;
-            for(Promocion p: FXMLVentanaPromocionesController.promociones){
-                if(tfCodigo.getText().equals(p.getCodigo()) && vueloIda.getDestino().equals(destinos.get(p.getPais()))){
-                    crearResumen(vueloIda,vueloRetorno,p);
-                    promoEncontrada = true;
-                    break;
-                }
-            }
-            if(!promoEncontrada){
+            codigoValido = verificarCodigo();
+            if(!codigoValido){
                 crearResumen(vueloIda,vueloRetorno,null);
             }
             
@@ -98,8 +119,56 @@ public class FXMLPagoController implements Initializable {
             pause.playFromStart();
         });
         
+        btPagar.setOnAction(e->{
+            try {
+                eventoBotonPagar();
+            } catch (DatosIncompletosException ex) {
+                Label lbException = new Label(ex.getMessage());
+                lbException.setFont(new Font("Calibri",30));
+                lbException.setTextFill(Color.RED);
+                VBox coTarjeta = (VBox)coTipoPago.lookup("#coTarjeta");
+                coTarjeta.getChildren().add(lbException);
+            }
+            
+            });
+        
     }
     
+    private boolean verificarCodigo() throws CodigoInvalidoException{
+        String codigo = tfCodigo.getText();
+        boolean siExiste = false;
+        
+        for(Promocion p: promociones){
+            if(p.getCodigo().equals(codigo) && vueloIda.getDestino().equals(destinos.get(p.getPais())) ){
+                crearResumen(vueloIda,vueloRetorno,p);
+                siExiste = true;
+                descuento = p.getDescuento();
+            }else{
+                CodigoInvalidoException exception = new CodigoInvalidoException("El codigo ingresado no es valido. Borre el codigo invalido o Ingrese uno valido para continuar.");
+                Label lbException = new Label(); 
+                lbException.setText(exception.getMessage());
+                lbException.setFont(new Font("Calibri",30));
+                lbException.setTextFill(Color.RED);
+                coException.getChildren().add(lbException);
+                throw exception;   
+            }
+        }
+        return siExiste;
+        
+    }
+    
+    private void leerDatosPromociones(){
+        try(BufferedReader br = new BufferedReader(new FileReader("promociones.txt"))){
+            br.readLine();
+            String linea;
+            
+            while((linea = br.readLine())!=null){
+                String[] datos = linea.trim().split(",");
+                promociones.add(new Promocion(Double.parseDouble(datos[0]),Double.parseDouble(datos[1]),datos[3],datos[2],Double.parseDouble(datos[4])));
+            }
+        }catch(IOException e){}
+    }
+            
     private VBox crearSeccionTarjeta(){
         // Crear VBox
         VBox coTarjeta = new VBox();
@@ -169,13 +238,16 @@ public class FXMLPagoController implements Initializable {
         GridPane.setRowIndex(labelCVV, 2);
 
         TextField tfNumero = new TextField();
+        tfNumero.setId("tfNumero");
         GridPane.setColumnIndex(tfNumero, 1);
 
         DatePicker dpExpiracion = new DatePicker();
+        dpExpiracion.setId("dpExpiracion");
         GridPane.setColumnIndex(dpExpiracion, 1);
         GridPane.setRowIndex(dpExpiracion, 1);
 
         TextField tfCVV = new TextField();
+        tfCVV.setId("tfCVV");
         GridPane.setColumnIndex(tfCVV, 1);
         GridPane.setRowIndex(tfCVV, 2);
 
@@ -209,12 +281,16 @@ public class FXMLPagoController implements Initializable {
         Label lbDescuento = new Label();
         Label lbTotal = new Label();
         if(promo!=null){
+            double totalApagar = (ida.getPrecio()+retorno.getPrecio())*(1-(promo.getDescuento()/100));
             lbDescuento.setText("Descuento: "+promo.getDescuento()+"%");
-            lbTotal.setText(String.valueOf((ida.getPrecio()+retorno.getPrecio())*(1-(promo.getDescuento()/100))));
+            lbTotal.setText(String.valueOf(totalApagar));
+            totalPagar = totalApagar;
         }
         else {
+            double totalApagar = ida.getPrecio()+retorno.getPrecio();
             lbDescuento.setText("Descuento: 0%");
-            lbTotal.setText(String.valueOf(ida.getPrecio()+retorno.getPrecio()));
+            lbTotal.setText(String.valueOf(totalApagar));
+            totalPagar = totalApagar;
         }
         coResumen.getChildren().addAll(lbDescuento,lbTotal);
         
@@ -231,6 +307,55 @@ public class FXMLPagoController implements Initializable {
                 destinos.put(datos[1],datos[0]);
             }
         }catch(IOException e){}
+    }
+    
+    private String generarCodigoReserva(){
+        String codigoReserva=null;
+        for(int i = 0; i<6; i++){
+            int numAleatorio = (int)(Math.random() * (90 - 65 + 1) + 65);
+            codigoReserva = codigoReserva + (char)numAleatorio;
+        }
+        
+        return codigoReserva;
+    }
+
+    private void eventoBotonPagar() throws DatosIncompletosException {
+        if(tfCodigo.getText()==null || codigoValido){
+                if(esTarjeta){
+                    TextField tfNumero = (TextField)coTipoPago.lookup("#tfNumero");
+                    TextField tfCVV = (TextField)coTipoPago.lookup("#tfCVV");
+                    DatePicker dpExpiracion = (DatePicker)coTipoPago.lookup("#dpExpiracion");
+                    
+                    boolean estaLleno = (tfNumero.getText()!=null) && (tfCVV.getText()!=null) && (dpExpiracion.getValue()!=null);
+                    
+                    if(estaLleno){
+                        String idPago = String.valueOf((int) (Math.random() * 900000) + 100000);
+                        String codigoReserva = generarCodigoReserva();
+                        double totalReserva = vueloIda.getPrecio()+vueloRetorno.getPrecio();
+                        char formaPago;
+                        if(esTarjeta){
+                            formaPago='C';
+                        }else{
+                            formaPago='E';
+                        }
+                         
+                        generarTransaccion(idPago,codigoReserva,totalReserva,descuento,formaPago,totalPagar);
+                    }else{
+                        throw new DatosIncompletosException("Los datos de la tarjeta de credito estan incompletos");
+                    }
+                    
+                }
+            try {
+                App.setRoot("FXMLConfirmacionCompra", 600, 600, null, "ConfirmacionCompra");
+            } catch (IOException ex) {
+            }
+            }
+        
+    }
+    @Override
+    public void generarTransaccion(String idPago,String codigoReserva,double totalReserva,double descuento,char formaPago,double totalPagar) {
+        Pago pago = new Pago(idPago,codigoReserva,totalReserva,descuento,formaPago,totalPagar);
+        App.pagos.add(pago);
     }
     
 }
