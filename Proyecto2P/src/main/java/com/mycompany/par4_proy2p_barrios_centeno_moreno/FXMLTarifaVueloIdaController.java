@@ -44,6 +44,8 @@ public class FXMLTarifaVueloIdaController implements Initializable {
     
     public static Tarifa tarifaSeleccionada;
     
+    public static double precio;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -104,10 +106,10 @@ public class FXMLTarifaVueloIdaController implements Initializable {
     public VBox crearSeccionTarifa(Tarifa t){
       //recursos
       String[] nombreImagenes = {"equipajeMano.png","MILES.png","bodega.png","sentarse.png","calendario.png"};
-      String precio= String.valueOf(vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);
+      precio=(vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);
       //nodos
       Label lbTitulo = new Label(t.getTipo()+":"+t.getNombre());
-      Label lbPrecio = new Label(precio);
+      Label lbPrecio = new Label(String.valueOf(precio));
       lbPrecio.setTextFill(Color.WHITE);
         //Labels para las caracteristicas
       

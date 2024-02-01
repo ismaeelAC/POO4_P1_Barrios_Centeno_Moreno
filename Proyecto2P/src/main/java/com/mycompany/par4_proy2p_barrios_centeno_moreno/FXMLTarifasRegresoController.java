@@ -43,6 +43,7 @@ public class FXMLTarifasRegresoController implements Initializable {
     public static Vuelo vueloSeleccionado=FXMLReservaVueloIdaController.vChoice.get(1);
     
     public static Tarifa tarifaSeleccionada;
+    public static double precio;
     /**
      * Initializes the controller class.
      */
@@ -105,10 +106,10 @@ public class FXMLTarifasRegresoController implements Initializable {
     public VBox crearSeccionTarifa(Tarifa t){
       //recursos
       String[] nombreImagenes = {"equipajeMano.png","MILES.png","bodega.png","sentarse.png","calendario.png"};
-      String precio= String.valueOf(vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);
+      precio= (vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);
       //nodos
       Label lbTitulo = new Label(t.getTipo()+":"+t.getNombre());
-      Label lbPrecio = new Label(precio);
+      Label lbPrecio = new Label(String.valueOf(precio));
       lbPrecio.setTextFill(Color.WHITE);
         //Labels para las caracteristicas
       

@@ -1,0 +1,1 @@
+ZKRFFT,1234567890,Guayaquil,Toronto,2024-02-13,2024-02-15,3,Airbus A100,Airbus A100,M,L

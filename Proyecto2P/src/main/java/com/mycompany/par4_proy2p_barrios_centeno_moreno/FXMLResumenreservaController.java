@@ -91,8 +91,8 @@ public class FXMLResumenreservaController implements Initializable {
         String duracionIda = String.valueOf(vueloIda.getDuracion());
         lbDuracionIda.setText(duracionIda);
         
-        String precioIda = String.valueOf(vueloIda.getPrecio());
-        lbPrecioIda.setText(precioIda);
+        String precioIda = String.valueOf(vueloIda.getPrecio()+(vueloIda.getPrecio()*FXMLTarifaVueloIdaController.tarifaSeleccionada.getPorcentaje())/100);
+        lbPrecioIda.setText(precioIda);//(vueloSeleccionado.getPrecio()+(vueloSeleccionado.getPrecio()*t.getPorcentaje())/100);
         
         String horaLlegadaIda = String.valueOf(vueloIda.getHoraL());
         lbHoraIdaLlegada.setText(horaLlegadaIda);
@@ -111,14 +111,15 @@ public class FXMLResumenreservaController implements Initializable {
         String duracionRetorno = String.valueOf(vueloRetorno.getDuracion());
         lbDuracionRetorno.setText(duracionRetorno);
         
-        String precioRetorno = String.valueOf(vueloRetorno.getPrecio());
-        lbPrecioRetorno.setText(precioRetorno);
+        String precioRetorno = String.valueOf(vueloRetorno.getPrecio() + (vueloRetorno.getPrecio() * FXMLTarifasRegresoController.tarifaSeleccionada.getPorcentaje()) / 100);
+
+        lbPrecioRetorno.setText(precioRetorno);//String precioIda = 
         
         String horaLlegadaRetorno = String.valueOf(vueloRetorno.getHoraL());
         lbHoraRetornoLlegada.setText(horaLlegadaRetorno);
         
         //Calcular precio total por los dos vuelos
-         precioTotal = vueloIda.getPrecio() + vueloRetorno.getPrecio();
+         precioTotal = FXMLTarifaVueloIdaController.precio+ FXMLTarifasRegresoController.precio;
         lbSumaPrecios.setText("Total de tu reserva: "+String.valueOf(precioTotal)+" USD");
         
         //Listeners para los 3 botones
