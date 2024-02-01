@@ -127,6 +127,7 @@ public class FXMLPagoController implements Initializable,Pagable {
         
         btPagar.setOnAction(e->{
             try {
+                System.out.println("El click funciona");
                 eventoBotonPagar();
             } catch (DatosIncompletosException ex) {
                 Label lbException = new Label(ex.getMessage());
@@ -331,7 +332,7 @@ public class FXMLPagoController implements Initializable,Pagable {
     }
     
     private String generarCodigoReserva(){
-        String codigoReserva=null;
+        String codigoReserva="";
         for(int i = 0; i<6; i++){
             int numAleatorio = (int)(Math.random() * (90 - 65 + 1) + 65);
             codigoReserva = codigoReserva + (char)numAleatorio;
@@ -341,7 +342,7 @@ public class FXMLPagoController implements Initializable,Pagable {
     }
 
     private void eventoBotonPagar() throws DatosIncompletosException {
-        if(tfCodigo.getText()==null || codigoValido){
+        if(tfCodigo.getText().equals("") || codigoValido){
                 if(esTarjeta){
                     TextField tfNumero = (TextField)coTipoPago.lookup("#tfNumero");
                     TextField tfCVV = (TextField)coTipoPago.lookup("#tfCVV");
@@ -352,6 +353,7 @@ public class FXMLPagoController implements Initializable,Pagable {
                     if(estaLleno){
                         String idPago = String.valueOf((int) (Math.random() * 900000) + 100000);
                         String codigoReserva = generarCodigoReserva();
+                        numeroReserva= codigoReserva;
                         double totalReserva = vueloIda.getPrecio()+vueloRetorno.getPrecio();
                         char formaPago;
                         if(esTarjeta){
@@ -365,11 +367,23 @@ public class FXMLPagoController implements Initializable,Pagable {
                         throw new DatosIncompletosException("Los datos de la tarjeta de credito estan incompletos");
                     }
                     
+                }else{
+                    
+                    String codigoReserva = generarCodigoReserva();
+                    numeroReserva= codigoReserva;
+                    
                 }
-            try {
-                App.setRoot("FXMLConfirmacionCompra", 600, 600, null, "ConfirmacionCompra");
-            } catch (IOException ex) {
-            }
+                FXMLLoader f = new FXMLLoader(App.class.getResource("FXMLConfirmacionCompra.fxml"));
+                Stage stage = new Stage();
+                Scene scene=null;
+                try {
+                    scene = new Scene(f.load());
+                } catch (IOException ex) {
+                }
+                stage.setScene(scene);
+                stage.show();
+                FXMLConfirmacionCompraController.stage=stage;
+            
             }
         
     }
