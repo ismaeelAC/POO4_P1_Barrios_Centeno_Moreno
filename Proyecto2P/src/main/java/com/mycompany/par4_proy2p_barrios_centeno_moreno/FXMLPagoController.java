@@ -82,11 +82,12 @@ public class FXMLPagoController implements Initializable,Pagable {
     
     Vuelo vueloIda = FXMLReservaVueloIdaController.vChoice.get(0); 
     Vuelo vueloRetorno = FXMLReservaVueloIdaController.vChoice.get(1);
-    double descuento = 0;
+    public static double descuento = 0;
     boolean codigoValido;
-    boolean esTarjeta;
-    double totalPagar;
-    static String numeroReserva;
+    public static boolean esTarjeta;
+    public static double totalPagar;
+    public static String numeroReserva;
+    public static String idPago;
     
     
     @Override
@@ -351,7 +352,7 @@ public class FXMLPagoController implements Initializable,Pagable {
                     boolean estaLleno = (tfNumero.getText()!=null) && (tfCVV.getText()!=null) && (dpExpiracion.getValue()!=null);
                     
                     if(estaLleno){
-                        String idPago = String.valueOf((int) (Math.random() * 900000) + 100000);
+                        idPago = String.valueOf((int) (Math.random() * 900000) + 100000);
                         String codigoReserva = generarCodigoReserva();
                         numeroReserva= codigoReserva;
                         double totalReserva = vueloIda.getPrecio()+vueloRetorno.getPrecio();

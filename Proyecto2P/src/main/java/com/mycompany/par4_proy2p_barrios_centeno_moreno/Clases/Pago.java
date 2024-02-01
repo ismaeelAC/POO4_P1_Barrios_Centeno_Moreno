@@ -24,6 +24,30 @@ public class Pago {
         this.formaPago = formaPago;
         this.totalPagar = totalPagar;
     }
+
+    public String getIdPago() {
+        return idPago;
+    }
+
+    public String getCodigoReserva() {
+        return codigoReserva;
+    }
+
+    public double getTotalReserva() {
+        return totalReserva;
+    }
+
+    public double getDescuento() {
+        return descuento;
+    }
+
+    public char getFormaPago() {
+        return formaPago;
+    }
+
+    public double getTotalPagar() {
+        return totalPagar;
+    }
     
     
     

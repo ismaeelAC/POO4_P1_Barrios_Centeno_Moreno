@@ -67,6 +67,8 @@ public class FXMLResumenreservaController implements Initializable {
     private Label lbSumaPrecios;
     @FXML
     private Button btContinuar;
+    
+    public static double precioTotal;
 
     /**
      * Initializes the controller class.
@@ -116,7 +118,7 @@ public class FXMLResumenreservaController implements Initializable {
         lbHoraRetornoLlegada.setText(horaLlegadaRetorno);
         
         //Calcular precio total por los dos vuelos
-        double precioTotal = vueloIda.getPrecio() + vueloRetorno.getPrecio();
+         precioTotal = vueloIda.getPrecio() + vueloRetorno.getPrecio();
         lbSumaPrecios.setText("Total de tu reserva: "+String.valueOf(precioTotal)+" USD");
         
         //Listeners para los 3 botones

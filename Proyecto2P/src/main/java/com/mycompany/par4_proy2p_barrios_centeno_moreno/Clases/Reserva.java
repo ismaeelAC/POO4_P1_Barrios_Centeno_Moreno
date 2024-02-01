@@ -9,37 +9,38 @@ package com.mycompany.par4_proy2p_barrios_centeno_moreno.Clases;
  * @author rb122
  */
 public class Reserva implements Pagable{
-    Cliente cliente;
+    String codigo;
+    String cliente;
     String ciudadO;
     String ciudadD;
     String fSalida;
     String fLlegada;
     int numPasajeros;
-    String vueloIda;
-    String vueloRegreso;
+    String numvueloIda;
+    String numvueloRegreso;
     String tarifaIda;
     String tarifaRegreso;
-    String codigo;
+    
 
-    public Reserva(Cliente cliente, String ciudadO, String ciudadD, String fSalida, String fLlegada, int numPasajeros, String vueloIda, String vueloRegreso, String tarifaIda, String tarifaRegreso, String codigo) {
+    public Reserva(String codigo,String cliente, String ciudadO, String ciudadD, String fSalida, String fLlegada, int numPasajeros, String numvueloIda, String numvueloRegreso, String tarifaIda, String tarifaRegreso) {
         this.cliente = cliente;
         this.ciudadO = ciudadO;
         this.ciudadD = ciudadD;
         this.fSalida = fSalida;
         this.fLlegada = fLlegada;
         this.numPasajeros = numPasajeros;
-        this.vueloIda = vueloIda;
-        this.vueloRegreso = vueloRegreso;
+        this.numvueloIda= numvueloIda;
+        this.numvueloRegreso = numvueloRegreso;
         this.tarifaIda = tarifaIda;
         this.tarifaRegreso = tarifaRegreso;
         this.codigo = codigo;
     }
 
-    public Cliente getCliente() {
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 
@@ -84,19 +85,19 @@ public class Reserva implements Pagable{
     }
 
     public String getVueloIda() {
-        return vueloIda;
+        return numvueloIda;
     }
 
     public void setVueloIda(String vueloIda) {
-        this.vueloIda = vueloIda;
+        this.numvueloIda = vueloIda;
     }
 
     public String getVueloRegreso() {
-        return vueloRegreso;
+        return numvueloRegreso;
     }
 
     public void setVueloRegreso(String vueloRegreso) {
-        this.vueloRegreso = vueloRegreso;
+        this.numvueloRegreso = vueloRegreso;
     }
 
     public String getTarifaIda() {
@@ -125,7 +126,7 @@ public class Reserva implements Pagable{
 
     @Override
     public String toString() {
-        return "Reserva{" + "cliente=" + cliente + ", ciudadO=" + ciudadO + ", ciudadD=" + ciudadD + ", fSalida=" + fSalida + ", fLlegada=" + fLlegada + ", numPasajeros=" + numPasajeros + ", vueloIda=" + vueloIda + ", vueloRegreso=" + vueloRegreso + ", tarifaIda=" + tarifaIda + ", tarifaRegreso=" + tarifaRegreso + ", codigo=" + codigo + '}';
+        return "Reserva{" + "cliente=" + cliente + ", ciudadO=" + ciudadO + ", ciudadD=" + ciudadD + ", fSalida=" + fSalida + ", fLlegada=" + fLlegada + ", numPasajeros=" + numPasajeros + ", vueloIda=" + numvueloIda + ", vueloRegreso=" + numvueloRegreso + ", tarifaIda=" + tarifaIda + ", tarifaRegreso=" + tarifaRegreso + ", codigo=" + codigo + '}';
     }
     
     @Override
