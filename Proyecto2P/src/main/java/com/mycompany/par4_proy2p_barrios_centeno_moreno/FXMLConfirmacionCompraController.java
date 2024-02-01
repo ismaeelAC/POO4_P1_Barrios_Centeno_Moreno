@@ -32,7 +32,7 @@ import javafx.util.Duration;
 /**
  * FXML Controller class
  *
- * @author angel
+ * @author grilsemo
  */
 public class FXMLConfirmacionCompraController implements Initializable {
 

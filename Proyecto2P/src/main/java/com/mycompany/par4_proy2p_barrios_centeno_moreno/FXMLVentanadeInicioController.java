@@ -64,7 +64,7 @@ public class FXMLVentanadeInicioController implements Initializable {
         }       
      }
         if(acceso){
-        App.setRoot("FXMLVentanaReserva",600,400,"style.css","VentanasOpciones");
+        App.setRoot("FXMLOpcionclientes",600,400,"style.css","VentanasOpciones");
         FXMLLoader f = new FXMLLoader(App.class.getResource("FXMLReservasCreadas.fxml"));
             Stage stage = new Stage();
             Scene scene=null;
